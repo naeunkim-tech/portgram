@@ -11,7 +11,7 @@
 1. 프로젝트 상위경로에서 npm install
 
 
-## 프로젝트 구성
+## 프로젝트 구성(240430 수정)
 ```
 portfolio/
 │
@@ -30,24 +30,24 @@ portfolio/
 │   │
 │   └── favicon.ico
 │
-├── server/
-│   ├── routes/
-│   │   ├── index.js
-│   │   ├── user.js
-│   │   └── ...
-│   │
-│   │
-│   ├── models/
-│   │   ├── user.js
-│   │   └── ...
-│   │
-│   └── server.js
+├── routes/
+│   ├── index.js
+│   ├── user.js
+│   └── ...
+│
+├── models/
+│   ├── user.js
+│   └── ...
+│
+├── services/
+│   └── ...
+│
+├── server.js
 │
 ├── views/
-│   ├── index.html
+│   └── index.html
 │
-├── package.json
-└── ... 
+└── package.json
 ```
 ### 프론트
 **./public/img**
@@ -63,8 +63,8 @@ css 파일 추가
 각 페이지 html 추가
 
 ### 백
-**./server/routes**
+**./routes**
 라우터 추가
 
-**./server/models**
+**./models**
 스키마 등 추가
