@@ -1,13 +1,9 @@
 const { Schema } = require("mongoose");
 const certificateSchema= new Schema(
     {
-        userId:{
-            type: mongoose.Types.ObjectId,
-            required:true,
-        },
-        cerId:{
-            type: mongoose.Types.ObjectId,
-            required:true,
+        postedBy: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
         },
         date:{
             type:String,
