@@ -3,7 +3,7 @@ const { userAuthService } = require('../services/userService');
 
 const router = Router();
 
-router.get('/login', async (req, res, next) => {
+router.post('/login', async (req, res, next) => {
     try {
         const { email, password } = req.body;
         const user = userAuthService.getUser({ email, password });
