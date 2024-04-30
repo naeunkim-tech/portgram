@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { User } from "./user.js";
+const {educationRouter, certificateRouter, awardRouter,projectRouter,postRouter} =require( "../routes");
 
 const DB_URL =
   process.env.MONGODB_URL ||
@@ -17,7 +18,7 @@ db.on("error", (error) =>
 
 app.use(express.json());
 
-app.use("/posts/:userId",allPosts(userId), postRouter);
+app.use("/posts", postRouter);
 
 app.use("/edu", educationRouter);
 app.use("/cer", certificateRouter);
