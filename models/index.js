@@ -15,4 +15,31 @@ db.on("error", (error) =>
   console.error("MongoDB 연결에 실패하였습니다.\n" + DB_URL + "\n" + error)
 );
 
+app.use(express.json());
+
+app.use("/posts/:userId",allPosts(userId), postRouter);
+
+app.use("/edu", educationRouter);
+app.use("/cer", certificateRouter);
+app.use("/award", awardRouter);
+app.use("/proj", projectRouter);
+
+app.use((req, res, next) => {
+  const error = new Error("Not Found");
+  error.statusCode = 404;
+  next(error);
+});
+
+app.use((error, req, res, next) => {
+  console.error(error);
+  const statusCode = error.statusCode ?? 500;
+  let message = error.message;
+  if (statusCode === 500) {
+    message = "Internal Server Error";
+  }
+  res.status(statusCode).json({
+    data: null,
+    error: message,
+  });
+});
 export { User };
