@@ -22,6 +22,7 @@ function createButton () {
 function openEdu() {
     // educationForm 아이디를 가진 form 태그 선택
     const form = document.getElementById('educationForm');
+    form.method = 'POST';
     // form.action = // 데이터를 어디로 보낼지
     // 기존 내용을 비우기 
     // form.innerHTML = '';
@@ -64,12 +65,21 @@ function openEdu() {
     // 확인, 취소 버튼
     const btn = createButton();
     form.appendChild(btn);
+
+    // 확인버튼 클릭시 
+    const submitButton = document.getElementById('education_submit');
+    submitButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        form.submit(); 
+    });
+
 }
 
 
 // 수상이력
 function openAward () {
     const form = document.getElementById('awardForm');
+    form.method = 'POST';
 
     const awardInput = document.createElement('input');
     awardInput.id = 'award_content';
@@ -97,12 +107,19 @@ function openAward () {
 
     const btn = createButton();
     form.appendChild(btn);
+
+    const submitButton = document.getElementById('education_submit');
+    submitButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        form.submit(); 
+    });
 }
 
 
 // 프로젝트
 function openProject () {
     const form = document.getElementById('projectForm');
+    form.method = 'POST';
 
     const projectInput = document.createElement('input');
     projectInput.id = 'project_name';
@@ -145,12 +162,19 @@ function openProject () {
 
     const btn = createButton();
     form.appendChild(btn);
+
+    const submitButton = document.getElementById('education_submit');
+    submitButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        form.submit(); 
+    });
 }
 
 
 // 자격증
 function openLicense () {
     const form = document.getElementById('licenseForm');
+    form.method = 'POST';
 
     const certificate = document.createElement('input');
     certificate.id = 'certificate_content';
@@ -185,4 +209,10 @@ function openLicense () {
     // 버튼
     const btn = createButton();
     form.appendChild(btn);
+
+    const submitButton = document.getElementById('education_submit');
+    submitButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        form.submit(); 
+    });
 }
