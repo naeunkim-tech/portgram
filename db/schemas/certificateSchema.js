@@ -1,5 +1,5 @@
-const { Schema } = require("mongoose");
-const certificateSchema= new Schema(
+const mongoose = require("mongoose");
+const certificateSchema= new mongoose.Schema(
     {
         postedBy: {
             type: mongoose.Schema.Types.ObjectId,

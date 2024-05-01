@@ -11,11 +11,11 @@ const projectSchema= new Schema(
             type:String,
             required:true,
         },
-        startdate:{
+        startDate:{
             type:Date,
             required:true,
         },
-        enddate:{
+        endDate:{
             type:Date,
             required:true,
         },

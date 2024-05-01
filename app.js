@@ -1,6 +1,5 @@
 const express = require('express');
-// const { educationRouter, certificateRouter, awardRouter, projectRouter, postRouter, userRouter } = require("./routes");
-const { postRouter, userRouter } = require("./routes");
+const { educationRouter, certificateRouter, awardRouter, projectRouter, postRouter, userRouter, mypageRouter } = require("./routes");
 const { userAuthService } = require('./services/userService');
 
 const app = express();
@@ -12,20 +11,20 @@ app.use(express.json());
 
 app.use('/user', userRouter);
 app.use("/posts", postRouter);
-// app.use("/edu", educationRouter);
-// app.use("/cer", certificateRouter);
-// app.use("/award", awardRouter);
-// app.use("/proj", projectRouter);
 
-// app.use("/mypage", mypageRouter)
-// app.use("/mypage/edit", mypageEditRouter)
+app.use("/mypage", mypageRouter);
+app.use("/mypage/education", educationRouter);
+app.use("/mypage/certification", certificateRouter);
+app.use("/mypage/award", awardRouter);
+app.use("/mypage/project", projectRouter);
+
 
 // application middleware
-// app.use((req, res, next) => {
-//   const error = new Error("Not Found");
-//   error.statusCode = 404;
-//   next(error);
-// });
+app.use((req, res, next) => {
+  const error = new Error("Not Found");
+  error.statusCode = 404;
+  next(error);
+});
 
 // root page
 app.get('/', (req, res) => {

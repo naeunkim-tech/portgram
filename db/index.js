@@ -1,9 +1,27 @@
 const mongoose = require("mongoose");
+const { User } = require("./user.js");;// .env 환경변수 불러오기
+const dotenv = require("dotenv");
+
+dotenv.config();
 // const { User } = require("./models/user.js");
 
 require('dotenv').config(); // .env 환경변수 불러오기
 const { MONGODB_URL } = process.env;
 
+const DB_URL = process.env.MONGODB_URL || "Default MongoDB URL";
+
+const MongoConnect = async () => {
+  try {
+    await mongoose.connect(DB_URL);
+    console.log('MongoDB Connected...');
+  } catch (error) {
+    console.error('MongoDB connection error:', error);
+  }
+};
+
+
+// module.exports = {AwardModel,CertificateModel,EducationModel,ProjectModel,User}
+module.exports = {User,MongoConnect}
 const DB_URL =
   process.env.MONGODB_URL ||
   "MongoDB 서버 주소가 설정되지 않았습니다.\n./db/index.js 파일을 확인하세요.";
