@@ -15,6 +15,9 @@ app.use("/cer", certificateRouter);
 app.use("/award", awardRouter);
 app.use("/proj", projectRouter);
 
+// app.use("/mypage", mypageRouter)
+// app.use("/mypage/edit", mypageEditRouter)
+
 // application middleware
 app.use((req, res, next) => {
   const error = new Error("Not Found");

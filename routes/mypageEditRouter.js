@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { EducationModel, CertificateModel, ProjectModel, AwardModel } = require("../models/allmodels.js");
+const { EducationModel, CertificateModel, ProjectModel, AwardModel } = require("../db/allmodels.js");
 const validateData=require("../middleware/validate.js")
 //수정
 router.put('/:dataType/:id', validateData("params"),async (req, res) => {

@@ -1,13 +1,11 @@
-const projectRouter = require("./projectRouter");
-const certificateRouter = require("./certificateRouter");
-const educationRouter = require("./educationRouter");
-const awardRouter = require("./awardRouter");
+const mypageEditRouter = require("./mypageEditRouter");
+const mypageRouter = require("./mypageRouter");
+const postRouter = require("./postRouter");
 const userRouter = require("./userRouter");
 
 module.exports = {
-    educationRouter,
-    certificateRouter,
-    awardRouter,
-    projectRouter,
+    mypageEditRouter,
+    mypageRouter,
+    postRouter,
     userRouter,
 };
