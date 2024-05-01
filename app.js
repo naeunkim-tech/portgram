@@ -20,11 +20,11 @@ app.use("/mypage/project", projectRouter);
 
 
 // application middleware
-app.use((req, res, next) => {
-  const error = new Error("Not Found");
-  error.statusCode = 404;
-  next(error);
-});
+// app.use((req, res, next) => {
+//   const error = new Error("Not Found");
+//   error.statusCode = 404;
+//   next(error);
+// });
 
 // root page
 app.get('/', (req, res) => {
@@ -42,7 +42,7 @@ app.post('/', async (req, res, next) => {
         }
 
         // mongoDB find test
-        console.log(user);
+        console.log('회원가입 된 사용자입니다.', user);
 
         // 로그인 성공 후 redirect 할 경로 필요
         res.status(200).send(user);
