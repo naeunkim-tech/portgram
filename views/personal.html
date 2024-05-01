@@ -16,58 +16,68 @@
                 <li><a href="#">로그아웃</a></li>
             </ul>
         </nav>
-
-        <div id="personal_page">
-            <div id="profile">
-                <div class="img">
-                    <img 
-                        class="profile_img"
-                        src="https://i.pinimg.com/236x/88/fd/5b/88fd5bbccc180152c81ccaedc9c72d02.jpg"
-                        alt="프로필 사진"
-                    />
-                </div>
-                <h2>이름</h2>
-                <p>email</p>
-                <p>설명이 아직 없습니다. <br/ >추가해 주세요.</p>
-                <div id="edit">
-                    <button class="edit_button">Edit</button>
+        <div class="container">
+            <div id="personal_page">
+                <div id="profile">
+                    <div class="img">
+                        <img 
+                            class="profile_img"
+                            src="https://cdn.imweb.me/thumbnail/20220413/04966fa44899b.png"
+                            alt="프로필 사진"
+                        />
+                    </div>
+                    <div class="intro">
+                        <h1>이름</h1>
+                        <p>email : <span id="email">#email span value</span></p>
+                        <p>설명이 아직 없습니다. 추가해 주세요.</p>
+                        <div class="edit">
+                            <button class="edit_button">edit</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div id="profile_content">
-                <div class="education">
-                    <p class="content">학력</p>
-                    <form id="educationForm">
-                        <div class="add"></div>
-                    </form>
-                    <div id="button">
-                        <button class="btn" onclick="openEdu()">+</button>
+
+            <div id="myInfo">
+                <div id="profile_content">
+                    <div class="education">
+                        <p class="content">학력</p>
+                        <div id="button">
+                            <button class="btn" onclick="openEdu()">ADD</button>
+                        </div>
+                        <form id="educationForm">
+                            <div class="add"></div>
+                        </form>
+                        <hr />
                     </div>
-                </div>
-                <div class="award">
-                    <p class="content">수상이력</p>
-                    <form id="awardForm">
-                        <div class="add"></div>
-                    </form>
-                    <div id="button">
-                        <button class="btn" onclick="openAward()">+</button>
+                    <div class="award">
+                        <p class="content">수상이력</p>
+                        <div id="button">
+                            <button class="btn" onclick="openAward()">ADD</button>
+                        </div>
+                        <form id="awardForm">
+                            <div class="add"></div>
+                        </form>
+                        <hr />
                     </div>
-                </div>
-                <div class="project">
-                    <p class="content">프로젝트</p>
-                    <form id="projectForm">
-                        <div class="add"></div>
-                    </form>
-                    <div id="button">
-                        <button class="btn" onclick="openProject()">+</button>
+                    <div class="project">
+                        <p class="content">프로젝트</p>
+                        <div id="button">
+                            <button class="btn" onclick="openProject()">ADD</button>
+                        </div>
+                        <form id="projectForm">
+                            <div class="add"></div>
+                        </form>
+                        <hr />
                     </div>
-                </div>
-                <div id="license">
-                    <p class="content">자격증</p>
-                    <form id="licenseForm">
-                        <div class="add"></div>
-                    </form>
-                    <div id="button">
-                        <button class="btn" onclick="openLicense()">+</button>
+                    <div class="license">
+                        <p class="content">자격증</p>
+                        <div id="button">
+                            <button class="btn" onclick="openLicense()">ADD</button>
+                        </div>
+                        <form id="licenseForm">
+                            <div class="add"></div>
+                        </form>
+                        
                     </div>
                 </div>
             </div>
