@@ -1,13 +1,12 @@
 {
   "dependencies": {
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "mongoose": "^8.3.3"
   },
-  "type": "module",
   "name": "porshaw-project",
   "description": "- 팀명 : PorShaW\r - 팀장 : 오선아\r - 프론트 : 김민석, 오선아, 이한수. 임지영\r - 백엔드 : 김나은, 김경하, 한유림",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

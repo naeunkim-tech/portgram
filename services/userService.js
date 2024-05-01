@@ -1,8 +1,9 @@
-import { User } from "./models/user";
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
+const { User } = require("./models/user");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 class userAuthService {
+    // login: email 및 password 확인하고 jwt token 부여, 사용자 정보 반환
     static async getUser({ email, password }) {
         const user = await User.findByEmail({ email });
         if (!user) {
@@ -27,7 +28,6 @@ class userAuthService {
 
         return loginUser;
     }
-
 
     // 모델 층의 User의 email 함수를 사용하여 사용자를 검색
     static async getUserInfo({ email }) {
@@ -62,4 +62,6 @@ class userAuthService {
     
         return createdNewUser;
       }
-}
+};
+
+exports.userAuthService = userAuthService;

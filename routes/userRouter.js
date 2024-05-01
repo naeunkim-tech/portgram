@@ -3,23 +3,20 @@ const { userAuthService } = require('../services/userService');
 
 const router = Router();
 
-router.post('/login', async (req, res, next) => {
-    try {
-        const { email, password } = req.body;
-        const user = userAuthService.getUser({ email, password });
+// router.post('/login', async (req, res, next) => {
+//     try {
+//         const { email, password } = req.body;
+//         const user = userAuthService.getUser({ email, password });
 
-        if (user.errorMessage) {
-            throw new Error(user.errorMessage);
-        }
+//         if (user.errorMessage) {
+//             throw new Error(user.errorMessage);
+//         }
 
-        res.status(200).send(user);
-    } catch (e) {
-        next(e);
-    }
-});
-
-module.exports = router;
-
+//         res.status(200).send(user);
+//     } catch (e) {
+//         next(e);
+//     }
+// });
 
 router.get(
     "/users/:email",
@@ -71,6 +68,4 @@ router.get(
     
   });
   
-  
-  export { router };
-  
+  module.exports = router;

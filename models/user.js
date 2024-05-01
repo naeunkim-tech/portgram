@@ -1,4 +1,4 @@
-import { UserModel } from "./schemas/user";
+const { UserModel } = require("./model/userModel");
 
 class User {
     static async findAll() {
@@ -17,4 +17,4 @@ class User {
     }
 }
 
-export { User };
+exports.User = User;
