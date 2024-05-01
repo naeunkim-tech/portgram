@@ -28,11 +28,12 @@ document.getElementById("login-form").addEventListener("submit", function(event)
       if (!response.ok) {
           throw new Error('로그인 실패');
       }
+      console.log(response);
       return response.json();
   })
   .then(data => {
       console.log(data);
-      window.location.href = 'personal.html';
+    //   window.location.href = 'personal.html';
   })
   .catch(error => {
       console.error('Error:', error.message);

@@ -1,6 +1,7 @@
 const express = require('express');
 // const { educationRouter, certificateRouter, awardRouter, projectRouter, postRouter, userRouter } = require("./routes");
 const { postRouter, userRouter } = require("./routes");
+const { userAuthService } = require('./services/userService');
 
 const app = express();
 
@@ -35,18 +36,17 @@ app.get('/', (req, res) => {
 app.post('/', async (req, res, next) => {
     try {
         const { email, password } = req.body;
-        // const user = userAuthService.getUser({ email, password });
+        const user = await userAuthService.getUser({ email, password });
 
-        // if (user.errorMessage) {
-        //     throw new Error(user.errorMessage);
-        // }
+        if (user.errorMessage) {
+          throw new Error(user.errorMessage);
+        }
 
-        // post test
-        console.log(email);
-        console.log(password);
+        // mongoDB find test
+        console.log(user);
 
-        // res.status(200).send(user);
         // 로그인 성공 후 redirect 할 경로 필요
+        res.status(200).send(user);
     } catch (e) {
         next(e);
     }
