@@ -20,11 +20,11 @@ app.use("/posts", postRouter);
 // app.use("/mypage/edit", mypageEditRouter)
 
 // application middleware
-app.use((req, res, next) => {
-  const error = new Error("Not Found");
-  error.statusCode = 404;
-  next(error);
-});
+// app.use((req, res, next) => {
+//   const error = new Error("Not Found");
+//   error.statusCode = 404;
+//   next(error);
+// });
 
 // root page
 app.get('/', (req, res) => {
@@ -35,14 +35,18 @@ app.get('/', (req, res) => {
 app.post('/', async (req, res, next) => {
     try {
         const { email, password } = req.body;
-        const user = userAuthService.getUser({ email, password });
+        // const user = userAuthService.getUser({ email, password });
 
-        if (user.errorMessage) {
-            throw new Error(user.errorMessage);
-        }
+        // if (user.errorMessage) {
+        //     throw new Error(user.errorMessage);
+        // }
 
-        res.status(200).send(user);
-        // 로그인 성공 후 redirect('') 할 경로 필요
+        // post test
+        console.log(email);
+        console.log(password);
+
+        // res.status(200).send(user);
+        // 로그인 성공 후 redirect 할 경로 필요
     } catch (e) {
         next(e);
     }

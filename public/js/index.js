@@ -23,7 +23,7 @@ document.getElementById("login-form").addEventListener("submit", function(event)
       body: JSON.stringify(data)
   };
 
-  fetch('http://localhost:5000/user/login', options)
+  fetch('http://localhost:5000/', options)
   .then(response => {
       if (!response.ok) {
           throw new Error('로그인 실패');
