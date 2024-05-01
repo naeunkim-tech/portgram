@@ -1,5 +1,6 @@
 const express = require('express');
-const { educationRouter, certificateRouter, awardRouter, projectRouter, postRouter, userRouter } = require("./routes");
+// const { educationRouter, certificateRouter, awardRouter, projectRouter, postRouter, userRouter } = require("./routes");
+const { postRouter, userRouter } = require("./routes");
 
 const app = express();
 
@@ -10,10 +11,10 @@ app.use(express.json());
 
 app.use('/user', userRouter);
 app.use("/posts", postRouter);
-app.use("/edu", educationRouter);
-app.use("/cer", certificateRouter);
-app.use("/award", awardRouter);
-app.use("/proj", projectRouter);
+// app.use("/edu", educationRouter);
+// app.use("/cer", certificateRouter);
+// app.use("/award", awardRouter);
+// app.use("/proj", projectRouter);
 
 // app.use("/mypage", mypageRouter)
 // app.use("/mypage/edit", mypageEditRouter)
