@@ -38,7 +38,7 @@ app.post('/', async (req, res, next) => {
         }
 
         res.status(200).send(user);
-        // 로그인 성공 후 redirect 할 경로 필요
+        // 로그인 성공 후 redirect('') 할 경로 필요
     } catch (e) {
         next(e);
     }

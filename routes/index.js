@@ -4,7 +4,6 @@ const educationRouter = require("./educationRouter");
 const awardRouter = require("./awardRouter");
 const userRouter = require("./userRouter");
 
-
 module.exports = {
     educationRouter,
     certificateRouter,

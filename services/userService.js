@@ -1,6 +1,7 @@
 const { User } = require("./models/user");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { findByIdAndDelete } = require("../models/model/awardModel");
 
 class userAuthService {
     // login: email 및 password 확인하고 jwt token 부여, 사용자 정보 반환
