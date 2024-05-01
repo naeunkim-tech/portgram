@@ -10,10 +10,10 @@ app.use(express.json());
 
 app.use('/user', userRouter);
 app.use("/posts", postRouter);
-app.use("/edu", educationRouter);
-app.use("/cer", certificateRouter);
+app.use("/education", educationRouter);
+app.use("/certification", certificateRouter);
 app.use("/award", awardRouter);
-app.use("/proj", projectRouter);
+app.use("/project", projectRouter);
 
 // app.use("/mypage", mypageRouter)
 // app.use("/mypage/edit", mypageEditRouter)

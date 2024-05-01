@@ -1,4 +1,4 @@
-const { UserModel }=require("./schemas/user.js");
+const { UserModel }=require("./model/userModel.js");
 class User {
     static async findAll() {
         const users = await UserModel.find({});
