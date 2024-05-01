@@ -1,3 +1,22 @@
+function createButton () {
+    const btn = document.createElement('div');
+    btn.className = 'confirmBtn'
+
+    const submitButton = document.createElement('input');
+    submitButton.type = 'submit'
+    submitButton.id = 'education_submit';
+    submitButton.className = 'submit-button';
+    submitButton.value = '확인';
+    btn.appendChild(submitButton);
+    
+    const cancelButton = document.createElement('button');
+    cancelButton.id = 'submit';
+    cancelButton.className = 'cancel-button';
+    cancelButton.textContent = '취소';
+    btn.appendChild(cancelButton);
+
+    return btn;
+}
 
 // 학력
 function openEdu() {
@@ -43,22 +62,7 @@ function openEdu() {
     form.appendChild(document.createElement('br'));
     
     // 확인, 취소 버튼
-    const btn = document.createElement('div');
-    btn.className = 'confirmBtn'
-
-    const submitButton = document.createElement('input');
-    submitButton.type = 'submit'
-    submitButton.id = 'education_submit';
-    submitButton.className = 'submit-button';
-    submitButton.value = '확인';
-    btn.appendChild(submitButton);
-    
-    const cancelButton = document.createElement('button');
-    cancelButton.id = 'submit';
-    cancelButton.className = 'cancel-button';
-    cancelButton.textContent = '취소';
-    btn.appendChild(cancelButton);
-
+    const btn = createButton();
     form.appendChild(btn);
 }
 
@@ -91,22 +95,7 @@ function openAward () {
     form.appendChild(awardDateInput);
     form.appendChild(document.createElement('br'));
 
-    const btn = document.createElement('div');
-    btn.className = 'confirmBtn'
-
-    const submitButton = document.createElement('input');
-    submitButton.type = 'submit'
-    submitButton.id = 'education_submit';
-    submitButton.className = 'submit-button';
-    submitButton.value = '확인';
-    btn.appendChild(submitButton);
-        
-    const cancelButton = document.createElement('button');
-    cancelButton.id = 'submit';
-    cancelButton.className = 'cancel-button';
-    cancelButton.textContent = '취소';
-    btn.appendChild(cancelButton);
-
+    const btn = createButton();
     form.appendChild(btn);
 }
 
@@ -154,22 +143,7 @@ function openProject () {
     form.appendChild(projectRoleInput);
     form.appendChild(document.createElement('br'));
 
-    const btn = document.createElement('div');
-    btn.className = 'confirmBtn'
-
-    const submitButton = document.createElement('input');
-    submitButton.type = 'submit'
-    submitButton.id = 'education_submit';
-    submitButton.className = 'submit-button';
-    submitButton.value = '확인';
-    btn.appendChild(submitButton);
-        
-    const cancelButton = document.createElement('button');
-    cancelButton.id = 'submit';
-    cancelButton.className = 'cancel-button';
-    cancelButton.textContent = '취소';
-    btn.appendChild(cancelButton);
-
+    const btn = createButton();
     form.appendChild(btn);
 }
 
@@ -209,21 +183,6 @@ function openLicense () {
     form.appendChild(document.createElement('br'));
 
     // 버튼
-    const btn = document.createElement('div');
-    btn.className = 'confirmBtn'
-
-    const submitButton = document.createElement('input');
-    submitButton.type = 'submit'
-    submitButton.id = 'education_submit';
-    submitButton.className = 'submit-button';
-    submitButton.value = '확인';
-    btn.appendChild(submitButton);
-        
-    const cancelButton = document.createElement('button');
-    cancelButton.id = 'submit';
-    cancelButton.className = 'cancel-button';
-    cancelButton.textContent = '취소';
-    btn.appendChild(cancelButton);
-
+    const btn = createButton();
     form.appendChild(btn);
 }
