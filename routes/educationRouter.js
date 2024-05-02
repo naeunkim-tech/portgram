@@ -1,21 +1,32 @@
 const router=require("express").Router();
 const {EducationModel}=require("../db/allmodels")
-const {validateEducationData}=require("../middleware")
+const {validateEducationData, validateToken}=require("../middleware")
+
+router.get("/", async (req, res, next) => {
+  try {
+    
+    const educations = await EducationModel.find();
+
+    res.status(200).json({ data: educations, error: null });
+  } catch (error) {
+    next(error);
+  }
+});
   
-router.post("/",validateEducationData("body"), async (req, res, next) => {
+router.post("/",validateToken.isLoggedin, validateEducationData("body"), async (req, res, next) => {
   try {
     const { school,major,degree } = req.body;
     console.log({ school,major,degree })
     console.log( EducationModel);
     const createdPost = await EducationModel.create({ school,major,degree });
-    res.status(201).json({ data: createdPost.toObject(), error: null });
+    res.status(200).json({ data: createdPost.toObject(), error: null });
   } catch (error) {
     next(error);
   }
 });
 
   
-router.put("/:id",validateEducationData("body"), async (req, res, next) => {
+router.put("/:id",validateToken.isLoggedin,validateEducationData("body"), async (req, res, next) => {
   try {
     const { id } = req.params;
     const { school,major,degree }= req.body; 
@@ -29,7 +40,7 @@ router.put("/:id",validateEducationData("body"), async (req, res, next) => {
       }
     ).lean();
 
-    res.json({ data: updatedPost, error: null });
+    res.status(200).json({ data: updatedPost, error: null });
   } catch (error) {
     next(error);
   }

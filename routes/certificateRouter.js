@@ -30,7 +30,7 @@ router.put("/:id",validateCertificationData("body"), async (req, res, next) => {
       }
     ).lean();
 
-    res.json({ data: updatedPost, error: null });
+    res.status(201).json({ data: updatedPost, error: null });
   } catch (error) {
     next(error);
   }

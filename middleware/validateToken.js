@@ -1,6 +1,7 @@
+const jwt = require('jsonwebtoken');
 
-let validate={}
-validate.isLoggedin = function(req,res,next){
+let validateToken={}
+validateToken.isLoggedin = function(req,res,next){
 	var token = req.cookies.user;
 
 	if (!token) { // 토큰이 없을 때
@@ -21,4 +22,4 @@ validate.isLoggedin = function(req,res,next){
 	});
 };
 
-module.exports = validate;
+module.exports = validateToken;

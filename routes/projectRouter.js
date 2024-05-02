@@ -1,6 +1,16 @@
 const router=require("express").Router();
 const {ProjectModel}=require("../db/allmodels")
 const {validateProjectData}=require("../middleware")
+
+router.get("/", async (req, res, next) => {
+  try {
+    const projects = await ProjectModel.find();
+
+    res.status(200).json({ data: projects, error: null });
+  } catch (error) {
+    next(error);
+  }
+});
   
 router.post("/",validateProjectData("body"), async (req, res, next) => {
   try {
