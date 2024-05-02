@@ -22,12 +22,13 @@ function createButton(name) {
 function openEdu() {
   // educationForm 아이디를 가진 form 태그 선택
   const form = document.getElementById('educationForm');
+  form.method = 'POST';
   form.action = '/mypage/education';
   // 기존 내용을 비우기
   // form.innerHTML = '';
 
   const schoolInput = document.createElement('input');
-  schoolInput.id = 'school_name';
+  schoolInput.name = 'school_name';
   schoolInput.className = 'input-style';
   schoolInput.type = 'text';
   schoolInput.placeholder = '학교이름';
@@ -35,7 +36,7 @@ function openEdu() {
   form.appendChild(document.createElement('br'));
 
   const majorInput = document.createElement('input');
-  majorInput.id = 'school_major';
+  majorInput.name = 'school_major';
   majorInput.className = 'input-style';
   majorInput.type = 'text';
   majorInput.placeholder = '전공';
@@ -65,38 +66,21 @@ function openEdu() {
   const btn = createButton('education');
   form.appendChild(btn);
 
-  // 확인버튼 클릭시
+  //확인버튼 클릭시
   const submitButton = document.getElementById('education_submit');
   submitButton.addEventListener('click', function (e) {
     e.preventDefault();
-
-    // form 데이터를 가진 객체 생성/ FormData 객체 생성
-    // 폼 데이터를 추가
-    const formData = new FormData(form);
-    const data = {};
-    // form 값이 담긴 formData의 객체를 이터레이트
-    // data 객체 안에 key-value로
-    formData.forEach((value, key) => {
-      data[key] = value;
-    });
-
-    // Fetch API
-    // fetch(요청 보낼 url, 요청의 구성)
-    fetch(form.action, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'personal/json',
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log('성공:', data);
-      })
-      .catch((error) => {
-        console.error('실패:', error);
-      });
+    form.submit();
   });
+  //     // form 데이터를 가진 객체 생성/ FormData 객체 생성
+  //     // 폼 데이터를 추가
+  //     const formData = new FormData(form);
+  //     const data = {};
+  //     // form 값이 담긴 formData의 객체를 이터레이트
+  //     // data 객체 안에 key-value로
+  //     formData.forEach((value, key) => {
+  //       data[key] = value;
+  //     });
 }
 
 // 수상이력
@@ -106,7 +90,7 @@ function openAward() {
   form.action = '/mypage/award';
 
   const awardInput = document.createElement('input');
-  awardInput.id = 'award_content';
+  awardInput.name = 'award_content';
   awardInput.className = 'input-style';
   awardInput.type = 'text';
   awardInput.placeholder = '수상 내용';
@@ -114,7 +98,7 @@ function openAward() {
   form.appendChild(document.createElement('br'));
 
   const oraganizationInput = document.createElement('input');
-  oraganizationInput.id = 'award_organization';
+  oraganizationInput.name = 'award_organization';
   oraganizationInput.className = 'input-style';
   oraganizationInput.type = 'text';
   oraganizationInput.placeholder = '시상 단체';
@@ -122,7 +106,7 @@ function openAward() {
   form.appendChild(document.createElement('br'));
 
   const awardDateInput = document.createElement('input');
-  awardDateInput.id = 'award_date';
+  awardDateInput.name = 'award_date';
   awardDateInput.className = 'input-style';
   awardDateInput.type = 'text';
   awardDateInput.placeholder = '수상 일자';
@@ -132,7 +116,7 @@ function openAward() {
   const btn = createButton('award');
   form.appendChild(btn);
 
-  const submitButton = document.getElementById('education_submit');
+  const submitButton = document.getElementById('award_submit');
   submitButton.addEventListener('click', function (e) {
     e.preventDefault();
     form.submit();
@@ -145,7 +129,7 @@ function openProject() {
   form.action = '/mypage/project';
 
   const projectInput = document.createElement('input');
-  projectInput.id = 'project_name';
+  projectInput.name = 'project_name';
   projectInput.className = 'input-style';
   projectInput.type = 'text';
   projectInput.placeholder = '프로젝트명';
@@ -160,7 +144,7 @@ function openProject() {
   date.appendChild(during);
 
   const startDateInput = document.createElement('input');
-  startDateInput.id = 'project_start';
+  startDateInput.name = 'project_start';
   startDateInput.type = 'date';
   date.appendChild(startDateInput);
 
@@ -168,7 +152,7 @@ function openProject() {
   date.appendChild(content);
 
   const endDateInput = document.createElement('input');
-  endDateInput.id = 'project_end';
+  endDateInput.name = 'project_end';
   endDateInput.type = 'date';
   date.appendChild(endDateInput);
   date.appendChild(document.createElement('br'));
@@ -176,7 +160,7 @@ function openProject() {
   form.appendChild(date);
 
   const projectRoleInput = document.createElement('input');
-  projectRoleInput.id = 'project_role';
+  projectRoleInput.name = 'project_role';
   projectRoleInput.className = 'input-style';
   projectRoleInput.type = 'text';
   projectRoleInput.placeholder = '역할';
@@ -186,7 +170,7 @@ function openProject() {
   const btn = createButton('project');
   form.appendChild(btn);
 
-  const submitButton = document.getElementById('education_submit');
+  const submitButton = document.getElementById('project_submit');
   submitButton.addEventListener('click', function (e) {
     e.preventDefault();
     form.submit();
@@ -200,7 +184,7 @@ function openCertificate() {
   form.action = '/mypage/certificate';
 
   const certificate = document.createElement('input');
-  certificate.id = 'certificate_content';
+  certificate.name = 'certificate_content';
   certificate.className = 'input-style';
   certificate.type = 'text';
   certificate.placeholder = '자격종류';
@@ -215,14 +199,14 @@ function openCertificate() {
   date.appendChild(content);
 
   const certificateDate = document.createElement('input');
-  certificateDate.id = 'certificate_date';
+  certificateDate.name = 'certificate_date';
   certificateDate.type = 'date';
   date.appendChild(certificateDate);
   form.appendChild(date);
 
   // 발급 기관
   const certificateOrg = document.createElement('input');
-  certificateOrg.id = 'certificate_organization';
+  certificateOrg.name = 'certificate_organization';
   certificateOrg.className = 'input-style';
   certificateOrg.type = 'text';
   certificateOrg.placeholder = '발급기관';
@@ -233,7 +217,7 @@ function openCertificate() {
   const btn = createButton('certificate');
   form.appendChild(btn);
 
-  const submitButton = document.getElementById('education_submit');
+  const submitButton = document.getElementById('certificate_submit');
   submitButton.addEventListener('click', function (e) {
     e.preventDefault();
     form.submit();
