@@ -22,7 +22,6 @@ function createButton (name) {
 function openEdu(education) {
     // educationForm 아이디를 가진 form 태그 선택
     const form = document.getElementById('educationForm');
-    form.method = 'POST';
     form.action = '/mypage/education'
     // form.action = // 데이터를 어디로 보낼지
     // 기존 내용을 비우기 
@@ -71,9 +70,32 @@ function openEdu(education) {
     const submitButton = document.getElementById('education_submit');
     submitButton.addEventListener('click', function(e) {
         e.preventDefault();
-        form.submit(); 
-    });
 
+        // form 데이터를 가진 객체 생성/ FormData 객체 생성
+        // 폼 데이터를 추가
+        const formData = new FormData(form);
+        const data = {};
+        // form 값이 담긴 formData의 객체를 이터레이트
+        // data 객체 안에 key-value로 
+        formData.forEach((value, key) => { data[key] = value; });
+
+        // Fetch API
+        // fetch(요청 보낼 url, 요청의 구성)
+        fetch(form.action, {
+            method: 'POST',
+            headers: {
+                'Content-Type':'personal/json',
+            },
+            body: JSON.stringify(data),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('성공:', data);
+        })
+        .catch((error) => {
+            console.error('실패:', error);
+        });
+    });
 }
 
 
@@ -222,29 +244,32 @@ function openLicense (certificate) {
 }
 
 
-const submitButton = document.getElementById('project_submit');
-submitButton.addEventListener('click', function(e) {
-    e.preventDefault();
+// const submitButton = document.getElementById('project_submit');
+// submitButton.addEventListener('click', function(e) {
+//     e.preventDefault();
 
-    // formData 객체 생성
-    // 폼 데이터를 추가
-    const formData = new FormData(form);
-    const data = {};
-    formData.forEach((value, key) => { data[key] = value; });
+//     // form 데이터를 가진 객체 생성/ FormData 객체 생성
+//     // 폼 데이터를 추가
+//     const formData = new FormData(form);
+//     const data = {};
+//     // form 값이 담긴 formData의 객체를 이터레이트
+//     // data 객체 안에 key-value로 
+//     formData.forEach((value, key) => { data[key] = value; });
 
-    // Fetch API를 사용하여 데이터를 서버로 전송합니다.
-    fetch(form.action, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Success:', data);
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
-});
+//     // Fetch API
+//     // fetch(요청 보낼 url, 요청의 구성)
+//     fetch(form.action, {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify(data),
+//     })
+//     .then(response => response.json())
+//     .then(data => {
+//         console.log('Success:', data);
+//     })
+//     .catch((error) => {
+//         console.error('Error:', error);
+//     });
+// });
