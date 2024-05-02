@@ -1,9 +1,28 @@
+function createButton (name) {
+    const btn = document.createElement('div');
+    btn.className = 'confirmBtn'
+
+    const submitButton = document.createElement('input');
+    submitButton.type = 'submit'
+    submitButton.id = `${name}_submit`;
+    submitButton.className = 'submit-button';
+    submitButton.value = '확인';
+    btn.appendChild(submitButton);
+    
+    const cancelButton = document.createElement('button');
+    cancelButton.id = 'cancel';
+    cancelButton.className = 'cancel-button';
+    cancelButton.textContent = '취소';
+    btn.appendChild(cancelButton);
+
+    return btn;
+}
 
 // 학력
 function openEdu() {
     // educationForm 아이디를 가진 form 태그 선택
     const form = document.getElementById('educationForm');
-    // form.action = // 데이터를 어디로 보낼지
+    form.action = '/mypage/education'
     // 기존 내용을 비우기 
     // form.innerHTML = '';
 
@@ -43,29 +62,47 @@ function openEdu() {
     form.appendChild(document.createElement('br'));
     
     // 확인, 취소 버튼
-    const btn = document.createElement('div');
-    btn.className = 'confirmBtn'
-
-    const submitButton = document.createElement('input');
-    submitButton.type = 'submit'
-    submitButton.id = 'education_submit';
-    submitButton.className = 'submit-button';
-    submitButton.value = '확인';
-    btn.appendChild(submitButton);
-    
-    const cancelButton = document.createElement('button');
-    cancelButton.id = 'submit';
-    cancelButton.className = 'cancel-button';
-    cancelButton.textContent = '취소';
-    btn.appendChild(cancelButton);
-
+    const btn = createButton('education');
     form.appendChild(btn);
+
+    // 확인버튼 클릭시 
+    const submitButton = document.getElementById('education_submit');
+    submitButton.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        // form 데이터를 가진 객체 생성/ FormData 객체 생성
+        // 폼 데이터를 추가
+        const formData = new FormData(form);
+        const data = {};
+        // form 값이 담긴 formData의 객체를 이터레이트
+        // data 객체 안에 key-value로 
+        formData.forEach((value, key) => { data[key] = value; });
+
+        // Fetch API
+        // fetch(요청 보낼 url, 요청의 구성)
+        fetch(form.action, {
+            method: 'POST',
+            headers: {
+                'Content-Type':'personal/json',
+            },
+            body: JSON.stringify(data),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('성공:', data);
+        })
+        .catch((error) => {
+            console.error('실패:', error);
+        });
+    });
 }
 
 
 // 수상이력
 function openAward () {
     const form = document.getElementById('awardForm');
+    form.method = 'POST';
+    form.action = '/mypage/award'
 
     const awardInput = document.createElement('input');
     awardInput.id = 'award_content';
@@ -91,29 +128,21 @@ function openAward () {
     form.appendChild(awardDateInput);
     form.appendChild(document.createElement('br'));
 
-    const btn = document.createElement('div');
-    btn.className = 'confirmBtn'
-
-    const submitButton = document.createElement('input');
-    submitButton.type = 'submit'
-    submitButton.id = 'education_submit';
-    submitButton.className = 'submit-button';
-    submitButton.value = '확인';
-    btn.appendChild(submitButton);
-        
-    const cancelButton = document.createElement('button');
-    cancelButton.id = 'submit';
-    cancelButton.className = 'cancel-button';
-    cancelButton.textContent = '취소';
-    btn.appendChild(cancelButton);
-
+    const btn = createButton('award');
     form.appendChild(btn);
+
+    const submitButton = document.getElementById('education_submit');
+    submitButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        form.submit(); 
+    });
 }
 
 
 // 프로젝트
 function openProject () {
     const form = document.getElementById('projectForm');
+    form.action = '/mypage/project'
 
     const projectInput = document.createElement('input');
     projectInput.id = 'project_name';
@@ -139,7 +168,7 @@ function openProject () {
     date.appendChild(content);
 
     const endDateInput = document.createElement('input');
-    endDateInput.id = 'project_start';
+    endDateInput.id = 'project_end';
     endDateInput.type = 'date';
     date.appendChild(endDateInput);
     date.appendChild(document.createElement('br'));
@@ -154,29 +183,22 @@ function openProject () {
     form.appendChild(projectRoleInput);
     form.appendChild(document.createElement('br'));
 
-    const btn = document.createElement('div');
-    btn.className = 'confirmBtn'
-
-    const submitButton = document.createElement('input');
-    submitButton.type = 'submit'
-    submitButton.id = 'education_submit';
-    submitButton.className = 'submit-button';
-    submitButton.value = '확인';
-    btn.appendChild(submitButton);
-        
-    const cancelButton = document.createElement('button');
-    cancelButton.id = 'submit';
-    cancelButton.className = 'cancel-button';
-    cancelButton.textContent = '취소';
-    btn.appendChild(cancelButton);
-
+    const btn = createButton('project');
     form.appendChild(btn);
+
+    const submitButton = document.getElementById('education_submit');
+    submitButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        form.submit(); 
+    });
 }
 
 
 // 자격증
-function openLicense () {
-    const form = document.getElementById('licenseForm');
+function openCertificate () {
+    const form = document.getElementById('certificateForm');
+    form.method = 'POST';
+    form.action = '/mypage/certificate'
 
     const certificate = document.createElement('input');
     certificate.id = 'certificate_content';
@@ -209,21 +231,43 @@ function openLicense () {
     form.appendChild(document.createElement('br'));
 
     // 버튼
-    const btn = document.createElement('div');
-    btn.className = 'confirmBtn'
-
-    const submitButton = document.createElement('input');
-    submitButton.type = 'submit'
-    submitButton.id = 'education_submit';
-    submitButton.className = 'submit-button';
-    submitButton.value = '확인';
-    btn.appendChild(submitButton);
-        
-    const cancelButton = document.createElement('button');
-    cancelButton.id = 'submit';
-    cancelButton.className = 'cancel-button';
-    cancelButton.textContent = '취소';
-    btn.appendChild(cancelButton);
-
+    const btn = createButton('certificate');
     form.appendChild(btn);
+
+    const submitButton = document.getElementById('education_submit');
+    submitButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        form.submit(); 
+    });
 }
+
+
+// const submitButton = document.getElementById('project_submit');
+// submitButton.addEventListener('click', function(e) {
+//     e.preventDefault();
+
+//     // form 데이터를 가진 객체 생성/ FormData 객체 생성
+//     // 폼 데이터를 추가
+//     const formData = new FormData(form);
+//     const data = {};
+//     // form 값이 담긴 formData의 객체를 이터레이트
+//     // data 객체 안에 key-value로 
+//     formData.forEach((value, key) => { data[key] = value; });
+
+//     // Fetch API
+//     // fetch(요청 보낼 url, 요청의 구성)
+//     fetch(form.action, {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify(data),
+//     })
+//     .then(response => response.json())
+//     .then(data => {
+//         console.log('Success:', data);
+//     })
+//     .catch((error) => {
+//         console.error('Error:', error);
+//     });
+// });
