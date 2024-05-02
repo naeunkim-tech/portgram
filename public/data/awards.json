@@ -1,0 +1,32 @@
+[
+  {
+    "postedBy": "609e0ec4a7cc30086a74482e",
+    "content": "웹 개발 대회 우승",
+    "organization": "웹 개발 협회",
+    "date": "2024-05-15"
+  },
+  {
+    "postedBy": "609e0ed8a7cc30086a74482f",
+    "content": "데이터 분석 우수상 수상",
+    "organization": "데이터 협회",
+    "date": "2024-06-30"
+  },
+  {
+    "postedBy": "609e0ef7a7cc30086a744830",
+    "content": "UI/UX 디자인 공모전 최우수상 수상",
+    "organization": "디자인 협회",
+    "date": "2024-07-20"
+  },
+  {
+    "postedBy": "609e0f0ea7cc30086a744832",
+    "content": "서버 관리 역량 대회 1등",
+    "organization": "서버 협회",
+    "date": "2024-08-10"
+  },
+  {
+    "postedBy": "609e0f3ea7cc30086a744836",
+    "content": "머신러닝 경진대회 우수상 수상",
+    "organization": "머신러닝 협회",
+    "date": "2024-09-05"
+  }
+]

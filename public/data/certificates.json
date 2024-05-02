@@ -1,0 +1,32 @@
+[
+  {
+    "postedBy": "609e0ec4a7cc30086a74482e",
+    "type": "웹 개발자 인증",
+    "date": "2023-12-20",
+    "authority": "웹 개발 협회"
+  },
+  {
+    "postedBy": "609e0ed8a7cc30086a74482f",
+    "type": "데이터 분석 자격증",
+    "date": "2024-01-15",
+    "authority": "데이터 협회"
+  },
+  {
+    "postedBy": "609e0ef7a7cc30086a744830",
+    "type": "UI/UX 디자인 자격증",
+    "date": "2024-02-10",
+    "authority": "디자인 협회"
+  },
+  {
+    "postedBy": "609e0f0ea7cc30086a744832",
+    "type": "서버 관리 인증",
+    "date": "2024-03-25",
+    "authority": "서버 협회"
+  },
+  {
+    "postedBy": "609e0f3ea7cc30086a744836",
+    "type": "머신러닝 인증",
+    "date": "2024-04-30",
+    "authority": "머신러닝 협회"
+  }
+]
