@@ -1,10 +1,10 @@
-function createButton () {
+function createButton (name) {
     const btn = document.createElement('div');
     btn.className = 'confirmBtn'
 
     const submitButton = document.createElement('input');
     submitButton.type = 'submit'
-    submitButton.id = 'education_submit';
+    submitButton.id = `${name}_submit`;
     submitButton.className = 'submit-button';
     submitButton.value = '확인';
     btn.appendChild(submitButton);
@@ -19,10 +19,11 @@ function createButton () {
 }
 
 // 학력
-function openEdu() {
+function openEdu(education) {
     // educationForm 아이디를 가진 form 태그 선택
     const form = document.getElementById('educationForm');
     form.method = 'POST';
+    form.action = '/mypage/education'
     // form.action = // 데이터를 어디로 보낼지
     // 기존 내용을 비우기 
     // form.innerHTML = '';
@@ -63,7 +64,7 @@ function openEdu() {
     form.appendChild(document.createElement('br'));
     
     // 확인, 취소 버튼
-    const btn = createButton();
+    const btn = createButton(education);
     form.appendChild(btn);
 
     // 확인버튼 클릭시 
@@ -77,9 +78,10 @@ function openEdu() {
 
 
 // 수상이력
-function openAward () {
+function openAward (award) {
     const form = document.getElementById('awardForm');
     form.method = 'POST';
+    form.action = '/mypage/award'
 
     const awardInput = document.createElement('input');
     awardInput.id = 'award_content';
@@ -105,7 +107,7 @@ function openAward () {
     form.appendChild(awardDateInput);
     form.appendChild(document.createElement('br'));
 
-    const btn = createButton();
+    const btn = createButton(award);
     form.appendChild(btn);
 
     const submitButton = document.getElementById('education_submit');
@@ -117,9 +119,10 @@ function openAward () {
 
 
 // 프로젝트
-function openProject () {
+function openProject (project) {
     const form = document.getElementById('projectForm');
     form.method = 'POST';
+    form.action = '/mypage/project'
 
     const projectInput = document.createElement('input');
     projectInput.id = 'project_name';
@@ -145,7 +148,7 @@ function openProject () {
     date.appendChild(content);
 
     const endDateInput = document.createElement('input');
-    endDateInput.id = 'project_start';
+    endDateInput.id = 'project_end';
     endDateInput.type = 'date';
     date.appendChild(endDateInput);
     date.appendChild(document.createElement('br'));
@@ -160,7 +163,7 @@ function openProject () {
     form.appendChild(projectRoleInput);
     form.appendChild(document.createElement('br'));
 
-    const btn = createButton();
+    const btn = createButton(project);
     form.appendChild(btn);
 
     const submitButton = document.getElementById('education_submit');
@@ -172,9 +175,10 @@ function openProject () {
 
 
 // 자격증
-function openLicense () {
+function openLicense (certificate) {
     const form = document.getElementById('licenseForm');
     form.method = 'POST';
+    form.action = '/mypage/certificate'
 
     const certificate = document.createElement('input');
     certificate.id = 'certificate_content';
@@ -207,7 +211,7 @@ function openLicense () {
     form.appendChild(document.createElement('br'));
 
     // 버튼
-    const btn = createButton();
+    const btn = createButton(certificate);
     form.appendChild(btn);
 
     const submitButton = document.getElementById('education_submit');
@@ -216,3 +220,31 @@ function openLicense () {
         form.submit(); 
     });
 }
+
+
+const submitButton = document.getElementById('project_submit');
+submitButton.addEventListener('click', function(e) {
+    e.preventDefault();
+
+    // formData 객체 생성
+    // 폼 데이터를 추가
+    const formData = new FormData(form);
+    const data = {};
+    formData.forEach((value, key) => { data[key] = value; });
+
+    // Fetch API를 사용하여 데이터를 서버로 전송합니다.
+    fetch(form.action, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+});
