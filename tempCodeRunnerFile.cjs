@@ -1,0 +1,1 @@
+const userRouter = require('./server/routes/user.js');

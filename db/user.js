@@ -1,5 +1,4 @@
-import { UserModel } from "./schemas/user";
-
+const UserModel = require("./model/userModel.js");
 class User {
     static async findAll() {
         const users = await UserModel.find({});
@@ -17,4 +16,4 @@ class User {
     }
 }
 
-export { User };
+module.exports = User;
