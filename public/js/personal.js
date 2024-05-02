@@ -10,7 +10,7 @@ function createButton(name) {
   btn.appendChild(submitButton);
 
   const cancelButton = document.createElement('button');
-  cancelButton.id = 'cancel';
+  cancelButton.id = `${name}_cancel`;
   cancelButton.className = 'cancel-button';
   cancelButton.textContent = '취소';
   btn.appendChild(cancelButton);
@@ -61,22 +61,41 @@ function openEdu() {
   // 확인, 취소 버튼
   const btn = createButton('education');
   form.appendChild(btn);
-  //확인버튼 클릭시
-  const submitButton = document.getElementById('education_submit');
-  submitButton.addEventListener('click', function (e) {
+
+  const cancelButton = document.getElementById('cancel');
+  cancelButton.addEventListener('click', (e) => {
     e.preventDefault();
-    form.submit();
+    form.innerText = '';
   });
-  // // form 데이터를 가진 객체 생성/ FormData 객체 생성
-  // // 폼 데이터를 추가
-  // const formData = new FormData(form);
-  // const data = {};
-  // // form 값이 담긴 formData의 객체를 이터레이트
-  // // data 객체 안에 key-value로
-  // formData.forEach((value, key) => {
-  // data[key] = value;
-  // });
 }
+
+// 예: fetch API를 사용한 비동기 데이터 전송
+const submitButton = document.getElementById('education_submit');
+submitButton.addEventListener('click', function (e) {
+  e.preventDefault(); // 폼 기본 제출 막기
+
+  const form = document.getElementById('educationForm');
+  const formData = new FormData(form);
+  const object = {};
+  formData.forEach((value, key) => (object[key] = value));
+  const jsonData = JSON.stringify(object);
+
+  fetch('/mypage/education', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: jsonData,
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log('Success:', data);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+});
+
 // 수상이력
 function openAward() {
   const form = document.getElementById('awardForm');
@@ -211,30 +230,3 @@ function openCertificate() {
     form.submit();
   });
 }
-// const submitButton = document.getElementById('project_submit');
-// submitButton.addEventListener('click', function(e) {
-// e.preventDefault();
-// // form 데이터를 가진 객체 생성/ FormData 객체 생성
-// // 폼 데이터를 추가
-// const formData = new FormData(form);
-// const data = {};
-// // form 값이 담긴 formData의 객체를 이터레이트
-// // data 객체 안에 key-value로
-// formData.forEach((value, key) => { data[key] = value; });
-// // Fetch API
-// // fetch(요청 보낼 url, 요청의 구성)
-// fetch(form.action, {
-// method: 'POST',
-// headers: {
-// 'Content-Type': 'application/json',
-// },
-// body: JSON.stringify(data),
-// })
-// .then(response => response.json())
-// .then(data => {
-// console.log('Success:', data);
-// })
-// .catch((error) => {
-// console.error('Error:', error);
-// });
-// });
