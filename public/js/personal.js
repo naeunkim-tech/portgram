@@ -10,7 +10,7 @@ function createButton (name) {
     btn.appendChild(submitButton);
     
     const cancelButton = document.createElement('button');
-    cancelButton.id = 'submit';
+    cancelButton.id = 'cancel';
     cancelButton.className = 'cancel-button';
     cancelButton.textContent = '취소';
     btn.appendChild(cancelButton);
@@ -19,11 +19,10 @@ function createButton (name) {
 }
 
 // 학력
-function openEdu(education) {
+function openEdu() {
     // educationForm 아이디를 가진 form 태그 선택
     const form = document.getElementById('educationForm');
     form.action = '/mypage/education'
-    // form.action = // 데이터를 어디로 보낼지
     // 기존 내용을 비우기 
     // form.innerHTML = '';
 
@@ -63,7 +62,7 @@ function openEdu(education) {
     form.appendChild(document.createElement('br'));
     
     // 확인, 취소 버튼
-    const btn = createButton(education);
+    const btn = createButton('education');
     form.appendChild(btn);
 
     // 확인버튼 클릭시 
@@ -100,7 +99,7 @@ function openEdu(education) {
 
 
 // 수상이력
-function openAward (award) {
+function openAward () {
     const form = document.getElementById('awardForm');
     form.method = 'POST';
     form.action = '/mypage/award'
@@ -129,7 +128,7 @@ function openAward (award) {
     form.appendChild(awardDateInput);
     form.appendChild(document.createElement('br'));
 
-    const btn = createButton(award);
+    const btn = createButton('award');
     form.appendChild(btn);
 
     const submitButton = document.getElementById('education_submit');
@@ -141,9 +140,8 @@ function openAward (award) {
 
 
 // 프로젝트
-function openProject (project) {
+function openProject () {
     const form = document.getElementById('projectForm');
-    form.method = 'POST';
     form.action = '/mypage/project'
 
     const projectInput = document.createElement('input');
@@ -185,7 +183,7 @@ function openProject (project) {
     form.appendChild(projectRoleInput);
     form.appendChild(document.createElement('br'));
 
-    const btn = createButton(project);
+    const btn = createButton('project');
     form.appendChild(btn);
 
     const submitButton = document.getElementById('education_submit');
@@ -197,8 +195,8 @@ function openProject (project) {
 
 
 // 자격증
-function openLicense (certificate) {
-    const form = document.getElementById('licenseForm');
+function openCertificate () {
+    const form = document.getElementById('certificateForm');
     form.method = 'POST';
     form.action = '/mypage/certificate'
 
@@ -233,7 +231,7 @@ function openLicense (certificate) {
     form.appendChild(document.createElement('br'));
 
     // 버튼
-    const btn = createButton(certificate);
+    const btn = createButton('certificate');
     form.appendChild(btn);
 
     const submitButton = document.getElementById('education_submit');
