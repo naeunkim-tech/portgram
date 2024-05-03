@@ -21,7 +21,7 @@ PORT = 5000
 MONGODB_URL = mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.2.5
 ```
 
-### 3. 로컬서버 시작하기
+### 2. 로컬서버 시작하기
 1. 프로젝트 상위경로에서 npm install
 ```
 porshaw-project> npm install
