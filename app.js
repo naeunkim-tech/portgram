@@ -28,6 +28,8 @@ app.use("/mypage/certification", certificateRouter);
 app.use("/mypage/award", awardRouter);
 app.use("/mypage/project", projectRouter);
 
+app.use('/network', networkRouter)
+
 
 // application middleware
 // app.use((req, res, next) => {

@@ -30,7 +30,22 @@ router.put("/:id",validateCertificationData("body"), async (req, res, next) => {
       }
     ).lean();
 
-    res.json({ data: updatedPost, error: null });
+    res.status(201).json({ data: updatedPost, error: null });
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.delete("/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const deletedPost = await CertificateModel.findOneAndDelete({ _id: id }).lean();
+
+    if (!deletedPost ) {
+      return res.status(404).json({ error: "Award not found" });
+    }
+
+    res.json({ message: "Award deleted successfully",  error: null });
   } catch (error) {
     next(error);
   }

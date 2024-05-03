@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
 const { Schema } = require("mongoose");
+
 const awardSchema= new Schema(
     {
-        postedBy: {
+        userId: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "User"
         },

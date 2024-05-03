@@ -25,7 +25,6 @@ document.getElementById("login-form").addEventListener("submit", function(event)
     () => {
         console.log("로그인 실패!");
         errorMessage.textContent = error.message;
-        window.location.href = "personal.html";
     }
     );
   });
