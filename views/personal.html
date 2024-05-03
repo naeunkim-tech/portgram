@@ -7,7 +7,6 @@
     <link
       rel="stylesheet"
       href="../public/css/personal.css"
-      media="all and (min-width:1600px)"
     />
   </head>
   <body>
@@ -46,45 +45,49 @@
           <div class="education">
             <p class="content">학력</p>
             <div id="button">
-              <button class="btn" onclick="openEdu()">ADD</button>
+              <button id="addEdu" class="btn"">ADD</button>
             </div>
             <form id="educationForm">
               <div class="add"></div>
             </form>
+            <div id="addedEducation"></div>
             <hr />
           </div>
           <div class="award">
             <p class="content">수상이력</p>
             <div id="button">
-              <button class="btn" onclick="openAward()">ADD</button>
+              <button id="addAward" class="btn">ADD</button>
             </div>
             <form id="awardForm">
               <div class="add"></div>
             </form>
+            <div id="addedAward"></div>
             <hr />
           </div>
           <div class="project">
             <p class="content">프로젝트</p>
             <div id="button">
-              <button class="btn" onclick="openProject()">ADD</button>
+              <button id="addProject" class="btn">ADD</button>
             </div>
             <form id="projectForm">
               <div class="add"></div>
             </form>
+            <div id="addedProject"></div>
             <hr />
           </div>
           <div class="certificate">
             <p class="content">자격증</p>
             <div id="button">
-              <button class="btn" onclick="openCertificate()">ADD</button>
+              <button id="addCertificate" class="btn"">ADD</button>
             </div>
             <form id="certificateForm">
               <div class="add"></div>
             </form>
+            <div id="addedCertificate"></div>
           </div>
         </div>
       </div>
     </div>
-    <script src="../public/js/personal.js"></script>
+    <script type="module" src="../public/js/personal/personal.js"></script>
   </body>
 </html>
