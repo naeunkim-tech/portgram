@@ -1,71 +1,127 @@
 const { Router } = require('express');
+const path = require("path");
+const bcrypt = require('bcrypt');
+const passport = require('passport');
+const jwt = require("jsonwebtoken");
 const { userAuthService } = require('../services/userService');
 
 const router = Router();
 
-// router.post('/login', async (req, res, next) => {
-//     try {
-//         const { email, password } = req.body;
-//         const user = userAuthService.getUser({ email, password });
+// User model
+// const User = require('../models/User');
 
-//         if (user.errorMessage) {
-//             throw new Error(user.errorMessage);
-//         }
+router.get('/', (req, res) => {
+  if (req.user) { // passport authenticate jwt 과정에서 user 받아오기
+    console.log(req.user);
+    res.redirect('/personal');
+    return;
+  }
+  res.redirect('/login');
+})
 
-//         res.status(200).send(user);
-//     } catch (e) {
-//         next(e);
-//     }
-// });
+// Login Page
+router.get('/login', (req, res) => {
+  res.sendFile(path.resolve('views/index.html'));
+});
 
-router.get(
-    "/users/:email",
-    async function (req, res, next) {
-      try {
-        const id = req.params.email; 
-        const currentUserInfo = await userAuthService.getUserInfo(email); 
-        
-        // errorMessage 가 있는 경우, 에러 생성
-        if (currentUserInfo.errorMessage) {
-          throw new Error(currentUserInfo.errorMessage); 
-        }
-  
-        res.status(200).send(currentUserInfo);
-      } catch (error) {
-        next(error);
-      }
-    }
-  );
-  
- 
-  
-  router.post("/user/register", async function (req, res, next) {
-    try {
-      if (is.emptyObject(req.body)) {
-        throw new Error(
-          "headers의 Content-Type을 application/json으로 설정해주세요"
-        );
-      }
-  
-      //request에서 데이터 가져오기
-      const name = req.body.name;
-      const email = req.body.email;
-      const password = req.body.password;
-  
-      // 위 데이터를 유저 db에 추가하기
-      const newUser = await userAuthService.addUser({
+// Login Handle
+router.post('/login', 
+  passport.authenticate('local', {session: false}), // 데이터베이스와 email, password 비교
+  (req, res, next) => {
+    userAuthService.setUserToken(res, req.user);
+    // const secretKey = process.env.JWT_SECRET_KEY || "jwt-secret-key";
+    // const token = jwt.sign(req.user.toJSON(), secretKey);
+    // console.log(token); // token test
+    // res.cookie('token', token); // cookie { 'token': token }
+    res.redirect('/personal');
+  }
+);
+
+// Register Page
+router.get('/register', (req, res) => { 
+    res.render('register.html');
+});
+
+// Register Handle
+router.post('/register', async (req, res) => {
+  const { email, password, password2, name } = req.body;
+  let errors = [];
+
+  // Check required fields
+  if (!email || !password || !password2 || !name) {
+    errors.push({ msg: 'Please fill in all fields' });
+  }
+
+  // Check passwords match
+  if(password !== password2) {
+    errors.push({ msg: 'Passwords do not match' });
+  }
+
+  // Check pass length (errors.length:빈칸이 하나라도 있으면 안 넘어감)
+  if(password.length < 6) {
+    errors.push({ msg: 'Password should be at least 6 characters' });
+  }
+
+  if(errors.length > 0) {
+    res.render('register', {
+        errors,
         email,
         password,
-      });
-  
-      if (newUser.errorMessage) {
-        throw new Error(newUser.errorMessage);
-      }
-      res.status(201).json(newUser);
-    } catch (error) {
-        next(error);
-    }
-    
-  });
-  
-  module.exports = router;
+        password2,
+        name
+    });
+  } else {
+    // 데이터베이스에 새로운 사용자 추가
+    const user =  await userAuthService.addUser({ email, password, name });
+    res.redirect('/login');
+  //   User.findOne ({ email: email })
+  //     .then(user => {
+  //       if (user) {
+  //         // User exist
+  //         errors.push({ msg: 'Email is already registered' });
+  //         res.render('register', {
+  //         errors,
+  //         email,
+  //         password,
+  //         password2,
+  //         name
+  //         }); 
+  //       } else {
+  //         const newUser = new User({
+  //             email,
+  //             password,
+  //             name
+  //         });
+        
+  //         // Hash Password
+  //         bcrypt.genSalt(10, (err, salt) => 
+  //           bcrypt.hash(newUser.password, salt, (err, hash) => {
+  //             if (err) throw err;
+  //             // Set Password to hashed    
+  //             newUser.password = hash;
+  //             // Save user (유저의 정보가 saved 되면 login 페이지로 돌아감)
+  //             newUser
+  //               .save()
+  //               .then(user => {
+  //                   req.flash('success_msg', 'You are now registered and can log in!');
+  //                   res.redirect('/login');
+  //               })
+  //               .catch(err => console.log(err));
+  //         }))
+  //       }
+  //     });
+  }
+});
+
+// Logout Handle
+router.get('/logout', (req, res) => {
+  req.logout();
+  req.flash('success_msg', 'You are logged out');
+  res.redirect('/login');
+});
+
+router.get('/personal', (req, res) => {
+  res.sendFile(path.resolve('views/personal.html'));
+});
+
+module.exports = router;
