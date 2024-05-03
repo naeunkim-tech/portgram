@@ -53,6 +53,12 @@
                         <p>${profile.email}</P>
                     `;
                     container.appendChild(profileElement);
+
+                    // 이한수님의 작업인데 오선아(팀장)가 다른 사람 페이지를 확인하실 수 있게 일단 누르면 무조건 다른사람 정보 페이지로 넘어가도록 임시로 구현했습니다.
+                    // 리뷰를 안해주셔도 됩니다!
+                    profileElement.addEventListener("click", function () {
+                    window.location.href = "../otheruser.html";}); 
+
                 });
             }
     

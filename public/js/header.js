@@ -7,11 +7,11 @@ newElement.innerHTML = `
     </div>
 
     <ul class="navbar_menu">
-        <li><a href="#">네트워크</a></li>
+        <li><a href="network/network.html">네트워크</a></li>
         <li><a href="#">나의 페이지</a></li>
-        <li><a href="#">로그아웃</a></li>
+        <li><a href="index.html">로그아웃</a></li>
     </ul>       
 `;
-
-
-document.querySelector("#main").insertAdjacentHTML("afterbegin", newElement);
+// 이한수님의 작업인데 오선아(팀장)가 원활한 페이지 확인을 위해 수정했습니다. 
+//원래 insertAdjacentHTML 으로 해주셨는데 화면에 표시가 되지않는 문제가 있어 임시로 이렇게 바꾸었습니다.
+document.querySelector("#main").insertAdjacentElement("afterbegin", newElement); 
