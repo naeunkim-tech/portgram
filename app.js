@@ -1,5 +1,8 @@
 const express = require('express');
-const { educationRouter, certificateRouter, awardRouter, projectRouter, postRouter, userRouter, mypageRouter } = require("./routes");
+const { educationRouter, certificateRouter, awardRouter, projectRouter, postRouter, userRouter } = require("./routes");
+const {networkRouter}=require("./routes")
+const {mypageRouter}=require("./routes")
+
 const cookieParser = require('cookie-parser');
 const getUserFromJwt = require('./middleware/get-user-from-jwt');
 
