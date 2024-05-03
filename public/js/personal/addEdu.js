@@ -6,7 +6,7 @@ export function addEdu() {
   // educationForm 아이디를 가진 form 태그 선택
   const form = document.getElementById('educationForm');
   form.method = 'POST';
-  form.action = '/mypage/education';
+  form.action = 'https://localhost:5000/mypage/education';
   // 기존 내용을 비우기
   // form.innerHTML = '';
 
@@ -73,22 +73,3 @@ export function addEdu() {
       });
   });
 }
-
-// export function addedEdu(e) {
-//   e.preventDefault();
-
-//   // Form 데이터 수집
-//   const form = document.getElementById('educationForm');
-//   const schoolNameInput = form.querySelector('[name="school_name"]');
-
-//   // 수집된 데이터를 사용하여 리스트 아이템 생성
-//   const listItem = document.createElement('li');
-//   listItem.textContent = `학교 이름: ${schoolNameInput.value}`;
-
-//   // id가 addedEducation인 div에 리스트 아이템 추가
-//   const addedEducationDiv = document.getElementById('addedEducation');
-//   const list =
-//     addedEducationDiv.querySelector('ul') || document.createElement('ul');
-//   list.appendChild(listItem);
-//   addedEducationDiv.appendChild(list);
-// }
