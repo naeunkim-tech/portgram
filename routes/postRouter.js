@@ -11,10 +11,10 @@ router.get("/:userId", async (req, res, next) => {
       return res.status(400).json({ error: "Invalid userId" });
     }
 
-    const award = await AwardModel.find({ postedBy:new ObjectId(userId) }).lean();
-    const certificate = await CertificateModel.find({ postedBy: new ObjectId(userId) }).lean();
-    const education = await EducationModel.find({ postedBy: new ObjectId(userId) }).lean();
-    const project = await ProjectModel.find({ postedBy: new ObjectId(userId) }).lean();
+    const award = await AwardModel.find( { "userId":new ObjectId(userId) }).lean();
+    const certificate = await CertificateModel.find({ "userId":new ObjectId(userId) }).lean();
+    const education = await EducationModel.find({ "userId": new ObjectId(userId) }).lean();
+    const project = await ProjectModel.find({ "userId": new ObjectId(userId) }).lean();
 
     res.json({ award, certificate, education, project, error: null });
   } catch (error) {

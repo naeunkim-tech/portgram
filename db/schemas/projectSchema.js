@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 const projectSchema= new Schema(
     {
-        postedBy: {
+        userId: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "User"
         },
@@ -25,7 +25,7 @@ const projectSchema= new Schema(
         },
     },
     {
-        collection: "Project",
+        collection: "Project",        
         versionKey:false,
         timestamps:true,
     }
