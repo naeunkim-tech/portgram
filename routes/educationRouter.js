@@ -2,18 +2,18 @@ const router=require("express").Router();
 const {EducationModel}=require("../db/allmodels")
 const {validateEducationData, validateToken}=require("../middleware")
 
-router.get("/", async (req, res, next) => {
-  try {
+// router.get("/", async (req, res, next) => {
+//   try {
     
-    const educations = await EducationModel.find();
+//     const educations = await EducationModel.find();
 
-    res.status(200).json({ data: educations, error: null });
-  } catch (error) {
-    next(error);
-  }
-});
+//     res.status(200).json({ data: educations, error: null });
+//   } catch (error) {
+//     next(error);
+//   }
+// });
   
-router.post("/",validateToken.isLoggedin, validateEducationData("body"), async (req, res, next) => {
+router.post("/", validateEducationData("body"), async (req, res, next) => {
   try {
     const { school,major,degree } = req.body;
     console.log({ school,major,degree })
@@ -26,7 +26,7 @@ router.post("/",validateToken.isLoggedin, validateEducationData("body"), async (
 });
 
   
-router.put("/:id",validateToken.isLoggedin,validateEducationData("body"), async (req, res, next) => {
+router.put("/:id",validateEducationData("body"), async (req, res, next) => {
   try {
     const { id } = req.params;
     const { school,major,degree }= req.body; 

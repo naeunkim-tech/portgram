@@ -14,7 +14,7 @@ mongoose.connect("mongodb+srv://elice:elice@cluster0.se4ig2v.mongodb.net/?retryW
 
 //수상기록 더미 데이터
 awardSchema.statics.generateDummyData = function (userId) {
-    return Array.from({ length: 5 }, () => ({   //length:5가 데이터 다섯개를 만드는것, 즉 하나의 유저가 5개의 수상기록을 가지고 있다는 의미입니다. 개수는 자유롭게 조절하시면 됩니다. 
+    return Array.from({ length: 1 }, () => ({   //length:5가 데이터 다섯개를 만드는것, 즉 하나의 유저가 5개의 수상기록을 가지고 있다는 의미입니다. 개수는 자유롭게 조절하시면 됩니다. 
         userId:userId,
         content: faker.lorem.words(),
         organization: faker.company.companyName(),
@@ -24,7 +24,7 @@ awardSchema.statics.generateDummyData = function (userId) {
 
 //자격증 더미 데이터
 certificateSchema.statics.generateDummyData = function (userId) {
-    return Array.from({ length: 5 }, () => ({
+    return Array.from({ length: 1 }, () => ({
         userId:userId,
         type: faker.random.word(),
         date: faker.date.past(),
@@ -34,7 +34,7 @@ certificateSchema.statics.generateDummyData = function (userId) {
 
 // 학력 더미 데이터
 educationSchema.statics.generateDummyData = function (userId) {
-    return Array.from({ length: 5 }, () => ({
+    return Array.from({ length: 1 }, () => ({
         userId:userId,
         school: faker.company.companyName(),
         major: faker.random.word(),
@@ -44,7 +44,7 @@ educationSchema.statics.generateDummyData = function (userId) {
 
 // 프로젝트 더미 데이터
 projectSchema.statics.generateDummyData = function (userId) {
-    return Array.from({ length: 5 }, () => ({
+    return Array.from({ length: 1 }, () => ({
         userId:userId,
         title: faker.random.words(),
         startDate: faker.date.past(),
