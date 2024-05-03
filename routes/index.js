@@ -5,6 +5,8 @@ const projectRouter = require("./projectRouter");
 const postRouter = require("./postRouter");
 const mypageRouter = require("./mypageRouter");
 const userRouter = require("./userRouter");
+const networkRouter = require("./networkRouter");
+
 
 
 module.exports = {
@@ -15,4 +17,5 @@ module.exports = {
     mypageRouter,
     postRouter,
     userRouter,
+    networkRouter
 };

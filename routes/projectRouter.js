@@ -2,22 +2,13 @@ const router=require("express").Router();
 const {ProjectModel}=require("../db/allmodels")
 const {validateProjectData}=require("../middleware")
 
-router.get("/", async (req, res, next) => {
-  try {
-    const projects = await ProjectModel.find();
-
-    res.status(200).json({ data: projects, error: null });
-  } catch (error) {
-    next(error);
-  }
-});
   
 router.post("/",validateProjectData("body"), async (req, res, next) => {
   try {
     const {title, startDate, endDate, role} = req.body;
     const createdPost = await ProjectModel.create({title, startDate, endDate, role});
 
-    res.status(201).json({ data: createdPost.toObject(), error: null });
+    res.status(200).json({ data: createdPost.toObject(), error: null });
   } catch (error) {
     next(error);
   }
@@ -38,7 +29,22 @@ router.put("/:id",validateProjectData("body"), async (req, res, next) => {
       }
     ).lean();
 
-    res.json({ data: updatedPost, error: null });
+    res.status(200).json({ data: updatedPost, error: null });
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.delete("/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const deletedPost = await ProjectModel.findOneAndDelete({ _id: id }).lean();
+
+    if (!deletedPost) {
+      return res.status(404).json({ error: "Award not found" });
+    }
+
+    res.status(200).json({ message: "Award deleted successfully",  error: null });
   } catch (error) {
     next(error);
   }

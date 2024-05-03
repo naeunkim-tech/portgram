@@ -1,5 +1,5 @@
 const express = require('express');
-const { educationRouter, certificateRouter, awardRouter, projectRouter, postRouter, userRouter, mypageRouter } = require("./routes");
+const { educationRouter, certificateRouter, awardRouter, projectRouter, postRouter, userRouter, mypageRouter, networkRouter } = require("./routes");
 const { userAuthService } = require('./services/userService');
 
 const app = express();
@@ -17,6 +17,8 @@ app.use("/mypage/education", educationRouter);
 app.use("/mypage/certification", certificateRouter);
 app.use("/mypage/award", awardRouter);
 app.use("/mypage/project", projectRouter);
+
+app.use('/network', networkRouter)
 
 
 // application middleware
