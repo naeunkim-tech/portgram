@@ -29,10 +29,6 @@ router.post('/login',
   passport.authenticate('local', {session: false}), // 데이터베이스와 email, password 비교
   (req, res, next) => {
     userAuthService.setUserToken(res, req.user);
-    // const secretKey = process.env.JWT_SECRET_KEY || "jwt-secret-key";
-    // const token = jwt.sign(req.user.toJSON(), secretKey);
-    // console.log(token); // token test
-    // res.cookie('token', token); // cookie { 'token': token }
     res.redirect('/personal');
   }
 );
