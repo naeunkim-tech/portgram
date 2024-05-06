@@ -135,4 +135,5 @@ router.get('/otheruser', (req, res) => {
 router.get('/network', (req, res) => {
   res.render('network.ejs');
 });
+
 module.exports = router;

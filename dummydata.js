@@ -10,7 +10,9 @@ const userSchema = require("./db/schemas/userSchema");
 const {AwardModel, CertificateModel, EducationModel,ProjectModel, UserModel }=require("./db/allmodels")
 
 //몽고디비에 연결
-mongoose.connect("mongodb+srv://elice:elice@cluster0.se4ig2v.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"); //본인 몽고디비 입력하면 됩니다.
+// mongoose.connect("mongodb://localhost:27017/"); //본인 몽고디비 입력하면 됩니다.
+mongoose.connect("mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.2.5")
+
 
 //수상기록 더미 데이터
 awardSchema.statics.generateDummyData = function (userId) {
@@ -93,5 +95,4 @@ console.log(userId.toHexString()) //콘솔 창에 나오는 userId 그대로 복
 
 //함수실행
 insertDummyData(userId.toHexString());
-  
 
