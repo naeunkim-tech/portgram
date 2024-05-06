@@ -8,12 +8,12 @@ export function addProject() {
   form.method = 'POST';
   form.action = 'http://localhost:5000/mypage/project';
 
-  createTextInput(form, 'project', '프로젝트명');
+  createTextInput(form, 'title', '프로젝트명');
 
   // 기간 설정
-  createDateInput(form, '프로젝트 기간', 'project_start', '~');
+  createDateInput(form, '프로젝트 기간', 'startDate', '~');
 
-  createTextInput(form, 'projectRole', '역할');
+  createTextInput(form, 'role', '역할');
 
   form.appendChild(document.createElement('br'));
 

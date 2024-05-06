@@ -20,8 +20,17 @@ export function addEdu() {
     const radioButton = document.createElement('input');
     radioButton.type = 'radio';
     radioButton.id = 'option' + (index + 1);
-    radioButton.name = 'option';
-    radioButton.value = index + 1;
+    radioButton.name = 'degree';
+    if (radioButton.id == 'option1') {
+      radioButton.value = '재학중';
+    } else if (radioButton.id == 'option2') {
+      radioButton.value = '학사졸업';
+    } else if (radioButton.id == 'option3') {
+      radioButton.value = '석사졸업';
+    } else {
+      radioButton.value = '박사졸업';
+    }
+
     const label = document.createElement('label');
     label.setAttribute('for', radioButton.id);
     label.textContent = labelText;

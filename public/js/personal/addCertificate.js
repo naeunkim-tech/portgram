@@ -6,15 +6,15 @@ import { createTextInput } from './createTextInput.js';
 export function addCertificate() {
   const form = document.getElementById('certificateForm');
   form.method = 'POST';
-  form.action = 'http://localhost:5000/mypage/certificate';
+  form.action = 'http://localhost:5000/mypage/certification';
 
-  createTextInput(form, 'certificate', '자격 종류');
+  createTextInput(form, 'type', '자격 종류');
 
   // 취득 일자
-  createDateInput(form, '발급 일자', 'certificate_date');
+  createDateInput(form, '발급 일자', 'date');
 
   // 발급 기관
-  createTextInput(form, 'certificateOrg', '발급 기관');
+  createTextInput(form, 'authority', '발급 기관');
 
   // 버튼
   createButton(form, 'certificate');

@@ -7,11 +7,11 @@ export function addAward() {
   form.method = 'POST';
   form.action = 'http://localhost:5000/mypage/award';
 
-  createTextInput(form, 'award', '수상 내용');
+  createTextInput(form, 'content', '수상 내용');
 
   createTextInput(form, 'organization', '시상 단체');
 
-  createDateInput(form, '수상 일자', 'awardDate');
+  createDateInput(form, '수상 일자', 'date');
 
   createButton(form, 'award');
 
