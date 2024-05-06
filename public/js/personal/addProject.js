@@ -1,4 +1,5 @@
 import { createButton } from './createButton.js';
+import { createDateInput } from './createDateInput.js';
 import { createTextInput } from './createTextInput.js';
 
 // 프로젝트
@@ -7,36 +8,13 @@ export function addProject() {
   form.method = 'POST';
   form.action = '/mypage/project';
 
-  const projectInput = createTextInput('project');
-  projectInput.placeholder = '프로젝트명';
-  form.appendChild(projectInput);
-  form.appendChild(document.createElement('br'));
+  createTextInput(form, 'project', '프로젝트명');
 
   // 기간 설정
-  const date = document.createElement('div');
-  date.className = 'date-style';
+  createDateInput(form, '프로젝트 기간', 'project_start', '~');
 
-  const during = document.createTextNode('프로젝트 기간 : ');
-  date.appendChild(during);
+  createTextInput(form, 'projectRole', '역할');
 
-  const startDateInput = document.createElement('input');
-  startDateInput.name = 'project_start';
-  startDateInput.type = 'date';
-  date.appendChild(startDateInput);
-
-  const content = document.createTextNode('');
-  date.appendChild(content);
-
-  const endDateInput = document.createElement('input');
-  endDateInput.name = 'project_end';
-  endDateInput.type = 'date';
-  date.appendChild(endDateInput);
-  date.appendChild(document.createElement('br'));
-  form.appendChild(date);
-
-  const projectRoleInput = createTextInput('projectRole');
-  projectRoleInput.placeholder = '역할';
-  form.appendChild(projectRoleInput);
   form.appendChild(document.createElement('br'));
 
   const btn = createButton('project');
