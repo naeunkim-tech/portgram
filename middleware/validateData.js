@@ -1,113 +1,20 @@
-const validateEducationData = (from) => (req, res, next) => {
-  const { major, degree, school} = req[from];
-
-  if (major === undefined || major === "") {
-    const error = new Error(`${from}: content는 필수값입니다.`);
-    error.status = 400;
-    next(error);
-    return;
+const validateData = (fields) => (from) => (req, res, next) => {
+  for (const field of fields) {
+    const value = req[from][field];
+    if (value === undefined || value === "") {
+      const error = new Error(`${from}: ${field}는 필수값입니다.`);
+      error.status = 400;
+      return next(error);
+    }
   }
 
-  if (school === undefined || school === "") {
-    const error = new Error(`${from}: content는 필수값입니다.`);
-    error.status = 400;
-    next(error);
-    return;
-  }
-
-  if (degree === undefined ||degree === "") {
-    const error = new Error(`${from}: content는 필수값입니다.`);
-    error.status = 400;
-    next(error);
-    return;
-  }
   next();
 };
 
-const validateCertificationData= (from) => (req, res, next) => {
-  const { type, date, authority} = req[from];
-
-  if (type === undefined || type === "") {
-    const error = new Error(`${from}: content는 필수값입니다.`);
-    error.status = 400;
-    next(error);
-    return;
-  }
-
-  if (authority === undefined || authority === "") {
-    const error = new Error(`${from}: content는 필수값입니다.`);
-    error.status = 400;
-    next(error);
-    return;
-  }
-
-  if (date === undefined ||date === "") {
-    const error = new Error(`${from}: content는 필수값입니다.`);
-    error.status = 400;
-    next(error);
-    return;
-  }
-  next();
-};
-
-const validateAwardData= (from) => (req, res, next) => {
-  const { content, organization, date} = req[from];
-
-  if (content === undefined || content === "") {
-    const error = new Error(`${from}: content는 필수값입니다.`);
-    error.status = 400;
-    next(error);
-    return;
-  }
-
-  if (organization === undefined || organization === "") {
-    const error = new Error(`${from}: content는 필수값입니다.`);
-    error.status = 400;
-    next(error);
-    return;
-  }
-
-  if (date === undefined ||date === "") {
-    const error = new Error(`${from}: content는 필수값입니다.`);
-    error.status = 400;
-    next(error);
-    return;
-  }
-  next();
-};
-
-const validateProjectData= (from) => (req, res, next) => {
-  const { title, startDate, endDate, role} = req[from];
-
-  if (title === undefined || title === "") {
-    const error = new Error(`${from}: content는 필수값입니다.`);
-    error.status = 400;
-    next(error);
-    return;
-  }
-
-  if (startDate === undefined || startDate === "") {
-    const error = new Error(`${from}: content는 필수값입니다.`);
-    error.status = 400;
-    next(error);
-    return;
-  }
-
-  if (endDate === undefined ||endDate === "") {
-    const error = new Error(`${from}: content는 필수값입니다.`);
-    error.status = 400;
-    next(error);
-    return;
-  }
-
-  if (role === undefined ||role === "") {
-    const error = new Error(`${from}: content는 필수값입니다.`);
-    error.status = 400;
-    next(error);
-    return;
-  }
-  next();
-};
+const validateProjectData = validateData(['title', 'startDate', 'endDate', 'role']);
+const validateCertificationData = validateData(['type', 'date', 'authority']);
+const validateAwardData = validateData(['content', 'organization', 'date']);
+const validateEducationData = validateData(['school', 'degree', 'date']);
   
 
 module.exports= {validateAwardData, 
