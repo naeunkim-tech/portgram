@@ -128,4 +128,11 @@ console.log("reach personal");
   res.render('personal');
 });
 
+router.get('/otheruser', (req, res) => {
+  res.render('otheruser.ejs');
+});
+
+router.get('/network/network', (req, res) => {
+  res.render('/network/network.ejs');
+});
 module.exports = router;
