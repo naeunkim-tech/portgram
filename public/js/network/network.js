@@ -1,5 +1,6 @@
 let profiles = []; // 프로필 데이터를 저장할 배열
 const profilesPerPage = 16; // 페이지당 표시할 프로필 개수
+import {GetAllUsers} from '../core/networkManager';
 
 // 초기 데이터를 가져오는 함수
 async function fetchInitialData() {
@@ -12,12 +13,6 @@ async function fetchInitialData() {
     } catch (error) {
         console.error('Error fetching initial data:', error);
     }
-}
-
-// GetAllUsers 함수를 사용하여 사용자 데이터를 가져오는 코드
-export async function GetAllUsers(){
-    const userData = await GetFromLocal(`users.json`);
-    return userData;
 }
 
 // 스크롤 이벤트 리스너
