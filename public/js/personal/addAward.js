@@ -5,7 +5,7 @@ import { createTextInput } from './createTextInput.js';
 export function addAward() {
   const form = document.getElementById('awardForm');
   form.method = 'POST';
-  form.action = '/mypage/award';
+  form.action = 'http://localhost:5000/mypage/award';
 
   createTextInput(form, 'award', '수상 내용');
 
@@ -13,17 +13,9 @@ export function addAward() {
 
   createDateInput(form, '수상 일자', 'awardDate');
 
-  const btn = createButton('award');
-  form.appendChild(btn);
+  createButton(form, 'award');
 
-  const submitButton = document.getElementById('award_submit');
-  submitButton.addEventListener('click', function (e) {
-    e.preventDefault();
-    form.submit();
-  });
-
-  const cancelButton = document.getElementById('award_cancel');
-  cancelButton.addEventListener('click', (e) => {
+  document.getElementById('award_cancel').addEventListener('click', (e) => {
     e.preventDefault();
     form.innerText = '';
   });

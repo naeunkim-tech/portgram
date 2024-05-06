@@ -6,7 +6,7 @@ import { createTextInput } from './createTextInput.js';
 export function addProject() {
   const form = document.getElementById('projectForm');
   form.method = 'POST';
-  form.action = '/mypage/project';
+  form.action = 'http://localhost:5000/mypage/project';
 
   createTextInput(form, 'project', '프로젝트명');
 
@@ -17,17 +17,9 @@ export function addProject() {
 
   form.appendChild(document.createElement('br'));
 
-  const btn = createButton('project');
-  form.appendChild(btn);
+  createButton(form, 'project');
 
-  const submitButton = document.getElementById('project_submit');
-  submitButton.addEventListener('click', function (e) {
-    e.preventDefault();
-    form.submit();
-  });
-
-  const cancelButton = document.getElementById('project_cancel');
-  cancelButton.addEventListener('click', (e) => {
+  document.getElementById('project_cancel').addEventListener('click', (e) => {
     e.preventDefault();
     form.innerText = '';
   });

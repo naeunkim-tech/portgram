@@ -1,4 +1,4 @@
-export function createButton(name) {
+export function createButton(form, name) {
   const btn = document.createElement('div');
   btn.className = 'confirmBtn';
 
@@ -15,5 +15,5 @@ export function createButton(name) {
   cancelButton.textContent = '취소';
   btn.appendChild(cancelButton);
 
-  return btn;
+  form.appendChild(btn);
 }
