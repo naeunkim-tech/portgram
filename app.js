@@ -13,7 +13,7 @@ const app = express();getUserFromJwt
 
 // EJS
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "/views_ejs"));
+// app.set("views", path.join(__dirname, "/views_ejs"));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
