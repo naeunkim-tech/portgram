@@ -4,13 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../../public/css/header.css">
-    <link rel="stylesheet" href="../../public/css/footer.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <style>
+        /* 프로필 스타일링 */
+        .profile {
+            width: 200px;
+            height: 350px;
+            background-color: #f0f0f0;
+            margin: 50px;
+            float: left;
+            border: 1px solid #ccc;
+            padding-left: 0px;
+            
+        }
+    </style>
 </head>
 <body>
+
     <main id="main">
         
+        <div id="profiles-container">
+            <!-- 여기에 프로필이 동적으로 추가될 것입니다.
+            챗gpt로 이런식으로 구현할꺼다 하는 예시문(원하는 기능) -->
+        </div>
+    
+        <script>
+            // 초기 프로필 데이터 (초기데이터 부터 받아오는법 학습예정)
+            const profiles = [
+                { name: "홍길동", occupation: "웹 개발자", email:"asd@naver.com" },
+                { name: "김철수", occupation: "디자이너", email:"asd@naver.com" },
+                { name: "이영희", occupation: "프로젝트 매니저", email:"asd@naver.com" },
+                { name: "오렌지", occupation: "백앤드", email:"asd@naver.com"}
+                
+                // 추가 데이터는 여기에 추가하세요.
+            ];
+    
+            // 프로필 생성 및 추가 함수(foreach 문 학습예정)
+            function addProfiles() {
+                const container = document.getElementById("profiles-container");
+                profiles.forEach(profile => {
+                    const profileElement = document.createElement("div");
+                    profileElement.classList.add("profile");
+                    // innerhtml=>  insertAdjacentHTML 변경예정
+                    profileElement.innerHTML = `                   
+                        <h2>${profile.name}</h2>
+                        <p>${profile.occupation}</p>
+                        <p>${profile.email}</P>
+                    `;
+                    container.appendChild(profileElement);
+                });
+            }
+    
+            // 스크롤 이벤트 핸들러 함수(학습예정)
+            window.addEventListener("scroll", () => {
+                // 스크롤이 아래로 내려가면 추가 데이터 로딩
+                if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                    // 새로운 프로필 데이터를 가져와서 추가할 수 있도록 로직을 작성하세요.
+                    // 예를 들어, AJAX 요청을 사용하여 서버에서 새로운 프로필을 가져올 수 있습니다.
+                }
+            });
+    
+            // 초기 프로필 로딩
+            addProfiles();
+        </script>
+    </main>    
+    <script src="../js/header.js"></script>
+
     </main>
 </body>
-
 </html>

@@ -14,4 +14,4 @@ newElement.innerHTML = `
 `;
 
 
-document.querySelector("#main").insertAdjacentElement("afterbegin", newElement);
+document.querySelector("#main").insertAdjacentHTML("afterbegin", newElement);
