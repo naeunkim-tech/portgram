@@ -5,6 +5,7 @@ const passport = require('passport');
 const jwt = require("jsonwebtoken");
 const { userAuthService } = require('../services/userService');
 const UserModel = require("../db/model/userModel.js");
+const loginRequired = require('../middleware/login-required');
 
 const router = Router();
 
@@ -25,7 +26,7 @@ router.get('/', (req, res) => {
 // Login Page
 router.get('/login', (req, res) => {
 	console.log("to login");
-  res.render('index');
+  res.render('index'); // render views_ejs/index.ejs
 });
 
 // Login Handle
@@ -33,7 +34,7 @@ router.post('/login',
   passport.authenticate('local', {session: false}), // 데이터베이스와 email, password 비교
   (req, res, next) => {
     userAuthService.setUserToken(res, req.user);
-    res.redirect('/');
+    // res.redirect('/');
   }
 );
 
@@ -106,8 +107,8 @@ router.post('/register', async (req, res) => {
               newUser
                 .save()
                 .then(user => {
-                    req.flash('success_msg', 'You are now registered and can log in!');
-                    res.redirect('/login');
+                    // req.flash('success_msg', 'You are now registered and can log in!');
+                    // res.redirect('/login');
                 })
                 .catch(err => console.log(err));
           }))
@@ -123,9 +124,9 @@ router.get('/logout', (req, res) => {
   res.redirect('/login');
 });
 
-router.get('/personal', (req, res) => {
-console.log("reach personal");
-  res.render('personal');
+router.get('/personal', loginRequired, (req, res) => {
+  console.log("reach personal");
+  res.render('personal'); // render views_ejs/personal.ejs
 });
 
 module.exports = router;

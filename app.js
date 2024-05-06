@@ -3,6 +3,7 @@ const { educationRouter, certificateRouter, awardRouter, projectRouter, postRout
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const getUserFromJwt = require('./middleware/get-user-from-jwt');
+const loginRequired = require('./middleware/login-required');
 
 // passport setting
 const passport = require('passport');
@@ -14,13 +15,13 @@ const app = express();getUserFromJwt
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views_ejs"));
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(passport.initialize());
 
 app.use('/', express.static(path.join(__dirname, 'public')));
 // app.use(express.static('public'));
-
-app.use(express.json());
 
 app.use(getUserFromJwt);  // 쿠키에서 jwt 토큰 확인
 
@@ -42,36 +43,6 @@ app.use('/network', networkRouter)
 //   const error = new Error("Not Found");
 //   error.statusCode = 404;
 //   next(error);
-// });
-
-// root page
-// app.get('/', (req, res) => {
-//   if (req.user) {
-//     res.sendFile('views/personal.html');
-//     return;
-//   }
-//     res.
-//     res.sendFile('views/index.html');
-// });
-
-// // login
-// app.post('/', passport.authenticate('local', {session: false}), async (req, res, next) => {
-//     try {
-//         const { email, password } = req.body;
-//         const user = await userAuthService.getUser({ email, password });
-
-//         if (user.errorMessage) {
-//           throw new Error(user.errorMessage);
-//         }
-
-//         // mongoDB find test
-//         console.log('회원가입 된 사용자입니다.', user);
-
-//         // 로그인 성공 후 redirect 할 경로 필요
-//         res.status(200).send(user);
-//     } catch (e) {
-//         next(e);
-//     }
 // });
 
 // error handling middleware
