@@ -12,16 +12,19 @@ const router = Router();
 const User = require('../db/schemas/userSchema');
 
 router.get('/', (req, res) => {
-  if (req.user) { // passport authenticate jwt 과정에서 user 받아오기
-    console.log(req.user);
+  if (req.user) { // getUserFromJwt: passport authenticate jwt 과정에서 user 받아오기
+    console.log("user: ", req.user);
+    console.log("to personal");
     res.redirect('/personal');
     return;
   }
+  console.log("re login");
   res.redirect('/login');
 })
 
 // Login Page
 router.get('/login', (req, res) => {
+	console.log("to login");
   res.render('index');
 });
 
@@ -30,11 +33,7 @@ router.post('/login',
   passport.authenticate('local', {session: false}), // 데이터베이스와 email, password 비교
   (req, res, next) => {
     userAuthService.setUserToken(res, req.user);
-    // const secretKey = process.env.JWT_SECRET_KEY || "jwt-secret-key";
-    // const token = jwt.sign(req.user.toJSON(), secretKey);
-    // console.log(token); // token test
-    // res.cookie('token', token); // cookie { 'token': token }
-    res.redirect('/personal');
+    res.redirect('/');
   }
 );
 
@@ -125,6 +124,7 @@ router.get('/logout', (req, res) => {
 });
 
 router.get('/personal', (req, res) => {
+console.log("reach personal");
   res.render('personal');
 });
 
