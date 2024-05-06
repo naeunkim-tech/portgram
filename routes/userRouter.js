@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const passport = require('passport');
 const jwt = require("jsonwebtoken");
 const { userAuthService } = require('../services/userService');
+const UserModel = require("../db/model/userModel.js");
 
 const router = Router();
 
@@ -47,20 +48,23 @@ router.post('/register', async (req, res) => {
   const { email, password, password2, name } = req.body;
   let errors = [];
 
-  // Check required fields
-  if (!email || !password || !password2 || !name) {
-    errors.push({ msg: 'Please fill in all fields' });
-  }
+  console.log(email, password, password2, name);
 
-  // Check passwords match
-  if(password !== password2) {
-    errors.push({ msg: 'Passwords do not match' });
-  }
+  // Check required fields
+  // if (!email || !password || !password2 || !name) {
+  //   console.log("ddddd");
+  //   errors.push({ msg: 'Please fill in all fields' });
+  // }
+
+  // // Check passwords match
+  // if(password !== password2) {
+  //   errors.push({ msg: 'Passwords do not match' });
+  // }
 
   // Check pass length (errors.length:빈칸이 하나라도 있으면 안 넘어감)
-  if(password.length < 6) {
-    errors.push({ msg: 'Password should be at least 6 characters' });
-  }
+  // if(password.length < 6) {
+  //   errors.push({ msg: 'Password should be at least 6 characters' });
+  // }
 
   if(errors.length > 0) {
     res.render('register', {
@@ -74,7 +78,7 @@ router.post('/register', async (req, res) => {
     // 데이터베이스에 새로운 사용자 추가
     // const user =  await userAuthService.addUser({ email, password, name });
     // res.redirect('/login');
-    User.findOne ({ email: email })
+    UserModel.findOne ({ email: email })
       .then(user => {
         if (user) {
           // User exist
@@ -87,7 +91,7 @@ router.post('/register', async (req, res) => {
           name
           }); 
         } else {
-          const newUser = new User({
+          const newUser = new UserModel({
               email,
               password,
               name
