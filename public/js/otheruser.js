@@ -4,16 +4,16 @@ const award_list = document.querySelector("#award_list");
 const project_list = document.querySelector("#project_list");
 const certificate_list = document.querySelector("#license_list");
 
-const url = new URL(window.location.href)
-const pId = url.searchParams.get("postId");
-document.write(pId)
-const test = () => {
-    console.log(pId)
-}
+// const url = new URL(window.location.href)
+// const pId = url.searchParams.get("postId");
+// document.write(pId)
+// const test = () => {
+//     console.log(pId)
+// }
 
 const fetchData = async () => {
-    // const res = await fetch(`https://localhost:5000/posts/${pId}`);
-    const res = await fetch("data.json");
+    const res = await fetch(`https://localhost:5000/posts/6634cd3b542f6ae9f3ad722a`);
+    // const res = await fetch("data.json");
     const datas = await res.json();
 
 

@@ -15,7 +15,7 @@ export function createDateInput(form, text, name, additional) {
     date.appendChild(content);
 
     const endDateInput = document.createElement('input');
-    endDateInput.name = 'project_end';
+    endDateInput.name = 'endDate';
     endDateInput.type = 'date';
     date.appendChild(endDateInput);
   }

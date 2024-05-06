@@ -6,7 +6,7 @@ export function addEdu() {
   // educationForm 아이디를 가진 form 태그 선택
   const form = document.getElementById('educationForm');
   form.method = 'POST';
-  form.action = 'https://localhost:5000/mypage/education';
+  form.action = 'http://localhost:5000/mypage/education';
   // 기존 내용을 비우기
   // form.innerHTML = '';
 
@@ -20,8 +20,17 @@ export function addEdu() {
     const radioButton = document.createElement('input');
     radioButton.type = 'radio';
     radioButton.id = 'option' + (index + 1);
-    radioButton.name = 'option';
-    radioButton.value = index + 1;
+    radioButton.name = 'degree';
+    if (radioButton.id == 'option1') {
+      radioButton.value = '재학중';
+    } else if (radioButton.id == 'option2') {
+      radioButton.value = '학사졸업';
+    } else if (radioButton.id == 'option3') {
+      radioButton.value = '석사졸업';
+    } else {
+      radioButton.value = '박사졸업';
+    }
+
     const label = document.createElement('label');
     label.setAttribute('for', radioButton.id);
     label.textContent = labelText;
@@ -31,39 +40,10 @@ export function addEdu() {
   form.appendChild(document.createElement('br'));
 
   // 확인, 취소 버튼
-  const btn = createButton('education');
-  form.appendChild(btn);
+  createButton(form, 'education');
 
-  const cancelButton = document.getElementById('education_cancel');
-  cancelButton.addEventListener('click', (e) => {
+  document.getElementById('education_cancel').addEventListener('click', (e) => {
     e.preventDefault();
     form.innerText = '';
-  });
-
-  // 예: fetch API를 사용한 비동기 데이터 전송
-  const submitButton = document.getElementById('education_submit');
-  submitButton.addEventListener('click', function (e) {
-    e.preventDefault(); // 폼 기본 제출 막기
-
-    const form = document.getElementById('educationForm');
-    const formData = new FormData(form);
-    const data = {};
-    formData.forEach((value, key) => (data[key] = value));
-    const jsonData = JSON.stringify(data);
-
-    fetch(form.action, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: jsonData,
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log('Success:', data);
-      })
-      .catch((error) => {
-        console.log('Error:', error);
-      });
   });
 }

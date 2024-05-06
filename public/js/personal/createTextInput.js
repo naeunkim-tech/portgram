@@ -1,6 +1,6 @@
 export function createTextInput(form, name, placeholder) {
   const input = document.createElement('input');
-  input.name = `${name}_name`;
+  input.name = name;
   input.className = 'input-style';
   input.type = 'text';
   input.placeholder = placeholder;

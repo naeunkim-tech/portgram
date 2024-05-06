@@ -129,4 +129,12 @@ router.get('/personal', loginRequired, (req, res) => {
   res.render('personal'); // render views_ejs/personal.ejs
 });
 
+router.get('/otheruser', (req, res) => {
+  res.render('otheruser.ejs');
+});
+
+router.get('/network', (req, res) => {
+  res.render('network.ejs');
+});
+
 module.exports = router;
