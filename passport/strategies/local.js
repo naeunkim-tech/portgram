@@ -1,8 +1,10 @@
 const LocalStrategy = require('passport-local').Strategy;
 // const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+
+
 // const jwt = require('passport');
-const User = require('../../db/user');
+const User = require('../../db/schemas/userSchema');
 
 const config = {
     usernameField: 'email',
@@ -32,17 +34,19 @@ const local = new LocalStrategy(config, async (email, password, done) => {
             console.log(err);
             done(err, null);
         });
+
+        passport.serializeUser((user, done) => {
+            done(null, user.id);
+        });
+    
+        passport.deserializeUser((id, done) => {
+            User.findById(id, (err, user) => {
+                done(err, user);
+            });
+        });
 });
 
 module.exports = local;
 
-    // session 로그인 비활성화, session 사용 대신 jwt + cookie 사용
-    // passport.serializeUser((user, done) => {
-    //     done(null, user.id);
-    // });
-
-    // passport.deserializeUser((id, done) => {
-    //     User.findById(id, (err, user) => {
-    //         done(err, user);
-    //     });
-    // });
+    //session 로그인 비활성화, session 사용 대신 jwt + cookie 사용
+    
