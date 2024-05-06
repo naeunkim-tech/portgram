@@ -2,21 +2,23 @@ const express = require('express');
 const { educationRouter, certificateRouter, awardRouter, projectRouter, postRouter, userRouter, mypageRouter, networkRouter } = require("./routes");
 const cookieParser = require('cookie-parser');
 const getUserFromJwt = require('./middleware/get-user-from-jwt');
+const path = require("path");
 
 // passport setting
 const passport = require('passport');
 require('./passport')();
 
-const app = express();
+const app = express();getUserFromJwt
 
 app.use(cookieParser());
 app.use(passport.initialize());
-app.use(getUserFromJwt);  // 쿠키에서 jwt 토큰 확인
 
-app.use(express.static('views'));
-app.use(express.static('public'));
+app.use('/', express.static(path.join(__dirname, 'public')));
+// app.use(express.static('public'));
 
 app.use(express.json());
+
+app.use(getUserFromJwt);  // 쿠키에서 jwt 토큰 확인
 
 // root page
 app.use('/', userRouter);

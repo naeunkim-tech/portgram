@@ -11,17 +11,20 @@ const router = Router();
 // const User = require('../models/User');
 
 router.get('/', (req, res) => {
-  if (req.user) { // passport authenticate jwt 과정에서 user 받아오기
-    console.log(req.user);
+  if (req.user) { // getUserFromJwt: passport authenticate jwt 과정에서 user 받아오기
+    console.log("user: ", req.user);
+    console.log("to personal");
     res.redirect('/personal');
     return;
   }
+  console.log("re login");
   res.redirect('/login');
 })
 
 // Login Page
 router.get('/login', (req, res) => {
-  res.sendFile(path.resolve('views/index.html'));
+  console.log("to login");
+  res.sendFile(path.join(__dirname, '..', 'views', 'index.html'));
 });
 
 // Login Handle
@@ -29,7 +32,7 @@ router.post('/login',
   passport.authenticate('local', {session: false}), // 데이터베이스와 email, password 비교
   (req, res, next) => {
     userAuthService.setUserToken(res, req.user);
-    res.redirect('/personal');
+    res.redirect('/');
   }
 );
 
@@ -117,7 +120,10 @@ router.get('/logout', (req, res) => {
 });
 
 router.get('/personal', (req, res) => {
-  res.sendFile(path.resolve('views/personal.html'));
+  console.log("reach personal");
+  const p = path.join(__dirname, '..', 'views', 'personal.html');
+  console.log(p);
+  res.sendFile(p);
 });
 
 module.exports = router;
