@@ -1,5 +1,6 @@
 const express = require('express');
 const { educationRouter, certificateRouter, awardRouter, projectRouter, postRouter, userRouter, mypageRouter, networkRouter } = require("./routes");
+const path = require('path');
 const cookieParser = require('cookie-parser');
 const getUserFromJwt = require('./middleware/get-user-from-jwt');
 
@@ -8,6 +9,10 @@ const passport = require('passport');
 require('./passport')();
 
 const app = express();
+
+// EJS
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "/views_ejs"));
 
 app.use(cookieParser());
 app.use(passport.initialize());

@@ -26,25 +26,25 @@ class userAuthService {
     }
 
     // register: 데이터베이스에 새로운 사용자 등록
-    static async addUser({ email, password, name }) {
+    // static async addUser({ email, password, name }) {
       // 이메일 중복 확인
-      const user = await User.findByEmail({ email });
-      if (user) {
-        const errorMessage =
-          "이 이메일은 현재 사용중입니다. 다른 이메일을 입력해 주세요.";
-        return { errorMessage };
-      }
+      // const user = await User.findByEmail({ email });
+      // if (user) {
+      //   const errorMessage =
+      //     "이 이메일은 현재 사용중입니다. 다른 이메일을 입력해 주세요.";
+      //   return { errorMessage };
+      // }
   
       // 비밀번호 해쉬화
-      const hashedPassword = await bcrypt.hash(password, 10);
+      // const hashedPassword = await bcrypt.hash(password, 10);
 
       // db에 저장
-      const newUser = { email, password: hashedPassword, name };
-      const createdNewUser = await User.create({ newUser });
-      createdNewUser.errorMessage = null; 
+      // const newUser = { email, password: hashedPassword, name };
+      // const createdNewUser = await User.create({ newUser });
+      // createdNewUser.errorMessage = null; 
   
-      return createdNewUser;
-    }
+      // return createdNewUser;
+    // }
 };
 
 exports.userAuthService = userAuthService;

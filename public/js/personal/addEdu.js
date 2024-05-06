@@ -10,15 +10,9 @@ export function addEdu() {
   // 기존 내용을 비우기
   // form.innerHTML = '';
 
-  const schoolInput = createTextInput('school');
-  schoolInput.placeholder = '학교이름';
-  form.appendChild(schoolInput);
-  form.appendChild(document.createElement('br'));
+  createTextInput(form, 'school', '학교 이름');
 
-  const majorInput = createTextInput('major');
-  majorInput.placeholder = '전공';
-  form.appendChild(majorInput);
-  form.appendChild(document.createElement('br'));
+  createTextInput(form, 'major', '전공');
 
   // 학력 선택 라디오 버튼
   const degrees = ['재학중', '학사졸업', '석사졸업', '박사졸업'];
