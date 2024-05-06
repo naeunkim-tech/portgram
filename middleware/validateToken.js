@@ -5,7 +5,7 @@ validateToken.isLoggedin = function(req,res,next){
 	var token = req.cookies.user;
 
 	if (!token) { // 토큰이 없을 때
-		return res.status(403).json({
+		return res.status(401).json({
 		  msg: "No token provided!"
 		});
 	  }
