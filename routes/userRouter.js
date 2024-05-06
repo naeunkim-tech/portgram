@@ -132,7 +132,7 @@ router.get('/otheruser', (req, res) => {
   res.render('otheruser.ejs');
 });
 
-router.get('/network/network', (req, res) => {
-  res.render('/network/network.ejs');
+router.get('/network', (req, res) => {
+  res.render('network.ejs');
 });
 module.exports = router;
