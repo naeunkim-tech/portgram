@@ -53,14 +53,14 @@ router.post('/register', async (req, res) => {
   }
 
   // Check passwords match
-  if(password !== password2) {
-    errors.push({ msg: 'Passwords do not match' });
-  }
+  // if(password !== password2) {
+  //   errors.push({ msg: 'Passwords do not match' });
+  // }
 
   // Check pass length (errors.length:빈칸이 하나라도 있으면 안 넘어감)
-  if(password.length < 6) {
-    errors.push({ msg: 'Password should be at least 6 characters' });
-  }
+  // if(password.length < 6) {
+  //   errors.push({ msg: 'Password should be at least 6 characters' });
+  // }
 
   if(errors.length > 0) {
     res.render('register', {
