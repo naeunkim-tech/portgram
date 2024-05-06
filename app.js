@@ -3,7 +3,6 @@ const { educationRouter, certificateRouter, awardRouter, projectRouter, postRout
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const getUserFromJwt = require('./middleware/get-user-from-jwt');
-const path = require("path");
 
 // passport setting
 const passport = require('passport');
