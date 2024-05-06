@@ -1,18 +1,25 @@
 const router = require("express").Router();
 const { ObjectId } = require("mongodb");
-const {AwardModel,CertificateModel,EducationModel,ProjectModel} = require("../db/allmodels");
+const { AwardModel, CertificateModel, EducationModel, ProjectModel } = require("../db/allmodels");
 
-router.get("/:pID", async (req, res, next) => {
+router.get("/:userId", async (req, res, next) => {
   try {
-    const {pID}=req.params;
-    const award = await AwardModel.find({postedBy:ObjectId(pID)}).lean();
-    const certificate = await CertificateModel.find({postedBy:ObjectId(pID)}).lean();
-    const education = await EducationModel.find({postedBy:ObjectId(pID)}).lean();
-    const project = await ProjectModel.find({postedBy:ObjectId(pID)}).lean();
-    res.json({ award: award,certificate:certificate,education:education, project:project, error: null });
+    const { userId } = req.params;
+    console.log(userId)
+
+    if (!ObjectId.isValid(userId)) {
+      return res.status(400).json({ error: "Invalid userId" });
+    }
+
+    const award = await AwardModel.find( { "userId":new ObjectId(userId) }).lean();
+    const certificate = await CertificateModel.find({ "userId":new ObjectId(userId) }).lean();
+    const education = await EducationModel.find({ "userId": new ObjectId(userId) }).lean();
+    const project = await ProjectModel.find({ "userId": new ObjectId(userId) }).lean();
+
+    res.json({ award, certificate, education, project, error: null });
   } catch (error) {
     next(error);
   }
 });
 
-module.exports=router
+module.exports = router;

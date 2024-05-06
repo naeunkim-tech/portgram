@@ -40,7 +40,7 @@ async function GetFromLocal(url) // 프론트 테스트용. 로컬 데이터를 
 }
 
 export function Login(data, successCallback, failCallback){
-    Post(data, "", successCallback, failCallback);
+    Post(data, "login", successCallback, failCallback);
 }
 
 export function Register(data, successCallback, failCallback){

@@ -3,7 +3,7 @@ const { Schema } = require("mongoose");
 
 const educationSchema= new Schema(
     {
-        postedBy: {
+        userId: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "User"
         },

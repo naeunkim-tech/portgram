@@ -1,4 +1,3 @@
-
 import {Login} from './core/networkManager.js';
 
 
@@ -21,13 +20,12 @@ document.getElementById("login-form").addEventListener("submit", function(event)
   Login(data, 
     () => {
         console.log("로그인 성공!");
-        window.location.href = "personal.html";
+        // window.location.href = "personal.html";
     }, 
     () => {
         console.log("로그인 실패!");
         errorMessage.textContent = error.message;
-        window.location.href = "personal.html";
     }
-);
+    );
   });
   
