@@ -1,4 +1,5 @@
 import { createButton } from './createButton.js';
+import { createDateInput } from './createDateInput.js';
 import { createTextInput } from './createTextInput.js';
 
 export function addAward() {
@@ -6,20 +7,11 @@ export function addAward() {
   form.method = 'POST';
   form.action = '/mypage/award';
 
-  const awardInput = createTextInput('award');
-  awardInput.placeholder = '수상 내용';
-  form.appendChild(awardInput);
-  form.appendChild(document.createElement('br'));
+  createTextInput(form, 'award', '수상 내용');
 
-  const oraganizationInput = createTextInput('organization');
-  oraganizationInput.placeholder = '시상 단체';
-  form.appendChild(oraganizationInput);
-  form.appendChild(document.createElement('br'));
+  createTextInput(form, 'organization', '시상 단체');
 
-  const awardDateInput = createTextInput('awardDate');
-  awardDateInput.placeholder = '수상 일자';
-  form.appendChild(awardDateInput);
-  form.appendChild(document.createElement('br'));
+  createDateInput(form, '수상 일자', 'awardDate');
 
   const btn = createButton('award');
   form.appendChild(btn);
