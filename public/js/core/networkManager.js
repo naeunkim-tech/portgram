@@ -9,19 +9,19 @@ async function Post(data, url, successCallback, failCallback)
     };
 
     await fetch(`${baseUrl}${url}`, options)
-    // .then(response => {
-    //     console.log(response);
-    //     if(response.ok)
-    //         return response.json();
-    // })
-    // .then(data => {
-    //     console.log(data);
-    //     successCallback();
-    // })
-    // .catch(error => {
-    //     console.error('Error:', error.message);
-    //     failCallback();
-    // });
+    .then(response => {
+        console.log(response);
+        if(response.ok)
+            return response.json();
+    })
+    .then(data => {
+        console.log(data);
+        successCallback();
+    })
+    .catch(error => {
+        console.error('Error:', error.message);
+        failCallback();
+    });
 }
 
 async function GetFromLocal(url) // 프론트 테스트용. 로컬 데이터를 가져온다.
