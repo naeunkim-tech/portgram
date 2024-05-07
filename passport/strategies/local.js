@@ -26,7 +26,6 @@ const local = new LocalStrategy(config, async (email, password, done) => {
             });
             console.log('db find user ok')
             return done(null, user);
-
         })
         .catch(err => {
             console.log(err);

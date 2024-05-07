@@ -1,76 +1,53 @@
-let profiles = []; // 프로필 데이터를 저장할 배열
-const profilesPerPage = 16; // 페이지당 표시할 프로필 개수
-import {GetAllUsers} from '../core/networkManager.js';
+import { GetAllUsers } from '../core/networkManager.js';  //user 데이터 저장공간
 
-// 초기 데이터를 가져오는 함수
-async function fetchInitialData() {
-    try {
-        // networkManager의 GetAllUsers를 불러옴
-        profiles = await GetAllUsers();
-        
-        // 초기 프로필을 렌더링
-        renderProfiles(profiles.slice(0, profilesPerPage));
-    } catch (error) {
-        console.error('Error fetching initial data:', error);
-    }
-}
 
-// 스크롤 이벤트 리스너
-window.addEventListener('scroll', function() {
-    // 현재 스크롤 위치와 브라우저 창의 높이를 합친 값이 문서 전체의 높이와 같거나 클 때
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-        // 추가 데이터를 가져오는 함수 호출
-        fetchMoreData();
-    }
-});
+let loadedUsers = []; // 로드된 사용자 목록을 저장할 배열
+let isLoading = false; // 추가 데이터 로딩 중인지 여부
+const countData = 16; // 로딩되는 데이터 수
 
-// 추가 데이터를 가져오는 함수
-async function fetchMoreData() {
-    try {
-        // 여기서 추가 데이터를 불러옴
-        const response = await fetch('/additional-profiles-data');
-        const data = await response.json();
-
-        // 가져온 데이터를 프로필 배열에 추가
-        profiles = profiles.concat(data.profiles);
-
-        // 표시할 프로필 결정.
-        const startIndex = profiles.length - data.profiles.length; // 가져온 데이터의 시작 인덱스
-        const endIndex = Math.min(profiles.length, startIndex + profilesPerPage); // 표시할 프로필의 끝 인덱스
-        const displayedProfiles = profiles.slice(startIndex, endIndex);
-
-        // 표시할 프로필을 렌더링하는 함수 호출
-        renderProfiles(displayedProfiles);
-    } catch (error) {
-        console.error('Error fetching more data:', error);
-    }
-}
-
-// 프로필을 렌더링하는 함수
-function renderProfiles(profiles) {
-    const profileContainer = document.getElementById('profile-container');
-
-    // 이전에 표시된 프로필을 모두 제거
-    profileContainer.innerHTML = '';
-
-    // 프로필 렌더링
-    profiles.forEach(profile => {
-        const profileElement = document.createElement('div');
-        profileElement.textContent = profile.name;
-        profileElement.classList.add('profile');
-        
-        // 프로필 클릭 이벤트 리스너 추가
-        profileElement.addEventListener('click', function() {
-            // 사용자의 프로필 페이지 URL 생성
-            const userProfileURL = `/personal`; //URL 주소입력(개인데이터 `/user/${profile._id}` 방식으로 추가할것).
-            
-            // 사용자를 개인 페이지로 이동
-            window.location.href = userProfileURL;
-        });
-
-        profileContainer.appendChild(profileElement);
+// 사용자를 화면에 렌더링하는 함수
+function renderUsers(users) {
+    const userListDiv = document.getElementById('userList'); 
+    users.forEach(user => {
+        const userDiv = document.createElement('div');
+        userDiv.classList.add('userProfile');
+        const nameEmailDiv = document.createElement('div');
+        nameEmailDiv.textContent = `Name: ${user.name}, Email: ${user.email}`;
+        userDiv.appendChild(nameEmailDiv);
+        userListDiv.appendChild(userDiv);
     });
 }
 
-// 페이지 로드 시 초기 데이터를 가져옵니다.
-window.addEventListener('load', fetchInitialData);
+// 초기 사용자 로드 함수
+window.onload = async () => {
+    const initialUsers = await GetAllUsers();
+    const initialUsersToShow = initialUsers.slice(0, countData); // 처음 16개만 호출
+    renderUsers(initialUsersToShow);
+    window.addEventListener('scroll', handleScroll);
+};
+
+// 스크롤 이벤트 핸들러
+async function handleScroll() {
+    // 스크롤이 화면 하단에 도달했을 때
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+        // 현재 로드된 사용자의 수를 기준으로 추가 사용자를 로드하고 화면에 렌더링
+        const startIndex = loadedUsers.length;
+        const additionalUsers = await loadMoreUsers(startIndex, countData);
+        if (additionalUsers.length === 0) {
+            // 저장된 데이터를 모두 불러왔을 경우 스크롤 이벤트 제거
+            window.removeEventListener('scroll', handleScroll);
+            return;
+        }
+        loadedUsers = loadedUsers.concat(additionalUsers);
+        renderUsers(additionalUsers);
+    }
+}
+
+// 추가적인 사용자 로드 함수
+async function loadMoreUsers(startIndex, countData) {
+    if (isLoading) return; // 이미 로딩 중이면 중복 요청 방지
+    isLoading = true;
+    const additionalUsers = await GetAllUsers(startIndex, countData);
+    isLoading = false;
+    return additionalUsers;
+}

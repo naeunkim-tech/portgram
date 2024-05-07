@@ -3,12 +3,9 @@ import { createTextInput } from './createTextInput.js';
 
 // 학력
 export function addEdu() {
-  // educationForm 아이디를 가진 form 태그 선택
-  const form = document.getElementById('educationForm');
+  const form = document.createElement('educationForm');
   form.method = 'POST';
   form.action = 'http://localhost:5000/mypage/education';
-  // 기존 내용을 비우기
-  // form.innerHTML = '';
 
   createTextInput(form, 'school', '학교 이름');
 

@@ -82,20 +82,24 @@ router.post('/register', async (req, res) => {
 });
 
 // Logout Handle
-// router.get('/logout', (req, res) => {
-//   req.logout();
-//   req.flash('success_msg', 'You are logged out');
-//   res.redirect('/login');
-// });
+router.get('/logout', (req, res, next) => {
+  // req.logout(err => {
+  //   if (err) return next(err);
+  //   console.log('logout success');
+  //   res.redirect('/');
+  // });
+  // req.logout();
+  res.cookie('token', null, { maxAge: 0, });  // cookie: { token: null }, cookie 만료 시간: 0
+  res.redirect('/');
+  // req.flash('success_msg', 'You are logged out');
+});
   
-
-
 router.get('/personal', loginRequired, (req, res) => {
   console.log("reach personal");
   res.render('personal'); // render views_ejs/personal.ejs
 });
 
-router.get('/otheruser', (req, res) => {
+router.get('/otheruser/:userId', (req, res) => {
   res.render('otheruser.ejs');
 });
 

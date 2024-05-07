@@ -9,10 +9,10 @@ const DB_URL = "mongodb://127.0.0.1:27017/?directConnection=true&serverSelection
 const MongoConnect = async () => {
   try {
     // await mongoose.connect(DB_URL); // mongoDB 특정 데이터베이스에 연결하려면 옵션 추가, option: { dbName: __ }
-    mongoose.connect(DB_URL, {
+    mongoose.connect(MONGODB_URL, {
       dbName: 'elice_project_01',
     });
-    console.log('MongoDB Connected...', DB_URL);
+    console.log('MongoDB Connected...', MONGODB_URL);
   } catch (error) {
     console.error('MongoDB connection error:', error);
   }

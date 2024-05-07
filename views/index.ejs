@@ -3,12 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login Page</title>
+  <title>Portagram - 나의 포트폴리오 공유하기</title>
   <link rel="stylesheet" href="/css/index.css">
   <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic.css" rel="stylesheet">
 
 </head>
 <body>
+
+  <!-- <div class="phone">
+    <img src = "/img/home-phones.png">
+  </div> -->
 
     <div class="main">
 
@@ -26,13 +30,21 @@
             <input type="password" id="password" name="password" placeholder="비밀번호" required>
         </div>
         <button type="submit" class="login">로그인</button>
-        <p></p>
-        <button type="button" class="register" onclick="window.location.href='register';">회원가입하기</button>    </form>
+        <div class="divider">
+          <div class="flex-item"><hr></div>
+          <div class="flex-item smaller">or</div>
+          <div class="flex-item"><hr></div>
+        </div>
+        <div class="register_area"  onclick="window.location.href='register';">아직 계정이 없으신가요?<div class="register_text">회원가입</div>을 해보세요!</div>
+        <!-- <button type="button" class="register" onclick="window.location.href='register';">회원가입하기</button>     -->
+      </form>
         <p id="error-message"></p>
     </div>
 
 
-  </div>
+    </div>
+
+
 
   <script type="module" src="/js/index.js"></script>
 </body>

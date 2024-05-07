@@ -6,17 +6,21 @@ import { postData } from './personal/postData.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('addEdu').addEventListener('click', addEdu);
-  document.getElementById('education_submit').addEventListener('click', (e) => {
+
+  const form = document.getElementById('educationForm');
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
-    postData('educationForm');
+    postData('educationForm', 'addedEducation', 'education');
   });
 });
 
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('addAward').addEventListener('click', addAward);
-  document.getElementById('education_submit').addEventListener('click', (e) => {
+
+  const form = document.getElementById('awardForm');
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
-    postData('awardForm');
+    postData('awardForm', 'addedAward', 'award');
   });
 });
 
@@ -24,16 +28,20 @@ document.addEventListener('DOMContentLoaded', () => {
   document
     .getElementById('addCertificate')
     .addEventListener('click', addCertificate);
-  document.getElementById('education_submit').addEventListener('click', (e) => {
+
+  const form = document.getElementById('certificateForm');
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
-    postData('certificateForm');
+    postData('certificateForm', 'addedCertificate', 'certification');
   });
 });
 
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('addProject').addEventListener('click', addProject);
-  document.getElementById('education_submit').addEventListener('click', (e) => {
+
+  const form = document.getElementById('projectForm');
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
-    postData('projectForm');
+    postData('projectForm', 'addedProject', 'project');
   });
 });
