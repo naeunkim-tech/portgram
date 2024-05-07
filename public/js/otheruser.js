@@ -6,14 +6,10 @@ const certificate_list = document.querySelector("#license_list");
 
 const url = new URL(window.location.href)
 const userId = url.pathname.slice(11)
-console.log(userId.slice(11))
-console.log(`http://localhost:5000/posts/${userId}`)
 
 const fetchData = async () => {
     const res = await fetch(`http://localhost:5000/posts/${userId}`);
-    // const res = await fetch("data.json");
     const datas = await res.json();
-
 
     let edu_data = datas.education;
     let award_data = datas.award;
@@ -36,7 +32,7 @@ const fetchData = async () => {
     certificate_data.forEach((data) => {
         certificate_output = certificate_output + `<li>${data.type} | ${data.authority} | ${data.date.slice(0,10)}</li> `;
     });
-    console.log(edu_output,award_output,project_output,certificate_output)
+
     education_list.innerHTML = edu_output;
     award_list.innerHTML = award_output;
     project_list.innerHTML = project_output;

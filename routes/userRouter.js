@@ -103,7 +103,7 @@ router.get('/otheruser/:userId', (req, res) => {
   res.render('otheruser.ejs');
 });
 
-router.get('/network', (req, res) => {
+router.get('/networked', (req, res) => {
   res.render('network.ejs');
 });
 
