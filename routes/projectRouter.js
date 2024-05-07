@@ -6,7 +6,8 @@ const {validateProjectData}=require("../middleware")
 router.post("/",validateProjectData("body"), async (req, res, next) => {
   try {
     const {title, startDate, endDate, role} = req.body;
-    const createdPost = await ProjectModel.create({title, startDate, endDate, role});
+    const userId= req.user._id;
+    const createdPost = await ProjectModel.create({title, startDate, endDate, role, userId});
 
     res.status(200).json({ data: createdPost.toObject(), error: null });
   } catch (error) {

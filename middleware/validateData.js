@@ -1,3 +1,10 @@
+class NoContentError extends Error {
+  constructor(message, status = 404) {
+    super(message);
+    this.status = status;
+  }
+}
+
 const validateData = (fields) => (from) => (req, res, next) => {
   for (const field of fields) {
     const value = req[from][field];

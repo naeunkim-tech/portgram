@@ -1,6 +1,7 @@
 const router=require("express").Router();
 const {EducationModel}=require("../db/allmodels")
-const {validateEducationData, validateToken}=require("../middleware")
+const {validateEducationData}=require("../middleware")
+const loginRequired=require("../middleware/login-required")
 
 // router.get("/", async (req, res, next) => {
 //   try {
@@ -16,9 +17,8 @@ const {validateEducationData, validateToken}=require("../middleware")
 router.post("/", validateEducationData("body"), async (req, res, next) => {
   try {
     const { school,major,degree } = req.body;
-    console.log({ school,major,degree })
-    console.log( EducationModel);
-    const createdPost = await EducationModel.create({ school,major,degree });
+    const userId= req.user._id;
+    const createdPost = await EducationModel.create({ school,major,degree, userId });
     res.status(200).json({ data: createdPost.toObject(), error: null });
   } catch (error) {
     next(error);
