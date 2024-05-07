@@ -15,20 +15,29 @@ export function newInfo(getData, addedName, info) {
     const organization = getData.organization;
     const date = getData.date;
 
-    list.textContent = `수상 내용: ${content} | 시상 단체: ${organization} | 수상 일자: ${date}`;
+    list.textContent = `수상 내용: ${content} | 시상 단체: ${organization} | 수상 일자: ${date.slice(
+      0,
+      10
+    )}`;
   } else if (info === 'certification') {
     const type = getData.type;
     const certificatedate = getData.date;
     const authority = getData.authority;
 
-    list.textContent = `자격 종류: ${type} | 발급 일자: ${certificatedate} | 발급 기관: ${authority}`;
+    list.textContent = `자격 종류: ${type} | 발급 일자: ${certificatedate.slice(
+      0,
+      10
+    )} | 발급 기관: ${authority}`;
   } else if (info === 'project') {
     const title = getData.title;
     const startDate = getData.startDate;
     const endDate = getData.endDate;
     const role = getData.role;
 
-    list.textContent = `프로젝트명: ${title} | 프로젝트 기간: ${startDate} ~ ${endDate} | 역할: ${role}`;
+    list.textContent = `프로젝트명: ${title} | 프로젝트 기간: ${startDate.slice(
+      0,
+      10
+    )} ~ ${endDate.slice(0, 10)} | 역할: ${role}`;
   }
 
   parentList.appendChild(list);
