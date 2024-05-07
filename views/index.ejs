@@ -26,8 +26,14 @@
             <input type="password" id="password" name="password" placeholder="비밀번호" required>
         </div>
         <button type="submit" class="login">로그인</button>
-        <p></p>
-        <button type="button" class="register" onclick="window.location.href='register';">회원가입하기</button>    </form>
+        <div class="divider">
+          <div class="flex-item"><hr></div>
+          <div class="flex-item smaller">or</div>
+          <div class="flex-item"><hr></div>
+        </div>
+        <div class="register_area"  onclick="window.location.href='register';">아직 계정이 없으신가요?<div class="register_text">회원가입</div>을 해보세요!</div>
+        <!-- <button type="button" class="register" onclick="window.location.href='register';">회원가입하기</button>     -->
+      </form>
         <p id="error-message"></p>
     </div>
 
