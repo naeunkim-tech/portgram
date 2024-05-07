@@ -96,7 +96,7 @@ router.get('/personal', loginRequired, (req, res) => {
   res.render('personal'); // render views_ejs/personal.ejs
 });
 
-router.get('/otheruser', (req, res) => {
+router.get('/otheruser/:userId', (req, res) => {
   res.render('otheruser.ejs');
 });
 
