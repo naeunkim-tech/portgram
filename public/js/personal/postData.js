@@ -1,16 +1,16 @@
 export function postData(formName) {
   const form = document.getElementById(formName);
   const formData = new FormData(form);
-  const data = {};
-  formData.forEach((value, key) => (data[key] = value));
-  const jsonData = JSON.stringify(data);
+  const newData = {};
+  formData.forEach((value, key) => (newData[key] = value));
+  const data = JSON.stringify(newData);
 
   fetch(form.action, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: jsonData,
+    body: data,
   })
     .then((response) => {
       if (!response.ok) {
