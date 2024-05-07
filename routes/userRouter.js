@@ -9,9 +9,6 @@ const loginRequired = require('../middleware/login-required');
 
 const router = Router();
 
-// User model
-const User = require('../db/schemas/userSchema');
-
 router.get('/', (req, res) => {
   if (req.user) { // getUserFromJwt: passport authenticate jwt 과정에서 user 받아오기
     console.log("user: ", req.user);
@@ -45,107 +42,44 @@ router.get('/register', (req, res) => {
 
 // Register Handle
 router.post('/register', async (req, res) => {
-  const { email, password, password2, name } = req.body;
-  let errors = [];
-
-
   try {
-    //같은 email 존재 여부
-    let user = await UserModel.findOne({ email });
+    const { email, password, password2, name } = req.body;
 
-    if(user) {
+    // Check Validation
+    if( !email || !password ) {
       return res
         .status(400)
-        .json({ error: [{ msg: "유저가 이미 존재합니다." }] });
+        .json({ message: "Please put Email and Password" });
     }
 
-    // user에 name, email, password값 할당
-    user = new User ({
-      name,
+    // Check If User exists in the DB
+    const UserDB = await UserModel.findOne({email});
+    
+    if(UserDB) {
+      return res.status(400).json({ message: "User already exists" });
+    }
+
+    // Hash the User's Password
+    const Salt = 10;
+    const hashedPassword = await bcrypt.hash(password, Salt);
+
+    //Save the User to the DB
+    const newUser = new UserModel({
       email,
-      password,
+      password: hashedPassword,
+      name,
     });
 
-    //password를 암호화
-    const salt = await bcrypt.genSalt(10);
-    user.password = await bcrypt.hash(password, 10);
-
-    await user.save();
-
-    res.send("성공!");
-  } catch(error) {
-    console.error(error.message);
-    res.status(500).send("Server error");
+    await newUser.save();
+    
+    return res
+      .status(200)
+      .json({ message: "User Registration Success!", newUser});
+  } catch (error) {
+    console.log(error.message);
+    return res.status(500).json({ message: "Error creating user" });
   }
 });
-  // console.log(email, password, password2, name);
-
-  // // Check required fields
-  // // if (!email || !password || !password2 || !name) {
-  // //   console.log("ddddd");
-  // //   errors.push({ msg: 'Please fill in all fields' });
-  // // }
-
-  // // // Check passwords match
-  // // if(password !== password2) {
-  // //   errors.push({ msg: 'Passwords do not match' });
-  // // }
-
-  // // Check pass length (errors.length:빈칸이 하나라도 있으면 안 넘어감)
-  // // if(password.length < 6) {
-  // //   errors.push({ msg: 'Password should be at least 6 characters' });
-  // // }
-
-  // if(errors.length > 0) {
-  //   res.render('register', {
-  //       errors,
-  //       email,
-  //       password,
-  //       password2,
-  //       name
-  //   });
-  // } else {
-  //   // 데이터베이스에 새로운 사용자 추가
-  //   // const user =  await userAuthService.addUser({ email, password, name });
-  //   // res.redirect('/login');
-  //   UserModel.findOne ({ email: email })
-  //     .then(user => {
-  //       if (user) {
-  //         // User exist
-  //         errors.push({ msg: 'Email is already registered' });
-  //         res.render('register', {
-  //         errors,
-  //         email,
-  //         password,
-  //         password2,
-  //         name
-  //         }); 
-  //       } else {
-  //         const newUser = new UserModel({
-  //             email,
-  //             password,
-  //             name
-  //         });
-        
-  //         // Hash Password
-  //         bcrypt.genSalt(10, (err, salt) => 
-  //           bcrypt.hash(newUser.password, salt, (err, hash) => {
-  //             if (err) throw err;
-  //             // Set Password to hashed    
-  //             newUser.password = hash;
-  //             // Save user (유저의 정보가 saved 되면 login 페이지로 돌아감)
-  //             newUser
-  //               .save()
-  //               .then(user => {
-  //                   // req.flash('success_msg', 'You are now registered and can log in!');
-  //                   // res.redirect('/login');
-  //               })
-  //               .catch(err => console.log(err));
-  //         }))
-  //       }
-  //     });
-  // }
-// });
 
 // Logout Handle
 // router.get('/logout', (req, res) => {
@@ -153,6 +87,7 @@ router.post('/register', async (req, res) => {
 //   req.flash('success_msg', 'You are logged out');
 //   res.redirect('/login');
 // });
+  
 
 
 router.get('/personal', loginRequired, (req, res) => {
