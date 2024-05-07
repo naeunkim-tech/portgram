@@ -94,10 +94,12 @@
     height: 85px;
     border-radius: 20px;
     margin-right: 2rem;
+    display: inline;
   }
 
   #user_name {
     font-weight: 700;
+    display: inline;
   }
 
   #profile_detail{

@@ -4,15 +4,13 @@ const award_list = document.querySelector("#award_list");
 const project_list = document.querySelector("#project_list");
 const certificate_list = document.querySelector("#license_list");
 
-// const url = new URL(window.location.href)
-// const pId = url.searchParams.get("postId");
-// document.write(pId)
-// const test = () => {
-//     console.log(pId)
-// }
+const url = new URL(window.location.href)
+const userId = url.pathname.slice(11)
+console.log(userId.slice(11))
+console.log(`http://localhost:5000/posts/${userId}`)
 
 const fetchData = async () => {
-    const res = await fetch(`https://localhost:5000/posts/6634cd3b542f6ae9f3ad722a`);
+    const res = await fetch(`http://localhost:5000/posts/${userId}`);
     // const res = await fetch("data.json");
     const datas = await res.json();
 
@@ -30,19 +28,20 @@ const fetchData = async () => {
         edu_output = edu_output + `<li>${data.school} | ${data.major} | ${data.degree}</li> `;
     });
     award_data.forEach((data) => {
-        award_output = award_output + `<li>${data.content} | ${data.organization} | ${data.date}</li> `;
+        award_output = award_output + `<li>${data.content} | ${data.organization} | ${data.date.slice(0,10)}</li> `;
     });
     project_data.forEach((data) => {
-        project_output = project_output + `<li>${data.title} | ${data.startDate} | ${data.endDate} | ${data.role}</li> `;
+        project_output = project_output + `<li>${data.title} | ${data.startDate.slice(0,10)} ~ ${data.endDate.slice(0,10)} | ${data.role}</li> `;
     });
     certificate_data.forEach((data) => {
-        certificate_output = certificate_output + `<li>${data.type} | ${data.authority} | ${data.date}</li> `;
+        certificate_output = certificate_output + `<li>${data.type} | ${data.authority} | ${data.date.slice(0,10)}</li> `;
     });
     console.log(edu_output,award_output,project_output,certificate_output)
     education_list.innerHTML = edu_output;
     award_list.innerHTML = award_output;
     project_list.innerHTML = project_output;
     certificate_list.innerHTML = certificate_output;
+    console.log("update success")
 };
 
 
