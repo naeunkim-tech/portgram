@@ -9,7 +9,7 @@ const loginRequired = require('./middleware/login-required');
 const passport = require('passport');
 require('./passport')();
 
-const app = express();getUserFromJwt
+const app = express();
 
 // EJS
 app.set("view engine", "ejs");
