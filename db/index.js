@@ -4,7 +4,7 @@ const dotenv = require("dotenv");
 require('dotenv').config(); // .env 환경변수 불러오기
 const { MONGODB_URL } = process.env;
 
-const DB_URL = "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.2.5"
+// const DB_URL = "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.2.5"
 
 const MongoConnect = async () => {
   try {
