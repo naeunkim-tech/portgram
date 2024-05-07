@@ -30,10 +30,12 @@ document.addEventListener('DOMContentLoaded', function() {
       Register(data, 
         () => {
             console.log("회원가입 성공!");
+            window.location.href = "/login"; // 서버에서 구축한 경로 '/personal'로 이동
         }, 
-        () => {
-            console.log("회원가입 실패!");
-            errorMessage.textContent = error.message;
+        (error) => {
+          console.log("회원가입 실패!");
+          console.log(error);
+          // errorMessage.textContent = error.message;
         }
       );
     });

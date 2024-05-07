@@ -8,6 +8,13 @@ body {
     height: 100vh;
   }
 
+  .main{
+    display: flex; 
+    flex-direction: column;
+    align-items: center; 
+    gap:100px;
+  }
+
   .login-container {
     width: 300px;
     padding: 20px;
@@ -37,7 +44,7 @@ body {
   }
   
   button.login {
-    background-color: #007bff;
+    background-color: #2DC7ED;
     color: #fff;
   }
 
@@ -54,3 +61,24 @@ body {
     background-color: #b8b8b8;
   }
   
+  .title{
+    width: 500px;
+
+    .title_img{
+      display: flex; 
+      flex-direction: column;
+      align-items: center; 
+
+      img{
+        width:400px;
+      }
+    }
+
+    .title_text{
+
+      font-family: 'NanumGothic';
+      font-size:18px;
+      text-align: right;
+      margin-top: -20px;
+    }
+  }

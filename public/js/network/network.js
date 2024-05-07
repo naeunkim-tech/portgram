@@ -1,10 +1,11 @@
 let profiles = []; // 프로필 데이터를 저장할 배열
 const profilesPerPage = 16; // 페이지당 표시할 프로필 개수
+import {GetAllUsers} from '../core/networkManager.js';
 
 // 초기 데이터를 가져오는 함수
 async function fetchInitialData() {
     try {
-        // networkManager의 getAllUsers를 불러옴
+        // networkManager의 GetAllUsers를 불러옴
         profiles = await GetAllUsers();
         
         // 초기 프로필을 렌더링
@@ -12,12 +13,6 @@ async function fetchInitialData() {
     } catch (error) {
         console.error('Error fetching initial data:', error);
     }
-}
-
-// GetAllUsers 함수를 사용하여 사용자 데이터를 가져오는 코드
-export async function GetAllUsers(){
-    const userData = await GetFromLocal(`users.json`);
-    return userData;
 }
 
 // 스크롤 이벤트 리스너
@@ -32,11 +27,11 @@ window.addEventListener('scroll', function() {
 // 추가 데이터를 가져오는 함수
 async function fetchMoreData() {
     try {
-        // 여기서 추가 데이터를 가져옵니다.
+        // 여기서 추가 데이터를 불러옴
         const response = await fetch('/additional-profiles-data');
         const data = await response.json();
 
-        // 가져온 데이터를 프로필 배열에 추가합니다.
+        // 가져온 데이터를 프로필 배열에 추가
         profiles = profiles.concat(data.profiles);
 
         // 표시할 프로필 결정.
