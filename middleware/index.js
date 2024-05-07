@@ -1,5 +1,6 @@
 const {validateAwardData, validateCertificationData,validateProjectData,validateEducationData} = require("./validateData")
-const validateToken = require("./validateToken")
+const {validateToken} = require("./validateToken")
+
 
 
 module.exports= {validateAwardData, 

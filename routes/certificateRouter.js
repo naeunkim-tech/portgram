@@ -5,9 +5,8 @@ const {validateCertificationData}=require("../middleware")
 router.post("/", validateCertificationData("body"), async (req, res, next) => {
   try {
     const { type,date,authority } = req.body;
-    console.log({ type,date,authority })
-    console.log( CertificateModel);
-    const createdPost = await CertificateModel.create({ type,date,authority });
+    const userId= req.user._id;
+    const createdPost = await CertificateModel.create({ type,date,authority, userId });
 
     res.status(201).json({ data: createdPost.toObject(), error: null });
   } catch (error) {
@@ -20,6 +19,9 @@ router.put("/:id",validateCertificationData("body"), async (req, res, next) => {
   try {
     const { id } = req.params;
     const { type,date,authority }= req.body; 
+    console.log("학력");
+    console.log(req.user);
+
 
     const updatedPost = await CertificateModel.findOneAndUpdate(
       { _id: id },
