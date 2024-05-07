@@ -64,6 +64,10 @@ body {
     background-color: #F3F3F3;
   }
 
+  input[type="password"].error {
+    border: 2px solid rgb(255, 60, 60);
+  }
+
 
   [type="text"]::placeholder,
   input[type="password"]::placeholder,

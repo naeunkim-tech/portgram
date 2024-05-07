@@ -3,6 +3,7 @@ import {Register} from './core/networkManager.js';
 document.addEventListener('DOMContentLoaded', function() {
     const signupForm = document.getElementById('signup-form');
     const errorMessage = document.getElementById('error-message');
+    const modal = document.getElementById('result-modal');
   
     signupForm.addEventListener('submit', function(event) {
       event.preventDefault();
@@ -13,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const name = document.getElementById('name').value;
   
       if (password !== confirmPassword) {
-        errorMessage.textContent = '비밀번호가 일치하지 않습니다.';
+        errorMessage.textContent = '• 비밀번호가 일치하지 않습니다.';
         return;
       }
   
@@ -30,13 +31,30 @@ document.addEventListener('DOMContentLoaded', function() {
       Register(data, 
         () => {
             console.log("회원가입 성공!");
-            window.location.href = "/login"; // 서버에서 구축한 경로 '/personal'로 이동
+            modal.style.display = "block";            
         }, 
         (error) => {
           console.log("회원가입 실패!");
           console.log(error);
-          // errorMessage.textContent = error.message;
+          errorMessage.textContent = error.message;
         }
       );
     });
   });
+
+
+  document.getElementById("confirm-password").addEventListener("input", checkPasswords);
+
+
+  function checkPasswords() {
+    console.log("checkPasswords");
+    var password = document.getElementById("password");
+    var confirmPassword = document.getElementById("confirm-password");
+
+  
+    if (password.value !== confirmPassword.value) {
+      confirmPassword.classList.add("error");
+    } else {
+      confirmPassword.classList.remove("error");
+    }
+  }
