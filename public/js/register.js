@@ -35,8 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 
         (error) => {
           console.log("회원가입 실패!");
-          console.log(error);
-          errorMessage.textContent = error.message;
+          errorMessage.textContent = "• 회원가입에 실패했습니다.";
         }
       );
     });
