@@ -1,6 +1,6 @@
-import { createButton } from './createButton.js';
-import { createDateInput } from './createDateInput.js';
-import { createTextInput } from './createTextInput.js';
+import { createButton } from './createInput/createButton.js';
+import { createDateInput } from './createInput/createDateInput.js';
+import { createTextInput } from './createInput/createTextInput.js';
 
 // 자격증
 export function addCertificate() {
@@ -18,11 +18,4 @@ export function addCertificate() {
 
   // 버튼
   createButton(form, 'certificate');
-
-  document
-    .getElementById('certificate_cancel')
-    .addEventListener('click', (e) => {
-      e.preventDefault();
-      form.innerText = '';
-    });
 }

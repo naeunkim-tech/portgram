@@ -1,6 +1,6 @@
-import { createButton } from './createButton.js';
-import { createDateInput } from './createDateInput.js';
-import { createTextInput } from './createTextInput.js';
+import { createButton } from './createInput/createButton.js';
+import { createDateInput } from './createInput/createDateInput.js';
+import { createTextInput } from './createInput/createTextInput.js';
 
 // 프로젝트
 export function addProject() {
@@ -18,9 +18,4 @@ export function addProject() {
   form.appendChild(document.createElement('br'));
 
   createButton(form, 'project');
-
-  document.getElementById('project_cancel').addEventListener('click', (e) => {
-    e.preventDefault();
-    form.innerText = '';
-  });
 }

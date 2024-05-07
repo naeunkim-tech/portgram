@@ -3,4 +3,5 @@ export function deleteForm(form, selector) {
   deletedSelector.forEach((content) => {
     content.remove();
   });
+  form.innerText = '';
 }
