@@ -21,6 +21,21 @@ body {
     padding:80px 30px 30px 30px; */
   }
 
+  .main2{
+    display: flex; 
+    flex-direction: column;
+    align-items: center; 
+    gap:50px;
+
+    margin-bottom:200px;
+  }
+
+  .notice_text{
+    color: #636363;
+    font-size: 14px;
+    font-style: italic;
+  }
+
   .login-container {
     width: 400px;
     display: flex; 
@@ -39,7 +54,8 @@ body {
   }
   
   input[type="text"],
-  input[type="password"] {
+  input[type="password"],
+  input[type="email"] {
     width: calc(100% - 22px);
     height:35px;
     padding: 5px;
@@ -51,7 +67,8 @@ body {
 
 
   [type="text"]::placeholder,
-  input[type="password"]::placeholder {
+  input[type="password"]::placeholder,
+  input[type="email"]::placeholder {
     font-family: 'NanumGothic';
     font-size: 14px;
   }
