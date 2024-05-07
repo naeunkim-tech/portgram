@@ -12,16 +12,19 @@ body {
     display: flex; 
     flex-direction: column;
     align-items: center; 
-    gap:100px;
+    gap:80px;
   }
 
   .login-container {
-    width: 300px;
-    padding: 20px;
+    width: 400px;
+    display: flex; 
+    flex-direction: column;
+    align-items: center; 
   }
   
   .form-group {
-    margin-bottom: 15px;
+    width: 400px;
+    margin-bottom: 20px;
   }
   
   label {
@@ -31,16 +34,30 @@ body {
   
   input[type="text"],
   input[type="password"] {
-    width: calc(100% - 10px);
+    width: calc(100% - 22px);
+    height:35px;
     padding: 5px;
+    padding-left:15px;
+    border: 1px solid #959595;
+    border-radius: 10px;
+    background-color: #F3F3F3;
+  }
+
+
+  [type="text"]::placeholder,
+  input[type="password"]::placeholder {
+    font-family: 'NanumGothic';
+    font-size: 14px;
   }
 
   button{
     width: 100%;
-    padding: 10px;
+    padding: 15px;
     border: none;
-    border-radius: 5px;
+    border-radius: 15px;
     cursor: pointer;
+    font-family: 'NanumGothic';
+    font-weight: bold;
   }
   
   button.login {
@@ -54,7 +71,7 @@ body {
   }
   
   button.login:hover {
-    background-color: #0056b3;
+    background-color: #2d97ed;
   }
 
   button.register:hover {
