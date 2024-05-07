@@ -1,5 +1,5 @@
-import { createButton } from './createButton.js';
-import { createTextInput } from './createTextInput.js';
+import { createButton } from './createInput/createButton.js';
+import { createTextInput } from './createInput/createTextInput.js';
 
 // 학력
 export function addEdu() {
@@ -38,9 +38,4 @@ export function addEdu() {
 
   // 확인, 취소 버튼
   createButton(form, 'education');
-
-  document.getElementById('education_cancel').addEventListener('click', (e) => {
-    e.preventDefault();
-    form.innerText = '';
-  });
 }
