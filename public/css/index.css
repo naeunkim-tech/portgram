@@ -27,13 +27,12 @@ body {
     align-items: center; 
     gap:50px;
 
-    margin-bottom:200px;
+    margin-bottom:150px;
   }
 
   .notice_text{
     color: #636363;
     font-size: 14px;
-    font-style: italic;
   }
 
   .login-container {
@@ -123,17 +122,12 @@ body {
     color: #fff;
   }
 
-  button.register {
-    background-color: #ececec;
-    color: #000000;
-  }
-  
   button.login:hover {
     background-color: #2d97ed;
   }
 
-  button.register:hover {
-    background-color: #b8b8b8;
+  .register_button{
+    margin-top: 50px;
   }
   
   .title{
@@ -157,4 +151,6 @@ body {
       text-align: right;
       margin-top: -20px;
     }
+
+
   }
