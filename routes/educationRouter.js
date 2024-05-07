@@ -16,6 +16,8 @@ const loginRequired=require("../middleware/login-required")
   
 router.post("/", validateEducationData("body"), async (req, res, next) => {
   try {
+    console.log("학력 정보 추가하는 중...");
+
     const { school,major,degree } = req.body;
     const userId= req.user._id;
     const createdPost = await EducationModel.create({ school,major,degree, userId });

@@ -40,6 +40,8 @@ router.put("/:id",validateCertificationData("body"), async (req, res, next) => {
 
 router.delete("/:id", async (req, res, next) => {
   try {
+    console.log("자격증 정보 수정하는 중...");
+
     const { id } = req.params;
     const deletedPost = await CertificateModel.findOneAndDelete({ _id: id }).lean();
 

@@ -5,6 +5,8 @@ const {validateProjectData}=require("../middleware")
   
 router.post("/",validateProjectData("body"), async (req, res, next) => {
   try {
+    console.log("프로젝트 정보 추가하는 중...");
+
     const {title, startDate, endDate, role} = req.body;
     const userId= req.user._id;
     const createdPost = await ProjectModel.create({title, startDate, endDate, role, userId});
@@ -18,6 +20,8 @@ router.post("/",validateProjectData("body"), async (req, res, next) => {
   
 router.put("/:id",validateProjectData("body"), async (req, res, next) => {
   try {
+    console.log("프로젝트 정보 수정하는 중...");
+
     const { id } = req.params;
     const {title, startDate, endDate, role}= req.body;
 
@@ -38,6 +42,8 @@ router.put("/:id",validateProjectData("body"), async (req, res, next) => {
 
 router.delete("/:id", async (req, res, next) => {
   try {
+    console.log("프로젝트 정보 삭제하는 중...");
+
     const { id } = req.params;
     const deletedPost = await ProjectModel.findOneAndDelete({ _id: id }).lean();
 
