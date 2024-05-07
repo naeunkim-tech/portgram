@@ -30,6 +30,8 @@ router.post("/", validateEducationData("body"), async (req, res, next) => {
   
 router.put("/:id",validateEducationData("body"), async (req, res, next) => {
   try {
+    console.log("학력 정보 수정하는 중...");
+
     const { id } = req.params;
     const { school,major,degree }= req.body; 
 
@@ -50,6 +52,8 @@ router.put("/:id",validateEducationData("body"), async (req, res, next) => {
 
 router.delete("/:id", async (req, res, next) => {
   try {
+    console.log("학력 정보 삭제하는 중...");
+
     const { id } = req.params;
     const deletedPost = await EducationModel.findOneAndDelete({ _id: id }).lean();
 
