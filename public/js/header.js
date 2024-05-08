@@ -1,3 +1,5 @@
+var newElement = document.createElement("Header")
+
 var newElement = document.createElement("nav");
 newElement.className = "navbar";
 

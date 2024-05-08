@@ -17,7 +17,7 @@ function renderUsers(users) {
         const nameEmailDiv = document.createElement('div');
         nameEmailDiv.textContent = `Name: ${user.name}, Email: ${user.email}`;
         userDiv.addEventListener('click', () => {
-            window.location.href = "#";                                          // 프로필 링크 이동
+            window.location.href = `http://localhost:5000/otheruser/${user._id}`;                                          // 프로필 링크 이동
         });
         userDiv.appendChild(nameEmailDiv);
         userListDiv.appendChild(userDiv);
@@ -68,9 +68,8 @@ async function handleScroll() {
               }
             }
         catch (error) {
-            console.error('Error fetching additional users:', error);
         }        
-    }, 100);
+    }, 100);  // 스크롤 딜레이 값
     
     }   
 }
