@@ -1,5 +1,8 @@
-.underbar{
+#underbar{
     text-align: center;
-    display: flex;
     align-items: center;
+}
+
+#footer{
+    color: gray;
 }

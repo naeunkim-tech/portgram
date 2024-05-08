@@ -1,10 +1,12 @@
 body {
   background-color: #f2f2f2;
+  padding-top: 4rem;
 }
 #main {
   /* border: solid 1.5px #303030; */
   border-radius: 0.5rem;
   /* background-color: white; */
+  margin-bottom: 5rem;
 }
 #profile_img {
   border-radius:3rem;
@@ -121,6 +123,7 @@ body {
     /* border-radius: 0.5rem; */
     background-color: #303030;
     width:100%;
+    margin-top:1rem;
   }
   
 
@@ -181,10 +184,7 @@ details {
   margin-bottom: 1rem;
 }
 summary:hover {
-  /* border: solid 2.5px rgb(227, 227, 227);
-  border-radius: 0.5rem;
-  background-color: blanchedalmond; */
-  color:#5B63B7;
+  color:#2DC7ED;
 }
 details:last-child {
   margin-bottom: 0;
@@ -197,6 +197,7 @@ summary {
   padding: 1rem 0;
   font-weight: 600;
   position: relative;
+  color:#2d97ed;  
 }
 summary::before, summary::after {
   content: "";

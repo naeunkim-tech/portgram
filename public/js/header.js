@@ -8,7 +8,11 @@ var homeDiv = document.createElement("div");
 homeDiv.className = "navbar_Home";
 var homeLink = document.createElement("a");
 homeLink.href = "/networked";
-homeLink.textContent = "안녕하세요. 포트폴리오 공유 서비스입니다.";
+var homeImg = document.createElement("img");
+homeImg.id = "home_img"
+homeImg.src = "/img/portgram_title.png"
+homeImg.alt = "PORSHAW"
+homeLink.appendChild(homeImg)
 homeDiv.appendChild(homeLink);
 
 // <ul class="navbar_menu"> 요소 생성
@@ -18,20 +22,35 @@ menuUl.className = "navbar_menu";
 // 각 메뉴 아이템 생성
 var networkLi = document.createElement("li");
 var networkLink = document.createElement("a");
+var networkImg = document.createElement("img")
+var networkP = document.createElement("p")
 networkLink.href = "/networked";
-networkLink.textContent = "네트워크";
+networkImg.src = "/img/network_icon.png"
+networkP.textContent = "네트워크"
+networkLink.appendChild(networkImg)
+networkLink.appendChild(networkP)
 networkLi.appendChild(networkLink);
 
 var myPageLi = document.createElement("li");
 var myPageLink = document.createElement("a");
+var myPageImg = document.createElement("img")
+var myPageP = document.createElement("p")
 myPageLink.href = "/personal";
-myPageLink.textContent = "나의 페이지";
+myPageImg.src = "/img/my_page_icon.png"
+myPageP.textContent = "마이페이지"
+myPageLink.appendChild(myPageImg)
+myPageLink.appendChild(myPageP)
 myPageLi.appendChild(myPageLink);
 
 var logoutLi = document.createElement("li");
 var logoutLink = document.createElement("a");
+var logoutImg = document.createElement("img")
+var logoutP = document.createElement("p")
 logoutLink.href = "/logout";
-logoutLink.textContent = "로그아웃";
+logoutImg.src = "/img/logout_icon.png"
+logoutP.textContent = "로그아웃"
+logoutLink.appendChild(logoutImg)
+logoutLink.appendChild(logoutP)
 logoutLi.appendChild(logoutLink);
 
 // 각 메뉴 아이템을 <ul>에 추가

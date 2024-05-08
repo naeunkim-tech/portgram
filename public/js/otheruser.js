@@ -1,4 +1,5 @@
 // 자격증
+import {baseUrl} from './core/networkManager.js';
 const education_list = document.querySelector("#education_list");
 const award_list = document.querySelector("#award_list");
 const project_list = document.querySelector("#project_list");
@@ -7,8 +8,9 @@ const certificate_list = document.querySelector("#license_list");
 const url = new URL(window.location.href)
 const userId = url.pathname.slice(11)
 
+
 const fetchData = async () => {
-    const res = await fetch(`http://localhost:5000/posts/${userId}`);
+    const res = await fetch(`${baseUrl}/posts/${userId}`);
     const datas = await res.json();
 
     let edu_data = datas.education;
