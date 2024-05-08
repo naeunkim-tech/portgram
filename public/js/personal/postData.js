@@ -36,7 +36,7 @@ export function postData(formName, addedName, info) {
       deleteForm(form, 'div');
 
       const getData = data.data;
-      newInfo(getData, addedName, info);
+      newInfo(form, getData, addedName, info);
     })
     .catch((err) => {
       console.log('Error:', err);
