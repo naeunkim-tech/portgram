@@ -19,14 +19,15 @@ const local = new LocalStrategy(config, async (email, password, done) => {
         bcrypt.compare(password, user.password, (err, isMatch) => {
             if(err) throw err;
             if(isMatch) {
+                done(null, user);   // passport에게 사용자 인증 성공했음을 전달
                 console.log('isMatch done ok');
-                return done(null, user);
+                console.log('return user to login route post');
+                return user;    // login 라우터에 user 정보 전달, 라우터에서 해당 정보 이용하여 jwt 생성하도록 하기 위함 (라우터는 req.user로 받음)
             } else {
-                return done(null, false, {message: 'Password incorrect'});
+                done(null, false, {message: 'Password incorrect'});
             }
         });
-        console.log('done ok');
-        return done(null, user);
+        // return done(null, user); // 원래 여기서 다시 호출되는 done(null, user)가 login 라우터에 user 정보를 전달했으나, 해당 역할을 bcrypt.compare 함수 내 콜백 함수의 return user 부분이 수행하도록 수정
     } catch(err) {
         console.log(err);
         done(err, null);
