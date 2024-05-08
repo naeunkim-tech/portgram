@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:5000/"; // 요거 .env 파일에서 불러오는걸로 바꾸자
+export const baseUrl = "http://localhost:5000/";
 
 async function Post(data, url, successCallback, failCallback)
 {
@@ -116,5 +116,7 @@ export default {
     GetUserById,
     GetAwardByUserId,
     GetCertificateByUserId,
-    GetProjectsByUserId
+    GetProjectsByUserId,
+
+    baseUrl
 };
