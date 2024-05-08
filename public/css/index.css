@@ -2,9 +2,6 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
 
     font-family: 'NanumGothic';
@@ -31,32 +28,6 @@ body {
     flex-direction: column;
     align-items: center; 
     margin-top: 30%;
-
-  }
-
-  .main2{
-    display: flex; 
-    flex-direction: column;
-    align-items: center; 
-    gap:50px;
-
-    height:100%;
-  }
-
-  .register{
-    margin-top: 20%;
-    display: flex; 
-    flex-direction: column;
-    align-items: center; 
-    gap:50px;
-
-    flex:1;
-
-  }
-
-  .notice_text{
-    color: #636363;
-    font-size: 14px;
   }
 
   .login-container {
@@ -179,12 +150,5 @@ body {
       text-align: right;
       margin-top: -20px;
     }
-
-
-    #main{
-      background-color: yellow;
-      flex: 0.1;
-    }
-
 
   }
