@@ -3,6 +3,11 @@ import { addAward } from './personal/addAward.js';
 import { addProject } from './personal/addProject.js';
 import { addCertificate } from './personal/addCertificate.js';
 import { postData } from './personal/postData.js';
+import { fetchMypageData } from './personal/fetchMypage.js';
+
+document.addEventListener('DOMContentLoaded', () => {
+  fetchMypageData();
+});
 
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('addEdu').addEventListener('click', addEdu);
