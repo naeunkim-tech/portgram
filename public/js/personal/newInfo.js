@@ -1,3 +1,6 @@
+import { createDeleteButton } from './deleteButton.js';
+import { deleteDataOnServer } from './deleteButton.js';
+
 export function newInfo(getData, addedName, info) {
   const displayElement = document.getElementById(addedName);
 
@@ -40,6 +43,17 @@ export function newInfo(getData, addedName, info) {
     )} ~ ${endDate.slice(0, 10)} | 역할: ${role}`;
   }
 
+  // 삭제 버튼
+  const deleteButton = createDeleteButton(
+    info,
+    deleteDataOnServer,
+    getData,
+    parentList,
+    list,
+    displayElement
+  );
+
+  list.appendChild(deleteButton);
   parentList.appendChild(list);
   displayElement.appendChild(parentList);
 }

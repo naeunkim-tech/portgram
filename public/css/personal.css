@@ -7,15 +7,16 @@ body {
   /* background-color: white; */
 }
 #profile_img {
-  border-radius:3rem;
+  border-radius: 3rem;
 }
 #user_name {
-  margin-bottom:0;
+  margin-bottom: 0;
 }
 #email {
-  margin-top:0.1rem;
+  margin-top: 0.1rem;
 }
-#profile, #profile_content {
+#profile,
+#profile_content {
   background-color: white;
   border-radius: 1rem;
 }
@@ -25,7 +26,7 @@ body {
 }
 
 @media screen and (min-width: 769px) {
-  #personal_page{
+  #personal_page {
     display: flex;
     flex-direction: row;
     margin: 35px;
@@ -42,7 +43,7 @@ body {
     padding-bottom: 1.5rem;
   }
 
-  #profile_img{
+  #profile_img {
     width: 30%;
   }
 
@@ -54,17 +55,11 @@ body {
 
   #user_name {
     font-weight: 700;
-    font-size:x-large; 
+    font-size: x-large;
     margin-top: 1rem;
     margin-bottom: 0;
   }
 }
-
-
-
-
-
-
 
 /* .container {
   display: flex;
@@ -114,9 +109,6 @@ body {
   height: 300px;
   margin-left: 20px;
 } */
-
-
-
 
 .edit_button {
   color: rgb(104, 138, 250);
@@ -192,6 +184,7 @@ body {
 }
 
 /* --아코디언-- */
+
 details {
   padding: 0 2rem;
   border-radius: 1rem;
@@ -201,7 +194,7 @@ summary:hover {
   /* border: solid 2.5px rgb(227, 227, 227);
   border-radius: 0.5rem;
   background-color: blanchedalmond; */
-  color:#5B63B7;
+  color: #5b63b7;
 }
 details:last-child {
   margin-bottom: 0;
@@ -215,8 +208,10 @@ summary {
   font-weight: 600;
   position: relative;
 }
-summary::before, summary::after {
-  content: "";
+
+summary::before,
+summary::after {
+  content: '';
   position: absolute;
   width: 1rem;
   height: 2px;
