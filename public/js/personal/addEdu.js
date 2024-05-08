@@ -1,11 +1,11 @@
 import { createButton } from './createInput/createButton.js';
 import { createTextInput } from './createInput/createTextInput.js';
-
+import { baseUrl } from '../core/networkManager.js';
 // 학력
 export function addEdu() {
-  const form = document.createElement('educationForm');
+  const form = document.getElementById('educationForm');
   form.method = 'POST';
-  form.action = 'http://localhost:5000/mypage/education';
+  form.action = `${baseUrl}/mypage/education`;
 
   createTextInput(form, 'school', '학교 이름');
 

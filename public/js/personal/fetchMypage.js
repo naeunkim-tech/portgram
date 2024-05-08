@@ -1,8 +1,9 @@
 // 사용자 정보로 넘어오는 userId 필요
 // 받아온 userId에 해당하는 mypage 정보 받아와서 개인페이지 로딩
+import { baseUrl } from '../core/networkManager.js';
 
 export function fetchMypageData() {
-  fetch('http://localhost:5000/mypage', {
+  fetch(`${baseUrl}/mypage`, {
     method: 'GET',
   })
     .then((response) => {
