@@ -61,11 +61,12 @@ async function handleScroll() {
             // 여기서 데이터를 처리하거나 표시할 수 있습니다.
             const newUsers = data.users;
             renderUsers(newUsers);
-            if (newUsers.length === 0)
+            if (newUsers.length === 0) {
                 console.log('Array is empty')
                 window.removeEventListener('scroll', handleScroll);
                 return newUsers;
-             }
+              }
+            }
         catch (error) {
             console.error('Error fetching additional users:', error);
         }        
