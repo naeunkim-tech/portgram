@@ -6,7 +6,6 @@ body {
 }
 .profile_img {
   border-radius: 3rem;
-
 }
 #user_name {
   margin-bottom: 0;
@@ -24,7 +23,7 @@ body {
   padding-bottom: 2rem;
 }
 .edit_button {
-  margin-top:100%;
+  margin-top: 100%;
 }
 
 .deleteBtn {
@@ -95,24 +94,23 @@ body {
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
-  #personal_page{
+  #personal_page {
     display: flex;
     flex-direction: column;
     margin: 0;
   }
-  
+
   #profile {
     flex-shrink: 1;
     padding: 2rem;
     display: flex;
     flex-direction: row;
     /* border: solid 1.5px #303030; */
-    margin:2rem 2rem 1rem 2rem;
-  
+    margin: 2rem 2rem 1rem 2rem;
   }
-  
-  .profile_img{
-    width:40%;
+
+  .profile_img {
+    width: 40%;
     height: 80%;
     margin-right: 2rem;
     flex-grow: 0;
@@ -122,28 +120,28 @@ body {
 
   #user_name {
     font-weight: 700;
-    font-size:x-large; 
+    font-size: x-large;
   }
 
-  #profile_detail{
+  #profile_detail {
     height: 100%;
-    flex-grow:1;
+    flex-grow: 1;
   }
-  
+
   #profile_content {
     flex-shrink: 1;
-    margin-left:2rem;
-    margin-right:2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
   }
 }
 
 @media screen and (max-width: 480px) {
-  #personal_page{
+  #personal_page {
     /* display: flex;
     flex-direction: column; */
     margin: 0;
   }
-  
+
   #profile {
     margin-bottom: 1.5rem;
     padding-bottom: 1.5rem;
@@ -151,14 +149,13 @@ body {
     flex-direction: row;
     /* border: solid 1.5px #8a8a8a; */
     /* border-radius: 0.5rem; */
-    width:100%;
+    width: 100%;
   }
-  
 
-  .profile_img{
+  .profile_img {
     width: 85px;
     height: 85px;
-    margin:  1rem 2rem;
+    margin: 1rem 2rem;
   }
 
   #user_name {
@@ -166,20 +163,20 @@ body {
     margin-top: 1.5rem;
   }
 
-  #profile_detail{
+  #profile_detail {
     height: 100%;
   }
-  
+
   #profile_content {
     /* margin-left: 10px; */
     flex-shrink: 1;
   }
 
-  p, li {
+  p,
+  li {
     font-size: small;
   }
 }
-
 
 /* 버튼 */
 .edit_button {
@@ -206,7 +203,6 @@ body {
   height: 30px;
 }
 
-<<<<<<< HEAD
 .edit_button:hover {
   color: #2d97ed;
 }
@@ -220,8 +216,6 @@ body {
   font-size: 15pt;
 } */
 
-=======
->>>>>>> refs/remotes/origin/develop
 .input-style {
   margin: 5px;
   width: 98%;
@@ -269,8 +263,6 @@ body {
 .cancel-button:hover {
   cursor: pointer;
 }
-
-
 
 /* --아코디언-- */
 
