@@ -1,0 +1,32 @@
+[
+  {
+    "postedBy": "609e0ec4a7cc30086a74482e",
+    "school": "예술 대학교",
+    "major": "미술",
+    "degree": "학사졸업"
+  },
+  {
+    "postedBy": "609e0ed8a7cc30086a74482f",
+    "school": "과학 대학교",
+    "major": "물리학",
+    "degree": "석사졸업"
+  },
+  {
+    "postedBy": "609e0ef7a7cc30086a744830",
+    "school": "디자인 대학교",
+    "major": "그래픽 디자인",
+    "degree": "재학중"
+  },
+  {
+    "postedBy": "609e0f0ea7cc30086a744832",
+    "school": "공학 대학교",
+    "major": "컴퓨터 공학",
+    "degree": "박사졸업"
+  },
+  {
+    "postedBy": "609e0f3ea7cc30086a744836",
+    "school": "의학 대학교",
+    "major": "의학",
+    "degree": "학사졸업"
+  }
+]
