@@ -4,10 +4,12 @@ export function createDeleteButton(
   getData,
   parentList,
   list,
+  list2,
   displayElement
 ) {
   const deleteButton = document.createElement('button');
-  deleteButton.textContent = '삭제';
+  deleteButton.textContent = 'X';
+  deleteButton.className = 'deleteBtn';
   deleteButton.setAttribute('data-info', content);
 
   deleteButton.addEventListener('click', function () {
@@ -15,6 +17,7 @@ export function createDeleteButton(
     deleteDataOnServer(content, getData._id)
       .then(() => {
         parentList.removeChild(list);
+        parentList.removeChild(list2);
         if (parentList.children.length === 0) {
           displayElement.removeChild(parentList);
         }
