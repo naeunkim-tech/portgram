@@ -31,6 +31,8 @@ router.post('/login',
   passport.authenticate('local', {session: false}), // 데이터베이스와 email, password 비교
   (req, res, next) => {
     userAuthService.setUserToken(res, req.user);
+    console.log('post login ok');
+    res.json(req.user); // 클라이언트에게 응답 정보 전송, 이 부분이 없으면 /personal 경로로 이동하지 않는 오류 발생
     // res.redirect('/');
   }
 );

@@ -12,14 +12,14 @@ async function Post(data, url, successCallback, failCallback)
     .then(response => {
         console.log(response);
         if(response.ok) return response.json();
-        else throw error;
+        else throw new Error('response.ok false');   // throw new Error(error); 수정
     })
     .then(data => {
         console.log(data);
         successCallback();
     })
     .catch(error => {
-        failCallback();
+        failCallback(error);    // 인자로 error 넘기도록 수정
     });
 }
 

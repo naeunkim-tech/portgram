@@ -25,7 +25,8 @@ document.getElementById("login-form").addEventListener("submit", function(event)
     }, 
     (error) => {
         console.log("로그인 실패!");
-         errorMessage.textContent = '• 아이디 또는 비밀번호가 일치하지 않습니다.';
+        console.log(error);
+        errorMessage.textContent = '• 아이디 또는 비밀번호가 일치하지 않습니다.';
     }
     );
   });

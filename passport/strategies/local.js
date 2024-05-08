@@ -19,11 +19,13 @@ const local = new LocalStrategy(config, async (email, password, done) => {
         bcrypt.compare(password, user.password, (err, isMatch) => {
             if(err) throw err;
             if(isMatch) {
+                console.log('isMatch done ok');
                 return done(null, user);
             } else {
                 return done(null, false, {message: 'Password incorrect'});
             }
         });
+        console.log('done ok');
         return done(null, user);
     } catch(err) {
         console.log(err);

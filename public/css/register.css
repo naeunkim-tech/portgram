@@ -1,0 +1,182 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    font-family: 'NanumGothic';
+  }
+
+  .main{
+    display: flex; 
+    flex-direction: column;
+    align-items: center; 
+    height:100%;
+  }
+
+  .login{
+    display: flex; 
+    flex-direction: column;
+    align-items: center; 
+    gap:80px;
+    flex:1;
+  }
+
+  .login_box{
+    display: flex; 
+    gap:80px;
+    flex-direction: column;
+    align-items: center; 
+    margin-top: 30%;
+
+  }
+
+  .main2{
+    display: flex; 
+    flex-direction: column;
+    align-items: center; 
+    gap:50px;
+
+    height:100%;
+  }
+
+  .register{
+    margin-top: 20%;
+    display: flex; 
+    flex-direction: column;
+    align-items: center; 
+    gap:50px;
+
+    flex:1;
+
+  }
+
+  .notice_text{
+    color: #636363;
+    font-size: 14px;
+  }
+
+  .login-container {
+    width: 400px;
+    display: flex; 
+    flex-direction: column;
+    align-items: center; 
+  }
+  
+  .form-group {
+    width: 400px;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"],
+  input[type="password"],
+  input[type="email"] {
+    width: calc(100% - 22px);
+    height:35px;
+    padding: 5px;
+    padding-left:15px;
+    border: 1px solid #959595;
+    border-radius: 10px;
+    background-color: #F3F3F3;
+  }
+
+  input[type="password"].error {
+    border: 2px solid rgb(255, 60, 60);
+  }
+
+
+  [type="text"]::placeholder,
+  input[type="password"]::placeholder,
+  input[type="email"]::placeholder {
+    font-family: 'NanumGothic';
+    font-size: 14px;
+  }
+
+  .divider {
+    height:100px;
+    display: flex;
+    align-items: center;
+  }
+  
+.flex-item {
+  flex: 1;
+  text-align: center; 
+}
+
+.smaller {
+  flex: 0.3; 
+  color : #686868;
+}
+
+.register_area{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+
+}
+
+.register_area:hover {
+  cursor: pointer;
+}
+
+.register_text{
+  color:#2DC7ED;
+  font-weight: bold;
+  margin-left:3px;
+}
+
+  button{
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-family: 'NanumGothic';
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  button.login {
+    background-color: #2DC7ED;
+    color: #fff;
+  }
+
+  button.login:hover {
+    background-color: #2d97ed;
+  }
+
+  .register_button{
+    margin-top: 50px;
+  }
+  
+  .title{
+    width: 500px;
+
+    .title_img{
+      display: flex; 
+      flex-direction: column;
+      align-items: center; 
+
+      img{
+        width:400px;
+      }
+    }
+
+    .title_text{
+      font-family: 'NanumGothic';
+      font-size:18px;
+      font-weight:600;
+      text-align: right;
+      margin-top: -20px;
+    }
+
+  }
