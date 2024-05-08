@@ -4,6 +4,7 @@ const {validateAwardData}=require("../middleware")
   
 router.post("/", validateAwardData("body"), async (req, res, next) => {
   try {
+    console.log("수상 정보 추가하는 중...");
     const { content, organization, date } = req.body;
     const userId= req.user._id;
 
@@ -16,6 +17,8 @@ router.post("/", validateAwardData("body"), async (req, res, next) => {
   
 router.put("/:id", validateAwardData("body"), async (req, res, next) => {
   try {
+    console.log("수상 정보 수정하는 중...");
+
     const { id } = req.params;
     const { content, organization, date }= req.body;
 
@@ -37,6 +40,8 @@ router.put("/:id", validateAwardData("body"), async (req, res, next) => {
 
 router.delete("/:id", async (req, res, next) => {
   try {
+    console.log("수상 정보 삭제하는 중...");
+
     const { id } = req.params;
     const deletedAward = await AwardModel.findOneAndDelete({ _id: id }).lean();
 

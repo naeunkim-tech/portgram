@@ -15,5 +15,10 @@ export function createButton(form, name) {
   cancelButton.textContent = '취소';
   btn.appendChild(cancelButton);
 
+  cancelButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    form.innerText = '';
+  });
+
   form.appendChild(btn);
 }

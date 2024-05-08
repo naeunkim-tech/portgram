@@ -8,9 +8,8 @@ class NoContentError extends Error {
 const validateData = (fields) => (from) => (req, res, next) => {
   for (const field of fields) {
     const value = req[from][field];
-    if (value === undefined || value === '') {
-      const error = new Error(`${from}: ${field}는 필수값입니다.`);
-      error.status = 400;
+    if (value === undefined || value === "") {
+      const error = new NoContentError(`${from}: ${field}는 필수값입니다.`);
       return next(error);
     }
   }

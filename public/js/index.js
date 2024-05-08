@@ -21,12 +21,11 @@ document.getElementById("login-form").addEventListener("submit", function(event)
   Login(data, 
     () => {
         console.log("로그인 성공!");
-        window.location.href = "/personal"; // 서버에서 구축한 경로 '/personal'로 이동
+        window.location.href = "/personal"; 
     }, 
     (error) => {
         console.log("로그인 실패!");
-        // errorMessage.textContent = error.message;
-        console.log(error);
+         errorMessage.textContent = '• 아이디 또는 비밀번호가 일치하지 않습니다.';
     }
     );
   });

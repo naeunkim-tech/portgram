@@ -11,15 +11,14 @@ async function Post(data, url, successCallback, failCallback)
     await fetch(`${baseUrl}${url}`, options)
     .then(response => {
         console.log(response);
-        if(response.ok)
-            return response.json();
+        if(response.ok) return response.json();
+        else throw error;
     })
     .then(data => {
         console.log(data);
         successCallback();
     })
     .catch(error => {
-        console.error('Error:', error.message);
         failCallback();
     });
 }

@@ -6,6 +6,7 @@ const {validateToken} = require("../middleware/validateToken");
 
 router.get("/",validateToken, async (req, res, next) => {
   try {
+    console.log("마이페이지 정보 가져오는 중...")
 
     const userId=req.user._id;
 

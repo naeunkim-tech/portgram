@@ -16,6 +16,8 @@ const loginRequired=require("../middleware/login-required")
   
 router.post("/", validateEducationData("body"), async (req, res, next) => {
   try {
+    console.log("학력 정보 추가하는 중...");
+
     const { school,major,degree } = req.body;
     const userId= req.user._id;
     const createdPost = await EducationModel.create({ school,major,degree, userId });
@@ -28,6 +30,8 @@ router.post("/", validateEducationData("body"), async (req, res, next) => {
   
 router.put("/:id",validateEducationData("body"), async (req, res, next) => {
   try {
+    console.log("학력 정보 수정하는 중...");
+
     const { id } = req.params;
     const { school,major,degree }= req.body; 
 
@@ -48,6 +52,8 @@ router.put("/:id",validateEducationData("body"), async (req, res, next) => {
 
 router.delete("/:id", async (req, res, next) => {
   try {
+    console.log("학력 정보 삭제하는 중...");
+
     const { id } = req.params;
     const deletedPost = await EducationModel.findOneAndDelete({ _id: id }).lean();
 

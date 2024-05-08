@@ -1,4 +1,72 @@
-.container {
+body {
+  background-color: #f2f2f2;
+}
+#main {
+  /* border: solid 1.5px #303030; */
+  border-radius: 0.5rem;
+  /* background-color: white; */
+}
+#profile_img {
+  border-radius:3rem;
+}
+#user_name {
+  margin-bottom:0;
+}
+#email {
+  margin-top:0.1rem;
+}
+#profile, #profile_content {
+  background-color: white;
+  border-radius: 1rem;
+}
+#profile_content {
+  padding-top: 1.5rem;
+  padding-bottom: 2rem;
+}
+
+@media screen and (min-width: 769px) {
+  #personal_page{
+    display: flex;
+    flex-direction: row;
+    margin: 35px;
+  }
+
+  #profile {
+    flex-basis: 30%;
+    flex-shrink: 1;
+    /* border: solid 1.5px #303030; */
+    text-align: center;
+    height: 50%;
+    width: 90%;
+    margin-right: 1rem;
+    padding-bottom: 1.5rem;
+  }
+
+  #profile_img{
+    width: 30%;
+  }
+
+  #profile_content {
+    margin-left: 10px;
+    flex-basis: 70%;
+    flex-shrink: 1;
+  }
+
+  #user_name {
+    font-weight: 700;
+    font-size:x-large; 
+    margin-top: 1rem;
+    margin-bottom: 0;
+  }
+}
+
+
+
+
+
+
+
+/* .container {
   display: flex;
 }
 
@@ -45,7 +113,10 @@ body {
   width: 150px;
   height: 300px;
   margin-left: 20px;
-}
+} */
+
+
+
 
 .edit_button {
   color: rgb(104, 138, 250);
@@ -71,11 +142,11 @@ body {
   height: 30px;
 }
 
-.content {
+/* .content {
   margin: 15px 6px;
   font-weight: bold;
   font-size: 15pt;
-}
+} */
 
 .input-style {
   margin: 5px;
@@ -118,4 +189,45 @@ body {
 .submit-button,
 .cancel-button:hover {
   cursor: pointer;
+}
+
+/* --아코디언-- */
+details {
+  padding: 0 2rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+}
+summary:hover {
+  /* border: solid 2.5px rgb(227, 227, 227);
+  border-radius: 0.5rem;
+  background-color: blanchedalmond; */
+  color:#5B63B7;
+}
+details:last-child {
+  margin-bottom: 0;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+summary {
+  display: block;
+  padding: 1rem 0;
+  font-weight: 600;
+  position: relative;
+}
+summary::before, summary::after {
+  content: "";
+  position: absolute;
+  width: 1rem;
+  height: 2px;
+  background-color: #303030;
+  right: 0.5rem;
+  top: 1.5rem;
+}
+summary::after {
+  transform: rotateZ(90deg);
+}
+
+details[open] summary::after {
+  display: none;
 }

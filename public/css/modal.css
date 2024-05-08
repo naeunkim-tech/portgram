@@ -1,0 +1,61 @@
+.modal {
+    display: none;
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4); 
+    padding-top: 60px; 
+  }
+
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto; 
+    margin-top: 15%;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 350px;
+    border-radius: 10px;
+    font-size: 15px;
+
+    animation-name: modal-animation;
+    animation-duration: 0.5s;
+
+    text-align: center; 
+}
+
+@keyframes modal-animation {
+    from {
+      opacity: 0;
+      transform: translateY(-50px); 
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  p.text{
+    margin-bottom: 50px;
+  }
+
+
+  button.confirm{
+    width: 50%;
+    padding: 15px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-family: 'NanumGothic';
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    background-color: #2DC7ED;
+    color: #fff;
+  }
+ 
+  button.confirm:hover {
+    background-color: #2d97ed;
+  }

@@ -1,6 +1,6 @@
-import { createButton } from './createButton.js';
-import { createDateInput } from './createDateInput.js';
-import { createTextInput } from './createTextInput.js';
+import { createButton } from './createInput/createButton.js';
+import { createDateInput } from './createInput/createDateInput.js';
+import { createTextInput } from './createInput/createTextInput.js';
 
 export function addAward() {
   const form = document.getElementById('awardForm');
@@ -14,9 +14,4 @@ export function addAward() {
   createDateInput(form, '수상 일자', 'date');
 
   createButton(form, 'award');
-
-  document.getElementById('award_cancel').addEventListener('click', (e) => {
-    e.preventDefault();
-    form.innerText = '';
-  });
 }
