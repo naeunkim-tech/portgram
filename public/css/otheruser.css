@@ -24,7 +24,7 @@ body {
   padding-bottom: 2rem;
 }
 
-@media screen and (min-width: 769px) {
+@media (min-width: 769px) {
   #user_page{
     display: flex;
     flex-direction: row;
@@ -62,7 +62,7 @@ body {
 }
 
 
-@media screen and (min-width: 481px) and (max-width: 768px) {
+@media (min-width: 481px) and (max-width: 768px) {
   #user_page{
     display: flex;
     flex-direction: column;
@@ -106,7 +106,7 @@ body {
 }
 
 
-@media screen and (max-width: 480px) {
+@media (max-width: 480px) {
   #user_page{
     /* display: flex;
     flex-direction: column; */

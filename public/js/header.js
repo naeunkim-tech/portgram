@@ -5,7 +5,7 @@ newElement.className = "navbar";
 var homeDiv = document.createElement("div");
 homeDiv.className = "navbar_Home";
 var homeLink = document.createElement("a");
-homeLink.href = "#";
+homeLink.href = "/networked";
 homeLink.textContent = "안녕하세요. 포트폴리오 공유 서비스입니다.";
 homeDiv.appendChild(homeLink);
 
@@ -16,13 +16,13 @@ menuUl.className = "navbar_menu";
 // 각 메뉴 아이템 생성
 var networkLi = document.createElement("li");
 var networkLink = document.createElement("a");
-networkLink.href = "#";
+networkLink.href = "/networked";
 networkLink.textContent = "네트워크";
 networkLi.appendChild(networkLink);
 
 var myPageLi = document.createElement("li");
 var myPageLink = document.createElement("a");
-myPageLink.href = "#";
+myPageLink.href = "/personal";
 myPageLink.textContent = "나의 페이지";
 myPageLi.appendChild(myPageLink);
 
@@ -40,5 +40,6 @@ menuUl.appendChild(logoutLi);
 // 생성된 요소들을 조립하여 새로운 <nav> 요소에 추가
 newElement.appendChild(homeDiv);
 newElement.appendChild(menuUl);
+
 
 document.querySelector("#main").insertAdjacentElement("beforebegin", newElement);
