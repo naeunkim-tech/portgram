@@ -20,7 +20,7 @@
     justify-content: space-between;
     align-items: center;
     list-style: none;
-    margin:1rem 2.3rem 0 0;
+    margin: 0 2.5rem 0 0;
 }
 
 .navbar_menu li {
@@ -32,6 +32,7 @@
 
 .navbar_menu img {
     width: 1.8rem;
+    vertical-align: middle;
 }
 .navbar_menu img:hover {
     transform:scale(1.2);
@@ -43,7 +44,7 @@
 #home_img {
     width:8rem;
     margin-left: 1rem;
-   vertical-align: middel;
+   vertical-align: middle;
 }
 
 .navbar_menu p {
@@ -54,6 +55,12 @@
 }
 
 @media (max-width: 480px) {
+    .navbar {
+        height: 4rem;
+    }
+    .navbar_menu {
+        margin-right:1rem;
+    }
     .navbar_menu p {
         display: none;
     }

@@ -1,8 +1,8 @@
-#underbar{
+#footer{
+    margin:4rem 0 0 0;
+    color: gray;
     text-align: center;
     align-items: center;
-}
-
-#footer{
-    color: gray;
+    height: 3rem;
+    position : relative;
 }

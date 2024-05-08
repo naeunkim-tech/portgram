@@ -3,7 +3,8 @@ body {
   padding-top: 4rem;
 }
 #main {
-  border-radius: 0.5rem;
+  height:auto;
+  min-height: 75vh;
 }
 .profile_img {
   border-radius: 3rem;
@@ -23,9 +24,7 @@ body {
   padding-top: 1.5rem;
   padding-bottom: 2rem;
 }
-.edit_button {
-  margin-top: 100%;
-}
+
 
 .deleteBtn {
   border: none;
