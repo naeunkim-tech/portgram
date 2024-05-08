@@ -3,5 +3,5 @@ export function deleteForm(form, selector) {
   deletedSelector.forEach((content) => {
     content.remove();
   });
-  form.innerHTML = '<br>';
+  form.innerHTML = '';
 }
