@@ -4,35 +4,45 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>개인 페이지</title>
-    <link rel="stylesheet" href="../css/personal.css" />
-    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="./css/personal.css" />
+    <link rel="stylesheet" href="./css/header.css" />
   </head>
   <body>
     <main id="main">
-      <div class="container">
-        <div id="personal_page">
-          <div id="profile">
-            <div class="img">
-              <img
-                class="profile_img"
-                src="https://cdn.imweb.me/thumbnail/20220413/04966fa44899b.png"
-                alt="프로필 사진"
-              />
-            </div>
-            <div class="intro">
-              <h1>이름</h1>
-              <p>email : <span id="email">#email span value</span></p>
-              <p>설명이 아직 없습니다. 추가해 주세요.</p>
-              <div class="edit">
-                <button class="edit_button">edit</button>
-              </div>
+      <div id="personal_page">
+        <div id="profile">
+          <!-- <div class="img"> -->
+          <img
+            class="profile_img"
+            src="https://cdn.imweb.me/thumbnail/20220413/04966fa44899b.png"
+            alt="프로필 사진"
+          />
+          <!-- </div> -->
+          <div id="intro">
+            <p id="user_name">이름</p>
+            <p>email : <span id="email">#email span value</span></p>
+            <p id="user_detail">설명이 아직 없습니다. 추가해 주세요.</p>
+            <div class="edit">
+              <button class="edit_button">edit</button>
             </div>
           </div>
         </div>
-        <div id="myInfo">
-          <div id="profile_content">
-            <div class="education">
-              <p class="content">학력</p>
+
+        <div id="profile_content">
+          <!-- <div class="education">
+            <p class="content">학력</p>
+            <div id="button">
+              <button id="addEdu" class="btn">ADD</button>
+            </div>
+            <form id="educationForm">
+              <div class="add"></div>
+            </form>
+            <div id="addedEducation"></div>
+          </div> -->
+
+          <details open>
+            <summary>학력</summary>
+            <div markdown="1" class="education">
               <div id="button">
                 <button id="addEdu" class="btn">ADD</button>
               </div>
@@ -41,8 +51,22 @@
               </form>
               <div id="addedEducation"></div>
             </div>
-            <div class="award">
-              <p class="content">수상이력</p>
+          </details>
+
+          <!-- <div class="award">
+            <p class="content">수상이력</p>
+            <div id="button">
+              <button id="addAward" class="btn">ADD</button>
+            </div>
+            <form id="awardForm">
+              <div class="add"></div>
+            </form>
+            <div id="addedAward"></div>
+          </div> -->
+
+          <details open>
+            <summary>수상이력</summary>
+            <div markdown="1" class="award">
               <div id="button">
                 <button id="addAward" class="btn">ADD</button>
               </div>
@@ -51,8 +75,22 @@
               </form>
               <div id="addedAward"></div>
             </div>
-            <div class="project">
-              <p class="content">프로젝트</p>
+          </details>
+
+          <!-- <div class="project">
+            <p class="content">프로젝트</p>
+            <div id="button">
+              <button id="addProject" class="btn">ADD</button>
+            </div>
+            <form id="projectForm">
+              <div class="add"></div>
+            </form>
+            <div id="addedProject"></div>
+          </div> -->
+
+          <details open>
+            <summary>프로젝트</summary>
+            <div markdown="1" class="project">
               <div id="button">
                 <button id="addProject" class="btn">ADD</button>
               </div>
@@ -61,8 +99,11 @@
               </form>
               <div id="addedProject"></div>
             </div>
-            <div class="certificate">
-              <p class="content">자격증</p>
+          </details>
+
+          <details open>
+            <summary>자격증</summary>
+            <div markdown="1" class="license">
               <div id="button">
                 <button id="addCertificate" class="btn">ADD</button>
               </div>
@@ -71,12 +112,23 @@
               </form>
               <div id="addedCertificate"></div>
             </div>
-          </div>
+          </details>
+
+          <!-- <div class="certificate">
+            <p class="content">자격증</p>
+            <div id="button">
+              <button id="addCertificate" class="btn">ADD</button>
+            </div>
+            <form id="certificateForm">
+              <div class="add"></div>
+            </form>
+            <div id="addedCertificate"></div>
+          </div> -->
         </div>
       </div>
     </main>
   </body>
-  <script type="module" src="../js/personal.js"></script>
+  <script type="module" src="./js/personal.js"></script>
   <script src="./js/header.js"></script>
   <script src="./js/footer.js"></script>
 </html>
