@@ -1,15 +1,17 @@
 import { deleteForm } from './deleteForm.js';
 import { newInfo } from './newInfo.js';
 
-export function postData(formName, addedName, info) {
+export function putData(formName, addedName, info, userId, id) {
   const form = document.getElementById(formName);
   const formData = new FormData(form);
   const newData = {};
   formData.forEach((value, key) => (newData[key] = value));
+  newData.userId = `${userId}`;
+  newData._id = `${id}`;
   const data = JSON.stringify(newData);
 
-  fetch(form.action, {
-    method: 'POST',
+  fetch(`http://localhost:5000/mypage/${info}/${userId}`, {
+    method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
     },
@@ -35,7 +37,7 @@ export function postData(formName, addedName, info) {
       // 확인, 취소 버튼 삭제
       deleteForm(form, 'div');
 
-      const getData = data.data;
+      const getData = data.body;
       newInfo(form, getData, addedName, info);
     })
     .catch((err) => {
