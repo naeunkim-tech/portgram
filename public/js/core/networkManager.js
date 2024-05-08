@@ -1,4 +1,4 @@
-export const baseUrl = "http://localhost:5000/";
+export const baseUrl = "http://localhost:5000";
 
 async function Post(data, url, successCallback, failCallback)
 {
@@ -8,7 +8,8 @@ async function Post(data, url, successCallback, failCallback)
         body: JSON.stringify(data)
     };
 
-    await fetch(`${baseUrl}${url}`, options)
+    console.log("fetch ", `${baseUrl}/${url}`);
+    await fetch(`${baseUrl}/${url}`, options)
     .then(response => {
         console.log(response);
         if(response.ok) return response.json();
