@@ -11,7 +11,7 @@ export function putData(formName, addedName, info, userId, id) {
   newData._id = `${id}`;
   const data = JSON.stringify(newData);
 
-  fetch(`${baseUrl}/${info}/${id}`, {
+  fetch(`${baseUrl}/mypage/${info}/${id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
