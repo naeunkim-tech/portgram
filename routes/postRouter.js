@@ -4,6 +4,8 @@ const { AwardModel, CertificateModel, EducationModel, ProjectModel } = require("
 
 router.get("/:userId", async (req, res, next) => {
   try {
+    console.log("다른 유저 포트폴리오 가져오는 중...");
+
     const { userId } = req.params;
     console.log(userId)
 

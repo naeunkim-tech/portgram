@@ -4,6 +4,8 @@ const {validateCertificationData}=require("../middleware")
   
 router.post("/", validateCertificationData("body"), async (req, res, next) => {
   try {
+    console.log("자격증 정보 추가하는 중...");
+
     const { type,date,authority } = req.body;
     const userId= req.user._id;
     const createdPost = await CertificateModel.create({ type,date,authority, userId });
@@ -17,11 +19,10 @@ router.post("/", validateCertificationData("body"), async (req, res, next) => {
   
 router.put("/:id",validateCertificationData("body"), async (req, res, next) => {
   try {
+    console.log("자격증 정보 수정하는 중...");
+
     const { id } = req.params;
     const { type,date,authority }= req.body; 
-    console.log("학력");
-    console.log(req.user);
-
 
     const updatedPost = await CertificateModel.findOneAndUpdate(
       { _id: id },
@@ -40,6 +41,8 @@ router.put("/:id",validateCertificationData("body"), async (req, res, next) => {
 
 router.delete("/:id", async (req, res, next) => {
   try {
+    console.log("자격증 정보 삭제하는 중...");
+
     const { id } = req.params;
     const deletedPost = await CertificateModel.findOneAndDelete({ _id: id }).lean();
 

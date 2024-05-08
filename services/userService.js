@@ -9,7 +9,6 @@ class userAuthService {
     static setUserToken(res, user) {
       const secretKey = process.env.JWT_SECRET_KEY || "jwt-secret-key";
       const token = jwt.sign(user.toJSON(), secretKey);
-      console.log(token);
       res.cookie('token', token); // cookie { 'token': token }
     }
 

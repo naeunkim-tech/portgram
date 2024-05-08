@@ -183,7 +183,8 @@ body {
   cursor: pointer;
 }
 
-/* --�꾩퐫�붿뼵-- */
+/* --아코디언-- */
+
 details {
   padding: 0 2rem;
   border-radius: 1rem;
@@ -207,6 +208,7 @@ summary {
   font-weight: 600;
   position: relative;
 }
+
 summary::before,
 summary::after {
   content: '';

@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign Up Page</title>
+  <title>Sign Up • Portagram</title>
   <link rel="stylesheet" href="/css/index.css">
+  <link rel="stylesheet" href="/css/modal.css">
 </head>
 <body>
   <div class="main2">
@@ -13,7 +14,7 @@
     <div class = "title_text">나의 포트폴리오 공유하기</div>
   </div>
 
-  <div class="notice_text">세계 각국의 Portagram 회원들에게 당신의 포트폴리오를 공유하고 다양한 채용 기회를 만나보세요.</div>
+  <div class="notice_text">Portagram에 회원가입하시고 전세계 사람들과 포트폴리오를 공유하세요.</div>
   
   <div class="signup-container">
     <form id="signup-form">
@@ -24,16 +25,25 @@
         <input type="password" id="password" name="password" placeholder="비밀번호" required>
       </div>
       <div class="form-group">
-        <input type="password" id="confirm-password" name="confirm-password" placeholder="비밀번호 확인" required>
+        <input type="password"  id="confirm-password" name="confirm-password" placeholder="비밀번호 확인"  required>
       </div>
       <div class="form-group">
         <input type="text" id="name" name="name" placeholder="이름" required>
       </div>
-      <button type="submit" class="login">회원가입</button>
+      <div class="register_button">
+        <button type="submit" class="login">회원가입</button>
+      </div>
     </form>
-    <p id="error-message"></p>
+    <p id="error-message" style="font-size: 14px; color:red;"></p>
   </div>
 
+</div>
+
+<div id="result-modal" class="modal">
+  <div class="modal-content">
+    <p class="text">회원가입이 완료되었습니다.</p>
+    <button class="confirm" onclick="window.location.href='/login';">확인</button>
+  </div>
 </div>
 
   <script type="module" src="/js/register.js"></script>
