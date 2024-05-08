@@ -2,9 +2,6 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
 
     font-family: 'NanumGothic';
@@ -14,25 +11,23 @@ body {
     display: flex; 
     flex-direction: column;
     align-items: center; 
-    gap:80px;
-
-    /* border: 1px solid #d6d6d6;
-    border-radius: 5px;
-    padding:80px 30px 30px 30px; */
+    height:100%;
   }
 
-  .main2{
+  .login{
     display: flex; 
     flex-direction: column;
     align-items: center; 
-    gap:50px;
-
-    margin-bottom:150px;
+    gap:80px;
+    flex:1;
   }
 
-  .notice_text{
-    color: #636363;
-    font-size: 14px;
+  .login_box{
+    display: flex; 
+    gap:80px;
+    flex-direction: column;
+    align-items: center; 
+    margin-top: 30%;
   }
 
   .login-container {
@@ -155,6 +150,5 @@ body {
       text-align: right;
       margin-top: -20px;
     }
-
 
   }
