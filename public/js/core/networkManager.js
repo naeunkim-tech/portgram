@@ -46,7 +46,7 @@ export function Register(data, successCallback, failCallback){
     Post(data, "register", successCallback, failCallback);
 }
 
-export async function GetAllUsers(startIndex = 0, countData = 16){
+export async function GetAllUsers(startIndex = 0, countData = 45){
     const userData = await GetFromLocal(`users.json`);
     const newUserList = userData.slice(startIndex, startIndex + countData)
     return newUserList
