@@ -1,11 +1,6 @@
-<<<<<<< HEAD
-.underbar{
-    grid-area: Footer;
-=======
 #footer{
     margin:4rem 0 0 0;
     color: gray;
->>>>>>> 0839fe9c895b340763979d55c9a435facea902a1
     text-align: center;
     align-items: center;
     height: 3rem;

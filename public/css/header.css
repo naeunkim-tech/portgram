@@ -8,7 +8,7 @@
     width: 100%;
     height:5rem;
     z-index: 100;
-    background-color: #f2f2f2;
+    background-color: white;
 }
 
 .navbar a{
@@ -28,18 +28,19 @@
     margin: 0;
     text-align:center;
     padding: 0.5rem;
-    border-radius: 1rem;
 }
 
 .navbar_menu img {
     width: 1.8rem;
     vertical-align: middle;
 }
-.navbar_menu img:hover {
+
+.navbar_menu li:hover img{
     transform:scale(1.2);
     -o-transform:scale(1.2);
     -moz-transform:scale(1.2);
     -webkit-transform:scale(1.2);
+    transition: transform 0.3s; 
 }
 
 #home_img {

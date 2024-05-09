@@ -1,5 +1,5 @@
 body {
-  background-color: #f2f2f2;
+  background-color: white;
   padding-top: 4rem;
 }
 #main {
@@ -9,6 +9,7 @@ body {
 #profile_frame {
   border: solid 1.5px #8a8a8a;
   border-radius: 1rem;
+  background-color: white;
 }
 #profile_img {
   width:100%;
@@ -23,7 +24,7 @@ body {
   margin-top:0.1rem;
 }
 #profile_basic, #profile_content {
-  background-color: white;
+  background-color: #f2f2f2;
   border-radius: 1rem;
 }
 #profile_content {
