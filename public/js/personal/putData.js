@@ -1,5 +1,6 @@
 import { deleteForm } from './deleteForm.js';
 import { newInfo } from './newInfo.js';
+import { baseUrl } from '../core/networkManager.js';
 
 export function putData(formName, addedName, info, userId, id) {
   const form = document.getElementById(formName);
@@ -10,7 +11,7 @@ export function putData(formName, addedName, info, userId, id) {
   newData._id = `${id}`;
   const data = JSON.stringify(newData);
 
-  fetch(`http://localhost:5000/mypage/${info}/${userId}`, {
+  fetch(`${baseUrl}/mypage/${info}/${id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -37,7 +38,7 @@ export function putData(formName, addedName, info, userId, id) {
       // 확인, 취소 버튼 삭제
       deleteForm(form, 'div');
 
-      const getData = data.body;
+      const getData = data.data;
       newInfo(form, getData, addedName, info);
     })
     .catch((err) => {

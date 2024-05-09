@@ -1,3 +1,5 @@
+import { baseUrl } from '../core/networkManager.js';
+
 export function createDeleteButton(
   content,
   deleteDataOnServer,
@@ -29,7 +31,7 @@ export function createDeleteButton(
 }
 
 export function deleteDataOnServer(content, userId) {
-  return fetch(`http://localhost:5000/mypage/${content}/${userId}`, {
+  return fetch(`${baseUrl}/mypage/${content}/${userId}`, {
     method: 'DELETE',
   });
 }

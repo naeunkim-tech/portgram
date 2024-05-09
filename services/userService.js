@@ -6,11 +6,11 @@ const { findByIdAndDelete } = require("../db/model/awardModel");
 class userAuthService {
 
     // login: jwt 토큰 생성하고 쿠키에 저장
-    static setUserToken(res, user) {
-      const secretKey = process.env.JWT_SECRET_KEY || "jwt-secret-key";
-      const token = jwt.sign(user.toJSON(), secretKey);
-      res.cookie('token', token); // cookie { 'token': token }
-    }
+    // static setUserToken(res, user) {
+    //   const secretKey = process.env.JWT_SECRET_KEY || "jwt-secret-key";
+    //   const token = jwt.sign(user.toJSON(), secretKey);
+    //   res.cookie('token', token); // cookie { 'token': token }
+    // }
 
     // 모델 층의 User의 email 함수를 사용하여 사용자를 검색
     static async getUserInfo({ email }) {

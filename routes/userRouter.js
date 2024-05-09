@@ -1,28 +1,23 @@
 const { Router } = require('express');
-const path = require("path");
-const bcrypt = require('bcrypt');
 const passport = require('passport');
 const jwt = require("jsonwebtoken");
-const { userAuthService } = require('../services/userService');
+const bcrypt = require('bcrypt');
 const UserModel = require("../db/model/userModel.js");
 const loginRequired = require('../middleware/login-required');
 
 const router = Router();
 
+// Root Page
 router.get('/', (req, res) => {
-  if (req.user) { // getUserFromJwt: passport authenticate jwt 과정에서 user 받아오기
-    console.log("user: ", req.user);
-    console.log("to personal");
-    res.redirect('/personal');
+  if (req.user) { // getUserFromJwt: passport authenticate jwt 과정에서 user 정보 받아오기
+    res.redirect('/personal');  // user 정보 있으면 로그인 했던 사용자로 판단, '/personal' 경로로 이동
     return;
   }
-  console.log("re login");
-  res.redirect('/login');
+  res.redirect('/login'); // user 정보 없으면 로그인 하지 않은 사용자로 판단, '/login' 경로로 이동
 })
 
 // Login Page
 router.get('/login', (req, res) => {
-	console.log("to login");
   res.render('index'); // render views_ejs/index.ejs
 });
 
@@ -30,10 +25,17 @@ router.get('/login', (req, res) => {
 router.post('/login', 
   passport.authenticate('local', {session: false}), // 데이터베이스와 email, password 비교
   (req, res, next) => {
-    userAuthService.setUserToken(res, req.user);
-    console.log('post login ok');
-    res.json(req.user); // 클라이언트에게 응답 정보 전송, 이 부분이 없으면 /personal 경로로 이동하지 않는 오류 발생
-    // res.redirect('/');
+    try {
+      // JWT
+      const secretKey = process.env.JWT_SECRET_KEY || "jwt-secret-key";
+      const token = jwt.sign(req.user.toJSON(), secretKey);
+      res
+        .cookie('token', token) // 쿠키에 'token'이라는 이름으로 JWT 저장
+        .status(200)
+        .json(req.user);  // 클라이언트에게 응답 정보 전송, 이 부분이 없으면 /personal 경로로 이동하지 않는 오류 발생
+    } catch (error) {
+      next(error);
+    }
   }
 );
 
@@ -85,19 +87,12 @@ router.post('/register', async (req, res) => {
 
 // Logout Handle
 router.get('/logout', (req, res, next) => {
-  // req.logout(err => {
-  //   if (err) return next(err);
-  //   console.log('logout success');
-  //   res.redirect('/');
-  // });
-  // req.logout();
-  res.cookie('token', null, { maxAge: 0, });  // cookie token 삭제, cookie 만료 시간: 0
-  res.redirect('/');
-  // req.flash('success_msg', 'You are logged out');
+  res.cookie('token', null, { maxAge: 0, });  // 쿠키에서 jwt 삭제, 쿠키 만료 시간: 0
+  res.redirect('/');  // '/' 경로로 이동, getUserFromJwt: passport authenticate jwt 과정에서 user 정보를 받아올 수 없으므로 '/login' 경로로 바로 이동
 });
-  
+
+// Personal Page
 router.get('/personal', loginRequired, (req, res) => {
-  console.log("reach personal");
   res.render('personal'); // render views_ejs/personal.ejs
 });
 

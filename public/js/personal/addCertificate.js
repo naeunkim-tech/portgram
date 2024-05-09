@@ -1,12 +1,12 @@
 import { createButton } from './createInput/createButton.js';
 import { createDateInput } from './createInput/createDateInput.js';
 import { createTextInput } from './createInput/createTextInput.js';
-
+import { baseUrl } from '../core/networkManager.js';
 // 자격증
 export function addCertificate() {
   const form = document.getElementById('certificateForm');
   form.method = 'POST';
-  form.action = 'http://localhost:5000/mypage/certification';
+  form.action = `${baseUrl}/mypage/certification`;
 
   createTextInput(form, 'type', '자격 종류');
 

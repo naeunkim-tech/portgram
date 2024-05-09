@@ -63,9 +63,9 @@ export function newInfo(form, getData, addedName, info) {
     const editConfirmBtn = editCompleteBtn(info);
 
     editedInformation.addEventListener('submit', (e) => {
-      e.preventDefault(); // 기본 폼 제출 동작 방지
+      e.preventDefault();
 
-      // info 값에 따라 다른 데이터 처리 함수를 호출합니다.
+      // data PUT fetch
       switch (info) {
         case 'education':
           putData(
@@ -110,7 +110,6 @@ export function newInfo(form, getData, addedName, info) {
 
     editedInformation.appendChild(editConfirmBtn);
     list3.appendChild(editedInformation);
-    // displayElement.appendChild(editedInformation);
     displayElement.appendChild(list3);
   });
 

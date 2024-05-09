@@ -1,12 +1,13 @@
 import { createButton } from './createInput/createButton.js';
 import { createDateInput } from './createInput/createDateInput.js';
 import { createTextInput } from './createInput/createTextInput.js';
+import { baseUrl } from '../core/networkManager.js';
 
 // 프로젝트
 export function addProject() {
   const form = document.getElementById('projectForm');
   form.method = 'POST';
-  form.action = 'http://localhost:5000/mypage/project';
+  form.action = `${baseUrl}/mypage/project`;
 
   createTextInput(form, 'title', '프로젝트명');
 

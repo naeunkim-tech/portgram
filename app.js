@@ -1,15 +1,18 @@
 const express = require('express');
-const { educationRouter, certificateRouter, awardRouter, projectRouter, postRouter, userRouter, mypageRouter, networkRouter } = require("./routes");
 const path = require('path');
 const cookieParser = require('cookie-parser');
-const getUserFromJwt = require('./middleware/get-user-from-jwt');
-const loginRequired = require('./middleware/login-required');
-
-// passport setting
 const passport = require('passport');
 require('./passport')();
+const getUserFromJwt = require('./middleware/get-user-from-jwt');
+const { educationRouter, certificateRouter, awardRouter, projectRouter, postRouter, userRouter, mypageRouter, networkRouter } = require("./routes");
 
 const app = express();
+
+// cookie
+app.use(cookieParser());  // req 객체에 cookies 속성 부여, 이제 req.cookies 사용 가능
+
+// passport
+app.use(passport.initialize());
 
 // EJS
 app.set("view engine", "ejs");
@@ -17,26 +20,19 @@ app.set("view engine", "ejs");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(passport.initialize());
 
 app.use('/', express.static(path.join(__dirname, 'public')));
-// app.use(express.static('public'));
 
-app.use(getUserFromJwt);  // 쿠키에서 jwt 토큰 확인
+app.use(getUserFromJwt);  // 모든 요청마다 쿠키에서 jwt 인증
 
-// root page
 app.use('/', userRouter);
-
 app.use("/posts", postRouter);
 app.use("/mypage", mypageRouter);
 app.use("/mypage/education", educationRouter);
 app.use("/mypage/certification", certificateRouter);
 app.use("/mypage/award", awardRouter);
 app.use("/mypage/project", projectRouter);
-
 app.use('/network', networkRouter)
-
 
 // application middleware
 // app.use((req, res, next) => {
