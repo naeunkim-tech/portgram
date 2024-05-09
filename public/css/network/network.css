@@ -1,19 +1,37 @@
-#userList {
-    padding-top: 4rem;
+#main {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
-    grid-gap: 200px; /* 그리드 간격 설정 */
-    padding-left: 40px; /*  왼쪽 여백  */
-    padding-right: 40px ; /* 오른쪽 여백 */
+    padding-top: 4rem;
+    grid-template-areas: 'Lside Main Rside';
+    grid-template-columns: 1fr 4fr 1fr;
+}
+#userList {
+    grid-area: Main;
+    font-family: Arial, sans-serif;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    grid-gap: 100px; /* 그리드 간격 설정 */
+    
 }
 
 .userProfile {
     display: flex;
-    width: 100px;  /*  카드 폭  */
-    height: 400px;  /*  카드 높이  */
+    width: 10px;  /*  카드 폭  */
+    height: 350px;  /*  카드 높이  */
     border-radius: 20px; /* 둥근 모서리 설정 */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 설정 */
-    padding: 20px 100px; /* 안쪽 여백 설정 */
+    padding: 20px 10px; /* 안쪽 여백 설정 */
     margin-bottom: 20px; /* 하단 여백 설정 */
     background-color: #fff; /* 배경색 설정 */
+}
+
+.Lside {
+    grid-area: Lside;
+    background-color: aqua;
+}
+
+.Rside {
+    grid-area: Rside;
+    background-color: aquamarine;
 }
